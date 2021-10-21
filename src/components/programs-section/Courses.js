@@ -22,11 +22,10 @@ const Courses = () => {
     window.scrollTo(0, 0);
     Axios.get('https://mentorkart.org/api/sso-courses').then((res, err) => {
       if (!err) {
-        // console.log(res.data.data);
+        console.log(res.data.data);
         SetAllCourses(res.data.data);
         SetStudentsCourses(
           res.data.data.filter((x) => {
-            // console.log(typeof x.user_category);
             return x.user_category.split(',').includes('STUDENT');
           })
         );
@@ -49,6 +48,7 @@ const Courses = () => {
   const [professionalsFilter, SetProfessionalsFilter] = useState(null);
   const [entrepreneursFilter, SetentrepreneursFilter] = useState(null);
 
+  const [myClass, SetMyClass] = useState('show');
   const [myClass1, SetMyClass1] = useState('');
   const [myClass2, SetMyClass2] = useState('');
   const [myClass3, SetMyClass3] = useState('');
@@ -61,6 +61,7 @@ const Courses = () => {
       SetProfessionalsFilter(null);
       SetMyClass2('');
       SetMyClass3('');
+      SetMyClass('');
       SetAllFilter(null);
     } else {
       SetStudentsFilter(null);
@@ -77,6 +78,7 @@ const Courses = () => {
       SetAllFilter(null);
       SetMyClass1('');
       SetMyClass3('');
+      SetMyClass('');
       SetStudentsFilter(null);
     } else {
       SetProfessionalsFilter(null);
@@ -94,6 +96,7 @@ const Courses = () => {
       SetStudentsFilter(null);
       SetMyClass1('');
       SetMyClass2('');
+      SetMyClass('');
     } else {
       SetentrepreneursFilter(null);
       SetMyClass3('');
@@ -101,13 +104,20 @@ const Courses = () => {
     }
   };
   const clearFilters = () => {
-    SetAllFilter(1);
-    SetProfessionalsFilter(null);
-    SetStudentsFilter(null);
-    SetentrepreneursFilter(null);
-    SetMyClass1('');
-    SetMyClass2('');
-    SetMyClass3('');
+    if (allFilter === null) {
+      SetAllFilter(1);
+      SetMyClass('show');
+      SetProfessionalsFilter(null);
+      SetAllFilter(null);
+      SetStudentsFilter(null);
+      SetMyClass1('');
+      SetMyClass2('');
+      SetMyClass3('');
+    } else {
+      SetAllFilter(null);
+      SetMyClass('');
+      SetAllFilter(1);
+    }
   };
 
   return (
@@ -131,15 +141,22 @@ const Courses = () => {
               />
             </div>
           </form>
-          <div className='tags d-flex mt-3 mb-md-5'>
-            <span>For : </span>
+          <div className='tags d-flex mt-3 justify-content-center'>
             <ul className='d-flex flex-wrap'>
+              <li>
+                <button
+                  className={myClass + ' btn'}
+                  onClick={() => clearFilters()}
+                >
+                  All
+                </button>
+              </li>
               <li>
                 <button
                   className={myClass1 + ' btn'}
                   onClick={() => toggleStudents()}
                 >
-                  Students
+                  Student
                 </button>
               </li>
               <li>
@@ -147,7 +164,7 @@ const Courses = () => {
                   className={myClass2 + ' btn'}
                   onClick={() => toggleProfessionals()}
                 >
-                  Professionals
+                  Professional
                 </button>
               </li>
               <li>
@@ -155,13 +172,7 @@ const Courses = () => {
                   className={myClass3 + ' btn'}
                   onClick={() => toggleentrepreneurs()}
                 >
-                  entrepreneurs
-                </button>
-              </li>
-
-              <li>
-                <button className='btn' onClick={() => clearFilters()}>
-                  <i className='fas fa-times'></i>
+                  Entrepreneur
                 </button>
               </li>
             </ul>
@@ -170,24 +181,38 @@ const Courses = () => {
       </div>
       <div className='courses-content'>
         {allFilter && (
-          <div id='#all' className='blogs-cards-two container py-5'>
-            <div className='text-center'>
-              <h2 className='mb-4'>All Courses</h2>
-            </div>
-
+          <div
+            id='#all'
+            className='blogs-cards-two container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'
+          >
             <div className='row'>
               {allCourses.map((course, index) => {
                 return (
-                  <div className='col-lg-4 col-md-6 col-12' key={index}>
+                  <div
+                    className='col-lg-4 col-md-6 col-12 px-lg-3 px-sm-2 px-3 mb-5'
+                    key={index}
+                  >
                     <div className='cards'>
-                      <div className='program-card py-3 px-4'>
-                        <div className='align-items-center'>
-                          <div className=''>
-                            <img src='/images/programs-bg.png' alt='' />
-                          </div>
-                          <div className=''>
-                            <div className='category-tags mb-md-3 mb-2'>
-                              {course.user_category
+                      <div className='program-card p-2'>
+                        <div className='img'>
+                          {course.icon_url === null ? (
+                            <img src='/images/user.png' alt='' />
+                          ) : (
+                            <img
+                              style={{
+                                objectFit: 'cover',
+                                objectPosition: 'top',
+                              }}
+                              src={
+                                'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                                course.icon_url
+                              }
+                              alt=''
+                            />
+                          )}
+                          <div className='category-tags mt-2'>
+                            {course.user_category &&
+                              course.user_category
                                 .split(',')
                                 .map((cate, index) => {
                                   return (
@@ -199,15 +224,24 @@ const Courses = () => {
                                     </span>
                                   );
                                 })}
+                          </div>
+                        </div>
+                        <div className='p-3'>
+                          <div className='d-flex justify-content-between align-items-center'>
+                            <div>
+                              <h2 className='mt-0 mb-0'>
+                                {course.mk_course_name}
+                              </h2>
                             </div>
-                            <h2>{course.mk_course_name}</h2>
-                            <h1>₹ {course.price} /-</h1>
-                            <p className='mb-2'>{course.description}</p>
+                            <h6 className='mb-0'>₹ {course.price} /-</h6>
+                          </div>
+                          <p className='mb-2'>{course.description}</p>
+                          <div className='row'>
                             <button
                               onClick={() => {
                                 setShowModal(true);
                               }}
-                              className='enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani'
+                              className='enroll-btn btn btn-ani'
                             >
                               Enroll Now
                             </button>
@@ -222,10 +256,10 @@ const Courses = () => {
           </div>
         )}
         {studentsFilter && (
-          <div id='#students' className='blogs-cards-two container py-5'>
-            <div className='text-center'>
-              <h2 className='mb-4'>Students Courses</h2>
-            </div>
+          <div
+            id='#students'
+            className='blogs-cards-two container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'
+          >
             <div className='row'>
               {studentsCourses.map((course, index) => {
                 return (
@@ -234,7 +268,13 @@ const Courses = () => {
                       <div className='program-card py-3 px-4'>
                         <div className='align-items-center'>
                           <div className=''>
-                            <img src='/images/programs-bg.png' alt='' />
+                            <img
+                              src={
+                                'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                                course.icon_url
+                              }
+                              alt=''
+                            />
                           </div>
                           <div className=''>
                             <div className='category-tags mb-md-3 mb-2'>
@@ -273,10 +313,10 @@ const Courses = () => {
           </div>
         )}
         {professionalsFilter && (
-          <div id='#professionals' className='blogs-cards-two container py-5'>
-            <div className='text-center'>
-              <h2 className='mb-4'>Professionals Courses</h2>
-            </div>
+          <div
+            id='#professionals'
+            className='blogs-cards-two container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'
+          >
             <div className='row'>
               {professionalsCourses.map((course, index) => {
                 return (
@@ -285,7 +325,13 @@ const Courses = () => {
                       <div className='program-card py-3 px-4'>
                         <div className='align-items-center'>
                           <div className=''>
-                            <img src='/images/programs-bg.png' alt='' />
+                            <img
+                              src={
+                                'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                                course.icon_url
+                              }
+                              alt=''
+                            />
                           </div>
                           <div className=''>
                             <div className='category-tags mb-md-3 mb-2'>
@@ -325,10 +371,10 @@ const Courses = () => {
         )}
 
         {entrepreneursFilter && (
-          <div id='#professionals' className='blogs-cards-two container py-5'>
-            <div className='text-center'>
-              <h2 className='mb-4'>entrepreneurs Courses</h2>
-            </div>
+          <div
+            id='#professionals'
+            className='blogs-cards-two container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'
+          >
             <div className='row'>
               {entrepreneursCourses.map((course, index) => {
                 return (
@@ -337,7 +383,13 @@ const Courses = () => {
                       <div className='program-card py-3 px-4'>
                         <div className='align-items-center'>
                           <div className=''>
-                            <img src='/images/programs-bg.png' alt='' />
+                            <img
+                              src={
+                                'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                                course.icon_url
+                              }
+                              alt=''
+                            />
                           </div>
                           <div className=''>
                             <div className='category-tags mb-md-3 mb-2'>

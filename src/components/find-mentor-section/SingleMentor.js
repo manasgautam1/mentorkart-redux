@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
 import MentorCardButtons from './MentorCardButtons';
-import { Link } from 'react-router-dom';
-
 
 import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
 
-const SingleMentorCard = ({ id, img, name, categories, charges }) => {
-  const [showModal, setShowModal] = useState(false);  
-
+const SingleMentorCard = ({ id, img, name, categories, charges, position }) => {
+  const [showModal, setShowModal] = useState(false);
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
-  let cate = [];
-  if (categories) {
-    cate = categories.split(',').join(' | ');
-  }
-
   return (
-    <div className=' col-lg-12 mt-4 px-xl-0 px-3 mx-xl-2'>
-      <div className='mentor-card px-4 py-4 d-flex align-items-center me-xl-5'>
+    <div className='col-lg-12 mt-4 px-lg-3 px-sm-2 px-0 mx-xl-2'>
+      <div className='mentor-card p-2'>
         <div className='img'>
           {img === null ? (
             <img src='/images/user.png' alt='' />
@@ -31,23 +23,27 @@ const SingleMentorCard = ({ id, img, name, categories, charges }) => {
               alt=''
             />
           )}
-        </div>
-        <div className='ms-lg-4 mentor-card-content ms-3'>
-          <h2 className='mt-0 mb-2'>{name}</h2>
-          <h6 className='mb-1'>Mentoring Fees : Rs {charges} /-</h6>
-          <div className=''>
-            <span className='text-uppercase'>For : {cate}</span>
-            <br />
-            <Link to={'/mentor-profile/' + id} className='ms-2'>
-              <span className='view-profile'>(View Profile)</span>
-            </Link>
+          <div className='category-tags mt-2'>
+            {categories &&
+              categories.split(',').map((cate, index) => {
+                return (
+                  <span key={index} className='btn btn-sm me-2'>
+                    {cate}
+                  </span>
+                );
+              })}
           </div>
-          {/* <Link
-            to={'/mentor-profile/' + id}
-            className='btn-sm btn-outline-secondary text-sm rounded-pill px-3 d-md-none d-block mt-1 mb-3'
-          >
-            <small>View Profile</small>
-          </Link> */}
+        </div>
+        <div className='ms-lg-4 mentor-card-content p-3'>
+          <div className='d-flex justify-content-between align-items-center'>
+            <div>
+              <h2 className='mt-0 mb-0'>{name}</h2>
+              <span className='text-left my-0'>
+                {position ? position : 'NULL'}
+              </span>
+            </div>
+            <h6 className='mb-0'>Rs {charges} /-</h6>
+          </div>
           <hr />
           <div className='row btn-container mb-3'>
             <div className='col-6'>

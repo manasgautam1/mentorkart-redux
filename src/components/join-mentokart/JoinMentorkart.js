@@ -34,7 +34,7 @@ const JoinMentorkart = () => {
   };
 
   return (
-    <div className='join-mentorkart py-5'>
+    <div className='join-mentorkart py-5 my-md-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row'>
           <div className='col-md-4 left'>

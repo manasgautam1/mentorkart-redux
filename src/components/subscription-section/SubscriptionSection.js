@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { listSubscribe } from '../../redux/actions/subscribeActions';
 import Modal from 'react-modal';
 import SignUpModal from '../join-mentokart/SignUpModal';
+import ReactHtmlParser from 'react-html-parser';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
@@ -16,36 +17,28 @@ import 'swiper/components/pagination/pagination.scss';
 // install Swiper modules
 SwiperCore.use([Pagination, A11y, Autoplay]);
 
-const SubscriptionSection = () =>
-{
+const SubscriptionSection = () => {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch()
-  const subscribeList = useSelector( state => state.subscribeList )
-  const { subscribe } = subscribeList
- 
-  
-  useEffect( () =>
-  {
-    dispatch(listSubscribe())
-  },[dispatch])
-  
+  const dispatch = useDispatch();
+  const subscribeList = useSelector((state) => state.subscribeList);
+  const { subscribe } = subscribeList;
+
+  useEffect(() => {
+    dispatch(listSubscribe());
+  }, [dispatch]);
 
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
- 
-  
-  
-
   return (
-    <div className='subscription-section pt-5pb-md-5 pb-0'>
+    <div className='subscription-section mt-md-5 mt-3 pt-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
           <span>PRICING</span>
           <h1>Subscription Plans</h1>
         </div>
-        <div className='mt-3 align-items-center text-center'>
+        <div className='mt-3 align-items-center'>
           <Swiper
             spaceBetween={50}
             slidesPerView={1}
@@ -65,34 +58,41 @@ const SubscriptionSection = () =>
               },
             }}
           >
-            {subscribe[0] && subscribe[0].data && subscribe[0].data.plans.map((plan, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <div
-                    className={
-                      (index + 2) % 2 === 0 ? 'subs-card' : 'subs-card-alt'
-                    }
-                  >
-                    <div className='card p-4'>
-                      <span className='category'>{plan.category}</span>
-                      <div className='card-body'>
-                        <h6 className='price mt-3'>
-                          ₹ {plan.price}/{plan.interval}
-                        </h6>
-                        <h1 className='name text-uppercase'>{plan.name}</h1>
-                        <p className='description'>{plan.description}</p>
-                        <button
-                          onClick={() => showModalBtn(true)}
-                          className='btn btn-sm'
-                        >
-                          Subscribe Now
-                        </button>
+            {subscribe[0] &&
+              subscribe[0].data &&
+              subscribe[0].data.plans.map((plan, index) => {
+                console.log(plan);
+                return (
+                  <SwiperSlide key={index}>
+                    <div
+                      className={
+                        (index + 2) % 2 === 0 ? 'subs-card' : 'subs-card-alt'
+                      }
+                    >
+                      <div className='card'>
+                        <span className='category'>{plan.category}</span>
+                        <div className='card-body'>
+                          <h6 className='name text-uppercase'>{plan.name}</h6>
+                          <h1 className='price'>
+                            ₹ {plan.price}/{plan.interval}
+                          </h1>
+                          <hr />
+                          <p className='description'>
+                            {ReactHtmlParser(plan.description)}
+                          </p>
+                          <hr />
+                          <button
+                            onClick={() => showModalBtn(true)}
+                            className='btn btn-sm'
+                          >
+                            Subscribe Now
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </div>
       </div>

@@ -234,7 +234,7 @@ a {
 .btn-ani {
   transform: scale(1);
   transition: transform 0.2s ease-in;
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.15);
 }
 .btn-ani:hover {
   transform: scale(1.02);
@@ -254,20 +254,17 @@ a {
 .find-mentor .swiper-wrapper {
   height: 340px;
 }
-.find-mentor .mentor-card,
-.mentors-card .mentor-card {
+.find-mentor .mentor-card {
   background: #fff;
   border-radius: 40px;
   border: 0.5px solid #000;
 }
-.find-mentor .mentor-card img,
-.mentors-card .mentor-card img {
+.find-mentor .mentor-card img {
   border-radius: 50%;
   width: 180px;
   height: 180px;
 }
-.find-mentor .mentor-card div h2,
-.mentors-card .mentor-card div h2 {
+.find-mentor .mentor-card div h2 {
   font-size: 1.75rem;
   font-weight: 500;
   line-height: 2rem;
@@ -275,19 +272,19 @@ a {
   text-transform: capitalize;
 }
 .find-mentor .mentor-card div span,
-.mentors-card .mentor-card div span {
+.mentors-card .mentor-card div span,
+.courses .program-card p {
   font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.5);
 }
-.find-mentor .mentor-card div span.view-profile {
-  color: #f07867;
+.find-mentor .mentor-card div .btn.view-profile {
+  background-color: #f07867;
+  color: #fff;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 12px;
+  padding: 4px 20px;
+  border-radius: 16px;
   transition: all 0.3s ease-in;
-}
-.find-mentor .mentor-card div span.view-profile:hover {
-  /* font-size: 16.5px; */
-  font-weight: 600;
 }
 .find-mentor .mentor-card hr,
 .mentors-card .mentor-card hr {
@@ -556,27 +553,23 @@ a {
   background: #fff;
   color: #6483f6;
 }
-.programs .program-card,
-.courses .program-card {
+.programs .program-card {
   background-color: #fff;
   font-family: 'Poppins', sans-serif;
   color: #000;
   background: linear-gradient(281.79deg, #ffffff -5.33%, #ffffff 102.53%);
   border-radius: 30px;
 }
-.programs .program-card h2,
-.courses .program-card h2 {
+.programs .program-card h2 {
   font-size: 22px;
   line-height: 22.5px;
   font-weight: 500;
 }
-.programs .program-card h1,
-.courses .program-card h1 {
+.programs .program-card h1 {
   font-size: 18px;
   font-weight: 700;
 }
-.programs .program-card p,
-.courses .program-card p {
+.programs .program-card p {
   font-size: 11px;
   font-weight: 500;
 }
@@ -584,7 +577,7 @@ a {
 .courses .program-card .enroll-btn {
   background: #f86d6c;
   color: #fff;
-  border-radius: 24px;
+  border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
 }
@@ -947,8 +940,11 @@ a {
 }
 .our-blogs .our-blogs-head .tags li a,
 .courses .courses-head .tags li .btn,
-.courses .courses-content .category-tags .btn,
-.mentors .mentors-head .tags li .btn {
+.courses .mentor-card .category-tags .btn,
+.mentors-card .mentor-card .category-tags .btn,
+.find-mentor .category-tags .btn,
+.mentors .mentors-head .tags li .btn,
+.courses .program-card .img .category-tags .btn {
   text-decoration: none;
   color: #333 !important;
   border: 1px solid #333;
@@ -960,14 +956,20 @@ a {
 .mentors .mentors-head .tags li .btn.show,
 .mentors .mentors-head .tags li .btn:hover,
 .our-blogs .our-blogs-head .tags li a.show,
-.courses .courses-content .category-tags .btn,
+.find-mentor .category-tags .btn,
+.mentors-card .mentor-card .category-tags .btn,
+.courses .mentor-card .category-tags .btn,
 .courses .courses-head .tags li .btn.show,
 .courses .courses-head .tags li .btn:hover {
   background: #333;
   color: #fff !important;
 }
 
-.courses .courses-content .category-tags .btn {
+.find-mentor .category-tags .btn,
+.courses .mentor-card .category-tags .btn,
+.courses .mentor-card .category-tags .btn,
+.mentors-card .mentor-card .category-tags .btn,
+.courses .program-card .img .category-tags .btn {
   font-size: 8.5px;
 }
 
@@ -1055,14 +1057,6 @@ a {
   width: 75px;
 }
 
-.courses .program-card .align-items-center {
-  padding: 20px 24px;
-  border-radius: 30px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-}
-.courses .program-card .align-items-center img {
-  width: 75%;
-}
 .courses .courses-content .text-center h2 {
   font-weight: 600;
   border-bottom: 2.5px dotted #a4a4a4;
@@ -1182,36 +1176,69 @@ a {
     0 0 8px rgba(240, 120, 103, 0.6);
   outline: 0 none;
 }
-.mentors-card .mentor-card {
-  border-radius: 30px;
-  position: relative;
-  margin-top: 10px;
-  background: linear-gradient(#fafafa, #f4f4f4);
+.mentors-card .mentor-card,
+.courses .program-card {
+  border-radius: 10px;
   border: none;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
 }
-.mentors-card .mentor-card img {
+.mentors-card .mentor-card .img,
+.courses .program-card .img {
   width: 100%;
-  height: 100%;
+  height: 250px;
+  border-radius: 10px;
+  position: relative;
 }
-.mentors-card .mentor-card .img {
-  width: 120px;
-  height: 120px;
-  /* border-radius: 20px; */
+.mentors-card .mentor-card img,
+.courses .program-card img {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+}
+.courses .program-card img,
+.courses .program-card .img {
+  height: 250px;
+}
+
+.mentors-card .mentor-card .img .category-tags,
+.courses .program-card .img .category-tags {
   position: absolute;
-  left: 50%;
-  top: 15px;
-  transform: translateX(-50%);
-  border: 3px solid #ff7070;
-  border-radius: 50%;
-  padding: 4px;
+  bottom: 10px;
+  left: 10px;
+}
+.mentors-card .mentor-card .img .category-tags .btn {
+  background: #f86d6c !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+}
+.courses .program-card .img .category-tags .btn {
+  background: #333 !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+}
+.mentors-card .mentor-card div h2,
+.courses .program-card div h2 {
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: left;
+}
+.mentors-card .mentor-card div h6,
+.courses .program-card div h6 {
+  font-size: 14px;
+  font-weight: 700;
+}
+.mentors-card .mentor-card .mentor-card-btn {
+  padding: 2px 12px !important;
+  border-radius: 10px;
 }
 .mentors-card .left .btn {
   font-size: 16px;
 }
 .mentors-card .mentor-card .mentor-card-content {
-  text-align: center;
-  margin-top: 120px;
   margin-left: 0 !important;
 }
 .mentors-card .mentor-card hr {
@@ -1223,9 +1250,6 @@ a {
 }
 .mentors-card .swiper-wrapper {
   height: 350px;
-}
-.mentors-card .mentor-card div h2 {
-  font-size: 1.75rem;
 }
 .mentors-card-bg {
   position: absolute;
@@ -1582,11 +1606,11 @@ a {
 }
 .subscription-section .swiper-container,
 .subscription-section .swiper-wrapper {
-  height: 450px;
+  height: 460px !important;
 }
 .subscription-section .subs-card,
 .subscription-section .subs-card-alt {
-  height: 400px !important;
+  height: 420px !important;
 }
 .subscription-section h1 {
   font-size: 50px;
@@ -1595,17 +1619,19 @@ a {
   height: 100%;
   position: relative;
   border-radius: 10px;
-  background: linear-gradient(#fdf0e930, #fdf0e9);
-  border-color: #fdf0e9;
+  background: #fff;
+  border: 1.5px solid #333;
 }
 .subscription-section .card h6 {
+  font-size: 16px;
+  margin-top: 45px;
   color: rgba(51, 51, 51, 0.501557);
 }
 .subscription-section .card span {
   position: absolute;
   left: -1px;
   top: 20px;
-  background-color: #f07867;
+  background-color: #333;
   color: #fff;
   font-size: 12px;
   padding: 8px 12px;
@@ -1614,7 +1640,7 @@ a {
 }
 
 .subscription-section .card h1 {
-  font-size: 38px;
+  font-size: 32px;
   margin-top: -10px;
   font-weight: 700;
 }
@@ -1622,15 +1648,12 @@ a {
   color: #444;
   font-size: 14px;
 }
+.subscription-section .card .row {
+  position: absolute;
+  bottom: 15px;
+}
 .subscription-section .card .btn {
-  background-color: #f07867;
+  background-color: #333;
   color: #fff;
   font-weight: 600;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.mentors-card .mentor-card div a span {
-  color: #f07867;
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../footer/Footer';
 import MyNavbar from '../header-section/MyNavbar';
-import { Link } from 'react-router-dom';
 import SingleMentorCard from './SingleMentor';
 
 import Axios from 'axios';
@@ -71,6 +70,7 @@ const Mentors = () => {
   const [professionalsFilter, SetProfessionalsFilter] = useState(null);
   const [entrepreneursFilter, SetentrepreneursFilter] = useState(null);
 
+  const [myClass, SetMyClass] = useState('show');
   const [myClass1, SetMyClass1] = useState('');
   const [myClass2, SetMyClass2] = useState('');
   const [myClass3, SetMyClass3] = useState('');
@@ -83,6 +83,7 @@ const Mentors = () => {
       SetProfessionalsFilter(null);
       SetMyClass2('');
       SetMyClass3('');
+      SetMyClass('');
       SetAllFilter(null);
     } else {
       SetStudentsFilter(null);
@@ -99,6 +100,7 @@ const Mentors = () => {
       SetAllFilter(null);
       SetMyClass1('');
       SetMyClass3('');
+      SetMyClass('');
       SetStudentsFilter(null);
     } else {
       SetProfessionalsFilter(null);
@@ -116,6 +118,7 @@ const Mentors = () => {
       SetStudentsFilter(null);
       SetMyClass1('');
       SetMyClass2('');
+      SetMyClass('');
     } else {
       SetentrepreneursFilter(null);
       SetMyClass3('');
@@ -123,13 +126,20 @@ const Mentors = () => {
     }
   };
   const clearFilters = () => {
-    SetAllFilter(1);
-    SetProfessionalsFilter(null);
-    SetStudentsFilter(null);
-    SetentrepreneursFilter(null);
-    SetMyClass1('');
-    SetMyClass2('');
-    SetMyClass3('');
+    if (allFilter === null) {
+      SetAllFilter(1);
+      SetMyClass('show');
+      SetProfessionalsFilter(null);
+      SetAllFilter(null);
+      SetStudentsFilter(null);
+      SetMyClass1('');
+      SetMyClass2('');
+      SetMyClass3('');
+    } else {
+      SetAllFilter(null);
+      SetMyClass('');
+      SetAllFilter(1);
+    }
   };
 
   return (
@@ -137,7 +147,7 @@ const Mentors = () => {
       <MyNavbar />
 
       <div className='mentors-head'>
-        <div className='container py-md-5 py-3'>
+        <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
           <h1>Our Mentors</h1>
           <form
             action='/search-mentors'
@@ -159,15 +169,22 @@ const Mentors = () => {
               />
             </div>
           </form>
-          <div className='tags d-flex mt-3 mb-md-5'>
-            <span>For : </span>
-            <ul className='d-flex '>
+          <div className='tags d-flex mt-3 justify-content-center'>
+            <ul className='d-flex flex-wrap'>
+              <li>
+                <button
+                  className={myClass + ' btn'}
+                  onClick={() => clearFilters()}
+                >
+                  All
+                </button>
+              </li>
               <li>
                 <button
                   className={myClass1 + ' btn'}
                   onClick={() => toggleStudents()}
                 >
-                  Students
+                  Student
                 </button>
               </li>
               <li>
@@ -175,7 +192,7 @@ const Mentors = () => {
                   className={myClass2 + ' btn'}
                   onClick={() => toggleProfessionals()}
                 >
-                  Professionals
+                  Professional
                 </button>
               </li>
               <li>
@@ -183,13 +200,7 @@ const Mentors = () => {
                   className={myClass3 + ' btn'}
                   onClick={() => toggleentrepreneurs()}
                 >
-                  entrepreneurs
-                </button>
-              </li>
-
-              <li>
-                <button className='btn' onClick={() => clearFilters()}>
-                  <i className='fas fa-times'></i>
+                  Entrepreneur
                 </button>
               </li>
             </ul>
@@ -198,7 +209,7 @@ const Mentors = () => {
       </div>
       <div className='mentors-content'>
         <div className='mentors-cards'>
-          <div className='container py-md-5 pb-5'>
+          <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 pb-5'>
             <div className='row'>
               {allFilter &&
                 filtered.map((mentor, index) => {
@@ -212,6 +223,7 @@ const Mentors = () => {
                           designation={mentor.designation}
                           categories={mentor.user_categories}
                           charges={mentor.mentor_cost}
+                          position={mentor.current_position}
                         />
                       </div>
                     </div>
@@ -229,6 +241,7 @@ const Mentors = () => {
                           designation={mentor.designation}
                           categories={mentor.user_categories}
                           charges={mentor.mentor_cost}
+                          position={mentor.current_position}
                         />
                       </div>
                     </div>
@@ -246,6 +259,7 @@ const Mentors = () => {
                           designation={mentor.designation}
                           categories={mentor.user_categories}
                           charges={mentor.mentor_cost}
+                          position={mentor.current_position}
                         />
                       </div>
                     </div>
@@ -263,6 +277,7 @@ const Mentors = () => {
                           designation={mentor.designation}
                           categories={mentor.user_categories}
                           charges={mentor.mentor_cost}
+                          position={mentor.current_position}
                         />
                       </div>
                     </div>
