@@ -1595,7 +1595,7 @@ a {
   height: 100%;
   position: relative;
   border-radius: 10px;
-  background-color: #fdf0e9;
+  background: linear-gradient(#fdf0e930, #fdf0e9);
   border-color: #fdf0e9;
 }
 .subscription-section .card h6 {

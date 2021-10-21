@@ -34,7 +34,7 @@ const ProgramCard = () => {
 
         <div className='row align-items-center'>
           <div className='col-7 ps-lg-4'>
-            <h2>Student Enterpreneurship Program</h2>
+            <h2>Student entrepreneurship Program</h2>
             <h1>₹ 2799* /-</h1>
             <p className='mb-md-3 mb-2'>
               *Get 30% Off (Use Coupon Code “FIRST”)

@@ -169,7 +169,7 @@ const SignInModal = (props) => {
                         id='optionsRadios3'
                         value='option3'
                       />
-                      Enterpreneur
+                      entrepreneur
                     </label>
                   </div>
                 </div> */}

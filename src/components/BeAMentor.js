@@ -242,15 +242,15 @@ const BeAMentor = () => {
                     <input
                       className='form-check-input'
                       type='checkbox'
-                      value='Enterpreneurship'
-                      id='enterpreneurship'
+                      value='entrepreneurship'
+                      id='entrepreneurship'
                       onChange={(e) => toggleInterests(e.target.value)}
                     />
                     <label
                       className='form-check-label'
-                      htmlFor='enterpreneurship'
+                      htmlFor='entrepreneurship'
                     >
-                      Enterpreneurship
+                      entrepreneurship
                     </label>
                   </div>
                   <div className='form-check me-5'>
@@ -355,12 +355,12 @@ const BeAMentor = () => {
                     <input
                       className='form-check-input'
                       type='checkbox'
-                      value='Enterpreneurs'
-                      id='enterpreneurs'
+                      value='entrepreneurs'
+                      id='entrepreneurs'
                       onChange={(e) => toggleWhom(e.target.value)}
                     />
-                    <label className='form-check-label' htmlFor='enterpreneurs'>
-                      Enterpreneurs
+                    <label className='form-check-label' htmlFor='entrepreneurs'>
+                      entrepreneurs
                     </label>
                   </div>
                   <div className='form-check me-5'>

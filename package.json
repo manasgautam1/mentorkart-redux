@@ -1,7 +1,7 @@
 {
   "name": "mentorkart-new-ui",
   "version": "0.1.0",
-  "proxy":"https://mentorkart.org/api/",
+  "proxy": "https://mentorkart.org/api/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -23,6 +23,8 @@
     "react-select": "^4.3.1",
     "react-youtube": "^7.13.1",
     "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
     "sass": "^1.38.0",
     "swiper": "^6.8.4",
     "web-vitals": "^1.1.2"

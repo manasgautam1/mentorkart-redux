@@ -6,19 +6,17 @@ import SingleMentorCard from './SingleMentor';
 
 import Axios from 'axios';
 
-
 const Mentors = () => {
   const [allMentors, SetAllMentors] = useState([]);
   const [studentsMentors, SetStudentsMentors] = useState([]);
   const [professionalsMentors, SetProfessionalsMentors] = useState([]);
-  const [enterpreneursMentors, SetEnterpreneursMentors] = useState([]);
+  const [entrepreneursMentors, SetentrepreneursMentors] = useState([]);
   const [name, SetName] = useState('');
-  const [ filtered, SetFiltered ] = useState( [] );
+  const [filtered, SetFiltered] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
-    Axios.get( 'https://mentorkart.org/api/sso-mentor-list' ).then( ( res ) =>
-    {
-      console.log(res.data)
+    Axios.get('https://mentorkart.org/api/sso-mentor-list').then((res) => {
+      console.log(res.data);
       SetFiltered(res.data.data);
 
       SetAllMentors(res.data.data);
@@ -40,7 +38,7 @@ const Mentors = () => {
           // return x.user_categories.split(',').includes('PROFESSIONAL');
         })
       );
-      SetEnterpreneursMentors(
+      SetentrepreneursMentors(
         res.data.data.filter((x) => {
           if (x.user_categories) {
             return x.user_categories.split(',').includes('ENTREPRENEUR');
@@ -52,8 +50,6 @@ const Mentors = () => {
       );
     });
   }, []);
-
- 
 
   const filterMentor = (x) => {
     SetFiltered(
@@ -73,7 +69,7 @@ const Mentors = () => {
   const [allFilter, SetAllFilter] = useState(1);
   const [studentsFilter, SetStudentsFilter] = useState(null);
   const [professionalsFilter, SetProfessionalsFilter] = useState(null);
-  const [enterpreneursFilter, SetEnterpreneursFilter] = useState(null);
+  const [entrepreneursFilter, SetentrepreneursFilter] = useState(null);
 
   const [myClass1, SetMyClass1] = useState('');
   const [myClass2, SetMyClass2] = useState('');
@@ -83,7 +79,7 @@ const Mentors = () => {
     if (studentsFilter === null) {
       SetStudentsFilter(1);
       SetMyClass1('show');
-      SetEnterpreneursFilter(null);
+      SetentrepreneursFilter(null);
       SetProfessionalsFilter(null);
       SetMyClass2('');
       SetMyClass3('');
@@ -99,7 +95,7 @@ const Mentors = () => {
     if (professionalsFilter === null) {
       SetProfessionalsFilter(1);
       SetMyClass2('show');
-      SetEnterpreneursFilter(null);
+      SetentrepreneursFilter(null);
       SetAllFilter(null);
       SetMyClass1('');
       SetMyClass3('');
@@ -111,9 +107,9 @@ const Mentors = () => {
     }
   };
 
-  const toggleEnterpreneurs = () => {
-    if (enterpreneursFilter === null) {
-      SetEnterpreneursFilter(1);
+  const toggleentrepreneurs = () => {
+    if (entrepreneursFilter === null) {
+      SetentrepreneursFilter(1);
       SetMyClass3('show');
       SetProfessionalsFilter(null);
       SetAllFilter(null);
@@ -121,7 +117,7 @@ const Mentors = () => {
       SetMyClass1('');
       SetMyClass2('');
     } else {
-      SetEnterpreneursFilter(null);
+      SetentrepreneursFilter(null);
       SetMyClass3('');
       SetAllFilter(1);
     }
@@ -130,7 +126,7 @@ const Mentors = () => {
     SetAllFilter(1);
     SetProfessionalsFilter(null);
     SetStudentsFilter(null);
-    SetEnterpreneursFilter(null);
+    SetentrepreneursFilter(null);
     SetMyClass1('');
     SetMyClass2('');
     SetMyClass3('');
@@ -185,9 +181,9 @@ const Mentors = () => {
               <li>
                 <button
                   className={myClass3 + ' btn'}
-                  onClick={() => toggleEnterpreneurs()}
+                  onClick={() => toggleentrepreneurs()}
                 >
-                  Enterpreneurs
+                  entrepreneurs
                 </button>
               </li>
 
@@ -255,8 +251,8 @@ const Mentors = () => {
                     </div>
                   );
                 })}
-              {enterpreneursFilter &&
-                enterpreneursMentors.map((mentor, index) => {
+              {entrepreneursFilter &&
+                entrepreneursMentors.map((mentor, index) => {
                   return (
                     <div key={index} className='col-lg-4 col-md-6 col-12'>
                       <div className='mentors-card mb-4'>

@@ -16,7 +16,7 @@ const Courses = () => {
   const [allCourses, SetAllCourses] = useState([]);
   const [professionalsCourses, SetProfessionalsCourses] = useState([]);
   const [studentsCourses, SetStudentsCourses] = useState([]);
-  const [enterpreneursCourses, SetEnterpreneursCourses] = useState([]);
+  const [entrepreneursCourses, SetentrepreneursCourses] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +35,7 @@ const Courses = () => {
             return x.user_category.split(',').includes('PROFESSIONAL');
           })
         );
-        SetEnterpreneursCourses(
+        SetentrepreneursCourses(
           res.data.data.filter((x) => {
             return x.user_category.split(',').includes('ENTREPRENEUR');
           })
@@ -47,7 +47,7 @@ const Courses = () => {
   const [allFilter, SetAllFilter] = useState(1);
   const [studentsFilter, SetStudentsFilter] = useState(null);
   const [professionalsFilter, SetProfessionalsFilter] = useState(null);
-  const [enterpreneursFilter, SetEnterpreneursFilter] = useState(null);
+  const [entrepreneursFilter, SetentrepreneursFilter] = useState(null);
 
   const [myClass1, SetMyClass1] = useState('');
   const [myClass2, SetMyClass2] = useState('');
@@ -57,7 +57,7 @@ const Courses = () => {
     if (studentsFilter === null) {
       SetStudentsFilter(1);
       SetMyClass1('show');
-      SetEnterpreneursFilter(null);
+      SetentrepreneursFilter(null);
       SetProfessionalsFilter(null);
       SetMyClass2('');
       SetMyClass3('');
@@ -73,7 +73,7 @@ const Courses = () => {
     if (professionalsFilter === null) {
       SetProfessionalsFilter(1);
       SetMyClass2('show');
-      SetEnterpreneursFilter(null);
+      SetentrepreneursFilter(null);
       SetAllFilter(null);
       SetMyClass1('');
       SetMyClass3('');
@@ -85,9 +85,9 @@ const Courses = () => {
     }
   };
 
-  const toggleEnterpreneurs = () => {
-    if (enterpreneursFilter === null) {
-      SetEnterpreneursFilter(1);
+  const toggleentrepreneurs = () => {
+    if (entrepreneursFilter === null) {
+      SetentrepreneursFilter(1);
       SetMyClass3('show');
       SetProfessionalsFilter(null);
       SetAllFilter(null);
@@ -95,7 +95,7 @@ const Courses = () => {
       SetMyClass1('');
       SetMyClass2('');
     } else {
-      SetEnterpreneursFilter(null);
+      SetentrepreneursFilter(null);
       SetMyClass3('');
       SetAllFilter(1);
     }
@@ -104,7 +104,7 @@ const Courses = () => {
     SetAllFilter(1);
     SetProfessionalsFilter(null);
     SetStudentsFilter(null);
-    SetEnterpreneursFilter(null);
+    SetentrepreneursFilter(null);
     SetMyClass1('');
     SetMyClass2('');
     SetMyClass3('');
@@ -153,9 +153,9 @@ const Courses = () => {
               <li>
                 <button
                   className={myClass3 + ' btn'}
-                  onClick={() => toggleEnterpreneurs()}
+                  onClick={() => toggleentrepreneurs()}
                 >
-                  Enterpreneurs
+                  entrepreneurs
                 </button>
               </li>
 
@@ -324,13 +324,13 @@ const Courses = () => {
           </div>
         )}
 
-        {enterpreneursFilter && (
+        {entrepreneursFilter && (
           <div id='#professionals' className='blogs-cards-two container py-5'>
             <div className='text-center'>
-              <h2 className='mb-4'>Enterpreneurs Courses</h2>
+              <h2 className='mb-4'>entrepreneurs Courses</h2>
             </div>
             <div className='row'>
-              {enterpreneursCourses.map((course, index) => {
+              {entrepreneursCourses.map((course, index) => {
                 return (
                   <div className='col-lg-4 col-md-6 col-12' key={index}>
                     <div className='cards'>

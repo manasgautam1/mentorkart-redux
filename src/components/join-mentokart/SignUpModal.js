@@ -3,8 +3,6 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import Axios from 'axios';
 
-
-
 const SignUpModal = (props) => {
   const [btnEnabled, setBtnEnabled] = useState(false);
   const [btnClass, setBtnClass] = useState('btn col-12 disabled');
@@ -23,8 +21,7 @@ const SignUpModal = (props) => {
   const [SignInPassword, SetSignInPassword] = useState('');
 
   const [showSignUp, setShowSignUp] = useState(true);
-  const [ showSignIn, setShowSignIn ] = useState( false );
- 
+  const [showSignIn, setShowSignIn] = useState(false);
 
   const ToggleSignIn = () => {
     setShowSignIn(true);
@@ -172,7 +169,7 @@ const SignUpModal = (props) => {
                         id='optionsRadios3'
                         value='option3'
                       />
-                      Enterpreneur
+                      entrepreneur
                     </label>
                   </div>
                 </div> */}

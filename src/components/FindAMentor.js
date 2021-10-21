@@ -72,7 +72,7 @@ const FindAMentor = () => {
                   />
                 </div>
                 <h6 className='text-uppercase'>I am an</h6>
-                <h2 className='text-uppercase'>Enterpreneur</h2>
+                <h2 className='text-uppercase'>entrepreneur</h2>
                 <div className=''>
                   <button className='btn '>
                     Explore More <i className='fas fa-arrow-right'></i>
