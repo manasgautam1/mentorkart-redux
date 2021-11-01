@@ -1,12 +1,20 @@
 import React, { useEffect } from 'react';
 import MyNavbar from './header-section/MyNavbar';
 import Footer from './footer/Footer';
+import YouTube from 'react-youtube';
+import getYouTubeID from 'get-youtube-id';
 
 const FindAMentor = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-
+  const opts = {
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+      origin: 'https://localhost:8100',
+    },
+  };
   return (
     <div className='find-a-mentor'>
       <MyNavbar />
@@ -20,13 +28,13 @@ const FindAMentor = () => {
           <h1 className='my-md-5 my-3'>#LEARN</h1>
         </div>
       </header>
-      <div className='content container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
+      <div className='content container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
         <h1 className='text-center my-md-3 my-0 mb-md-0 mb-4'>
           Learning from someone who wants you to grow.
         </h1>
         <div className='section-1 my-3 py-lg-5 py-md-3 py-1'>
           <div className='row'>
-            <div className='col-lg-4 text-center px-4 mb-lg-0 mb-4'>
+            <div className='col-lg-4 col-sm-6 text-center px-4 mb-lg-0 mb-4'>
               <div className='card p-4'>
                 <div className='mb-4'>
                   <img
@@ -44,7 +52,7 @@ const FindAMentor = () => {
                 </div>
               </div>
             </div>
-            <div className='col-lg-4 text-center px-4 mb-lg-0 mb-4'>
+            <div className='col-lg-4 col-sm-6 text-center px-4 mb-md-0 mb-4'>
               <div className='card p-4'>
                 <div className='mb-4'>
                   <img
@@ -62,7 +70,7 @@ const FindAMentor = () => {
                 </div>
               </div>
             </div>
-            <div className='col-lg-4 text-center px-4 mb-lg-0 mb-4'>
+            <div className='col-lg-4 col-sm-6 offset-lg-0 offset-sm-3 text-center px-4 mb-md-0 mb-4'>
               <div className='card p-4'>
                 <div className='mb-4'>
                   <img
@@ -100,7 +108,18 @@ const FindAMentor = () => {
                 BEHIND EVERY SUCCESSFUL PERSON, THERE IS ALWAYS A GREAT MENTOR
               </span>
             </div>
-            <div className='col-lg-6'></div>
+            <div className='col-lg-6'>
+              <div className='row px-lg-4'>
+                <div className='youtube-video'>
+                  <YouTube
+                    videoId={getYouTubeID(
+                      'https://www.youtube.com/watch?v=kOsv-aUuXOQ'
+                    )}
+                    opts={opts}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

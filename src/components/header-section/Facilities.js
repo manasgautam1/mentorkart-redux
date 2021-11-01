@@ -48,7 +48,7 @@ const Facilities = () => {
             </div>
             <div>
               <p className='facility-text mt-2'>
-                1:1 Mentorship <br /> Packages
+                1:1 Goal Oriented <br /> Mentorship Program
               </p>
             </div>
           </div>

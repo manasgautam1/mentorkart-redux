@@ -20,7 +20,7 @@ const OurTeam = () => {
         </header>
         <main className='text-lg-left text-center'>
           <div className='team py-5'>
-            <div className='container'>
+            <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-lg-1 order-2 mt-lg-0 mt-4'>
                   <h2 className='mb-0'>Ashish Khare</h2>
@@ -47,7 +47,7 @@ const OurTeam = () => {
             </div>
           </div>
           <div className='team team-alt py-5'>
-            <div className='container'>
+            <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-2 mt-lg-0 mt-4'>
                   <h2 className='mb-0'>SK Mohanty</h2>
@@ -75,7 +75,7 @@ const OurTeam = () => {
             </div>
           </div>
           <div className='team py-5'>
-            <div className='container'>
+            <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-lg-1 order-2 mt-lg-0 mt-4'>
                   <h2 className='mb-0'>Harsh Srivastva</h2>
@@ -102,7 +102,7 @@ const OurTeam = () => {
             </div>
           </div>
           <div className='team team-alt py-5'>
-            <div className='container'>
+            <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-2 mt-lg-0 mt-4'>
                   <h2 className='mb-0'>Priyank Saini</h2>

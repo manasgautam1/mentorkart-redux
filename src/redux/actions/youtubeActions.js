@@ -22,7 +22,7 @@ export const listYoutube = () => async( dispatch ) =>
     {
         dispatch( {
             type: YOUTUBE_GET_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message ? error.response.data.message : error.response
         } )
         
     }

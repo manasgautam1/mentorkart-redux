@@ -18,21 +18,14 @@ import 'swiper/components/pagination/pagination.scss';
 SwiperCore.use([A11y, Autoplay]);
 
 const Blogs = () => {
- 
-  const dispatch = useDispatch()
-  const blogsList = useSelector( state => state.blogsList )
-  const { blogs } = blogsList
-  
+  const dispatch = useDispatch();
+  const blogsList = useSelector((state) => state.blogsList);
+  const { blogs } = blogsList;
 
- 
-  
-  useEffect( () =>
-  {
-    dispatch( listBlogs() )
-    window.scroll(0,0)
-  },[dispatch])
-
-
+  useEffect(() => {
+    dispatch(listBlogs());
+    window.scroll(0, 0);
+  }, [dispatch]);
 
   return (
     <div className='our-blogs'>
@@ -54,9 +47,9 @@ const Blogs = () => {
               Search
             </button>
           </form>
-          <div className='tags d-flex mt-3 mb-md-5'>
+          <div className='tags d-flex mt-3'>
             <span>Popular Tags : </span>
-            <ul className='d-flex align-items-center ps-md-2 ps-0 mb-0'>
+            <ul className='d-flex align-items-center ps-2 mb-0'>
               <li>
                 <Link to='#design'>Design</Link>
               </li>
@@ -71,180 +64,7 @@ const Blogs = () => {
         </div>
       </div>
       <div className='our-blogs-content'>
-        {/* <div id='#design' className='blogs-cards-two container mt-5'>
-          <div className='px-3'>
-            <h2>Design Articles</h2>
-            <div className='d-md-flex justify-content-between align-items-center'>
-              <p className=' mb-md-0 mb-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </p>
-            </div>
-          </div>
-          <div className='mt-4'>
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              autoplay={{ autoplay: true, delay: 10000 }}
-              breakpoints={{
-                // when window width is >= 0px
-                0: {
-                  slidesPerView: 1,
-                },
-                // when window width is >= 1000px
-                600: {
-                  slidesPerView: 2,
-                },
-                1100: {
-                  slidesPerView: 3,
-                },
-              }}
-            >
-              <SwiperSlide>
-                <div className='cards'>
-                  <img src='/images/blogs-card-two.png' alt='' />
-                  <div className='cards-content'>
-                    <span className='tag'>Featured</span>
-                    <p className='text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Labore officia
-                    </p>
-                    <div className='d-flex justify-content-between align-items-center'>
-                      <span>John Doe</span>
-                      <span>07-11-2021</span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='cards'>
-                  <img src='/images/blogs-card-two.png' alt='' />
-                  <div className='cards-content'>
-                    <span className='tag'>Featured</span>
-                    <p className='text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Labore officia
-                    </p>
-                    <div className='d-flex justify-content-between align-items-center'>
-                      <span>John Doe</span>
-                      <span>07-11-2021</span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='cards'>
-                  <img src='/images/blogs-card-two.png' alt='' />
-                  <div className='cards-content'>
-                    <span className='tag'>Featured</span>
-                    <p className='text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Labore officia
-                    </p>
-                    <div className='d-flex justify-content-between align-items-center'>
-                      <span>John Doe</span>
-                      <span>07-11-2021</span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-        </div> */}
-
-        {/* <div
-          id='#ui-ux'
-          className='blogs-cards-two container mt-5 pt-lg-5 mb-5'
-        >
-          <div className='px-3'>
-            <h2>UI/UX Articles</h2>
-            <div className='d-md-flex justify-content-between align-items-center'>
-              <p className=' mb-md-0 mb-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </p>
-            </div>
-          </div>
-          <div className='mt-4'>
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              autoplay={{ autoplay: true, delay: 10000 }}
-              breakpoints={{
-                // when window width is >= 0px
-                0: {
-                  slidesPerView: 1,
-                },
-                // when window width is >= 1000px
-                600: {
-                  slidesPerView: 2,
-                },
-                1100: {
-                  slidesPerView: 3,
-                },
-              }}
-            >
-              <SwiperSlide>
-                <div className='cards'>
-                  <img src='/images/blogs-card-two.png' alt='' />
-                  <div className='cards-content'>
-                    <span className='tag'>Featured</span>
-                    <p className='text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Labore officia
-                    </p>
-                    <div className='d-flex justify-content-between align-items-center'>
-                      <span>John Doe</span>
-                      <span>07-11-2021</span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='cards'>
-                  <img src='/images/blogs-card-two.png' alt='' />
-                  <div className='cards-content'>
-                    <span className='tag'>Featured</span>
-                    <p className='text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Labore officia
-                    </p>
-                    <div className='d-flex justify-content-between align-items-center'>
-                      <span>John Doe</span>
-                      <span>07-11-2021</span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='cards'>
-                  <img src='/images/blogs-card-two.png' alt='' />
-                  <div className='cards-content'>
-                    <span className='tag'>Featured</span>
-                    <p className='text mt-2'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Labore officia
-                    </p>
-                    <div className='d-flex justify-content-between align-items-center'>
-                      <span>John Doe</span>
-                      <span>07-11-2021</span>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-        </div> */}
-
-        <div
-          id='#all'
-          className='blogs-cards-one container mt-5 pt-lg-5 pb-lg-5 mb-5'
-        >
-          {/* <div className='px-3'>
-            <h2>All Articles</h2>
-            <p className='mb-0'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div> */}
-
+        <div id='#all' className='blogs-cards-one container mt-5 mb-5'>
           <div className='mt-4'>
             <Swiper
               spaceBetween={30}
@@ -264,40 +84,44 @@ const Blogs = () => {
                 },
               }}
             >
-              { blogs[0] && blogs[0].map((blog, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <Link to={'/blog/' + blog.id}>
-                      <div className='cards' style={{ height: '400px' }}>
-                        <img
-                          style={{
-                            height: '400px',
-                            width: '100%',
-                            objectFit: 'cover',
-                          }}
-                          src={
-                            'https://www.test.pinsoutinnovation.com/uploaded-images/' +
-                            blog.blog_bg
-                          }
-                          alt=''
-                        />
-                        <span className='tag'>{blog.blog_tag}</span>
-                        <div className='cards-content'>
-                          <div>
-                            <p className='text mt-2'>{blog.blog_title}</p>
-                            <hr />
-                            <div className='d-flex justify-content-between align-items-center'>
-                              <span>{blog.blog_author}</span>
-                              <span>{blog.blog_date ? blog.blog_date.split("T")[0] : ""}</span>
-                              
+              {blogs[0] &&
+                blogs[0].map((blog, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Link to={'/blog/' + blog.id}>
+                        <div className='cards' style={{ height: '400px' }}>
+                          <img
+                            style={{
+                              height: '400px',
+                              width: '100%',
+                              objectFit: 'cover',
+                            }}
+                            src={
+                              'https://www.test.pinsoutinnovation.com/uploaded-images/' +
+                              blog.blog_bg
+                            }
+                            alt=''
+                          />
+                          <span className='tag'>{blog.blog_tag}</span>
+                          <div className='cards-content'>
+                            <div>
+                              <p className='text mt-2'>{blog.blog_title}</p>
+                              <hr />
+                              <div className='d-flex justify-content-between align-items-center'>
+                                <span>{blog.blog_author}</span>
+                                <span>
+                                  {blog.blog_date
+                                    ? blog.blog_date.split('T')[0]
+                                    : ''}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                );
-              })}
+                      </Link>
+                    </SwiperSlide>
+                  );
+                })}
             </Swiper>
           </div>
         </div>

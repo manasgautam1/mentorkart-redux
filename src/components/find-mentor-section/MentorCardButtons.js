@@ -9,11 +9,6 @@ const MentorCardButtons = (props) => {
       className={props.classes}
     >
       {props.text} <br /> <span>{props.smtext}</span>
-      {props.classes.includes('active') && (
-        <span className='check-container'>
-          <i className='fas fa-check'></i>
-        </span>
-      )}
     </button>
   );
 };

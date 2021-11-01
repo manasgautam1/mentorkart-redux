@@ -23,7 +23,7 @@ export const listpartner = () => async( dispatch ) =>
     {
         dispatch( {
             type: PARTNER_GET_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message ? error.response.data.message : error.response
         } )
         
     }

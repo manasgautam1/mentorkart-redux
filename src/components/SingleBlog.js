@@ -1,57 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'react-phone-input-2/lib/style.css';
-import Axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { listBlogsDetails } from '../redux/actions/blogsActions';
 import parse from 'html-react-parser';
 
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
 
-const SingleBlog = (props) => {
-  const [content, setContent] = useState('');
-  const [date, setDate] = useState('');
-  const [img, setImg] = useState('');
-  const [author, setAuthor] = useState('');
-  const [title, setTitle] = useState('');
-  const [tag, setTag] = useState('');
+const SingleBlog = ({ match }) => {
+  const dispatch = useDispatch();
+  const listBlogsDetail = useSelector((state) => state.blogsDetailsList);
+
+  const { blogsDetail } = listBlogsDetail;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    Axios.get(
-      'https://www.test.pinsoutinnovation.com/blogs/' + props.match.params.id
-    ).then((res) => {
-      setContent(res.data[0].blog_content);
-      setDate(res.data[0].blog_date);
-      setImg(res.data[0].blog_bg);
-      setAuthor(res.data[0].blog_author);
-      setTitle(res.data[0].blog_title);
-      setTag(res.data[0].blog_tag);
-    });
-  }, [props.match.params.id]);
+    if (match.params.id) {
+      dispatch(listBlogsDetails(match.params.id));
+    }
+  }, [dispatch, match]);
 
   return (
     <div className='single-blog'>
       <MyNavbar />
       <div className='section-1'>
         <img
-          src={'https://www.test.pinsoutinnovation.com/uploaded-images/' + img}
+          src={
+            'https://www.test.pinsoutinnovation.com/uploaded-images/' +
+            blogsDetail[0]?.blog_bg
+          }
           alt=''
         />
         <div className='content'>
-          <div className='container d-flex flex-column justify-content-between py-3'>
-            <h1 className='mb-3'>{title}</h1>
+          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 d-flex flex-column justify-content-between py-3'>
+            <h1 className='mb-3'>{blogsDetail[0]?.blog_title}</h1>
             <div className='d-flex sec justify-content-between align-items-center mb-2'>
-              <span className='badge rounded-pill bg-warning'>{tag}</span>
-              <span>{date.split('T')[0]}</span>
+              <span className='badge rounded-pill bg-warning'>
+                {blogsDetail[0]?.blog_tag}
+              </span>
+              <span>{blogsDetail[0]?.blog_date.split('T')[0]}</span>
             </div>
           </div>
         </div>
       </div>
       <div className='section-2'>
-        <div className='container py-5'>
+        <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
           <div className='main-content'>
-            {/* <div>{parse(blog.blog_content)}</div> */}
-            {parse(content)}
-            <address className='lead'>~ {author}</address>
+            <div>{parse(`${blogsDetail[0]?.blog_content}`)}</div>
+            <address className='lead'>~ {blogsDetail[0]?.blog_author}</address>
           </div>
         </div>
       </div>

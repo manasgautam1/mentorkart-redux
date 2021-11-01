@@ -13,7 +13,7 @@ const About = () => {
       <MyNavbar />
       <div className='about'>
         <header className='mt-md-0 mt-5 pt-md-0 pt-4'>
-          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
+          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-4'>
             <img className='guru-img' src='/images/mentorkartguru.png' alt='' />
             <h1 className='mb-1'>#DREAM BIG</h1>
             <div className='row'>

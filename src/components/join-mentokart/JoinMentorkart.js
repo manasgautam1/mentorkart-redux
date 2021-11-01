@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import JoinCard from './JoinCard';
 import SignUpModal from './SignUpModal';
 import Modal from 'react-modal';
-import Axios from 'axios';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { listAdvertisements } from '../../redux/actions/advertisementsActions';
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 // import Swiper core and required modules
 import SwiperCore, { A11y, Autoplay } from 'swiper';
 
@@ -20,34 +21,41 @@ Modal.setAppElement('#root');
 
 const JoinMentorkart = () => {
   const [showModal, setShowModal] = useState(false);
-  const [ads, setAds] = useState([]);
+  const advertisementsList = useSelector((state) => state.advertisementsList);
+  const websiteContentList = useSelector((state) => state.websiteContentList);
+
+  const { advertisements } = advertisementsList;
+  const { websiteContent } = websiteContentList;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    Axios.get('https://www.test.pinsoutinnovation.com/ads').then((res) => {
-      setAds(res.data);
-      // console.log(res.data);
-    });
-  }, []);
+    dispatch(listAdvertisements());
+    dispatch(listWebsiteContent());
+  }, [dispatch]);
 
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
+
+  // console.log(advertisements);
 
   return (
     <div className='join-mentorkart py-5 my-md-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row'>
           <div className='col-md-4 left'>
-            <span className='ms-1'>JOIN US</span>
-            <h1>Join Mentorkart</h1>
-            <p className=''>Numerous solutions await you</p>
+            <span className='ms-1'>
+              {websiteContent[0]?.data[11]?.field_data}
+            </span>
+            <h1>{websiteContent[0]?.data[12]?.field_data}</h1>
+            <p className=''>{websiteContent[0]?.data[13]?.field_data}</p>
             <div className='d-flex py-3'>
               <div className='icon-container text-white d-flex justify-content-center align-items-center px-2'>
                 <i className='fas fa-graduation-cap fa-2x'></i>
               </div>
               <p className='sec ms-3'>
-                Industry Leaders and experts ready to mentor you for a better
-                future ahead
+                {websiteContent[0]?.data[14]?.field_data}
               </p>
             </div>
           </div>
@@ -126,7 +134,7 @@ const JoinMentorkart = () => {
               },
             }}
           >
-            {ads.map((ad, index) => {
+            {advertisements[0]?.data?.map((ad, index) => {
               return (
                 <SwiperSlide key={index}>
                   <div className='ad-card'>
@@ -134,12 +142,12 @@ const JoinMentorkart = () => {
                     <a
                       target='_blank'
                       rel='noreferrer'
-                      href={'https://' + ad.ads_url}
+                      href={'https://' + ad.ad_url}
                     >
                       <img
                         src={
                           'https://www.test.pinsoutinnovation.com/uploaded-images/' +
-                          ad.ads_img
+                          ad.ad_image
                         }
                         alt=''
                       />

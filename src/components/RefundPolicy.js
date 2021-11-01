@@ -10,7 +10,7 @@ const RefundPolicy = () => {
   return (
     <div className='refund-policy'>
       <MyNavbar />
-      <div className='container py-5'>
+      <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
         <h1>Refund Policy</h1>
         <p className='lead my-3'>
           Our platform provides free limited access to the App and some content

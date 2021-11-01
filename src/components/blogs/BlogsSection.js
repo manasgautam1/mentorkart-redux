@@ -1,37 +1,36 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Blog from './Blog';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
-import {listBlogs} from '../../redux/actions/blogsActions'
+import { useSelector, useDispatch } from 'react-redux';
+import { listBlogs } from '../../redux/actions/blogsActions';
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 
-const BlogsSection = () =>
-{
-  
-  const dispatch = useDispatch()
-  
-  const blogsSection = useSelector( state => state.blogsList )
-  const { blogs } = blogsSection
-  
-  useEffect( () =>
-  {
-    dispatch( listBlogs() )
+const BlogsSection = () => {
+  const dispatch = useDispatch();
 
-  },[dispatch])
+  const blogsSection = useSelector((state) => state.blogsList);
+  const websiteContentList = useSelector((state) => state.websiteContentList);
 
-  
+  const { blogs } = blogsSection;
+  const { websiteContent } = websiteContentList;
+
+  useEffect(() => {
+    dispatch(listBlogs());
+
+    dispatch(listWebsiteContent());
+  }, [dispatch]);
+
+  // console.log(websiteContent[0]?.data[0]);
 
   return (
     <div className='blogs-section pb-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-        <span>OUR BLOG</span>
-        <h1>Latest News</h1>
-        <p>
-          Get latest blogs and alerts througb our Blog and News Section <br />
-          Explore latest trends and education related stuff.
-        </p>
+        <span>{websiteContent[0]?.data[24]?.field_data}</span>
+        <h1>{websiteContent[0]?.data[25]?.field_data}</h1>
+        <p>{websiteContent[0]?.data[26]?.field_data}</p>
         <div className=' mt-4'>
           <div className='blogs row'>
-            {blogs[0] && blogs[0].map((blog, index) => {
+            {blogs[0]?.data?.map((blog, index) => {
               return (
                 <Blog
                   key={index}

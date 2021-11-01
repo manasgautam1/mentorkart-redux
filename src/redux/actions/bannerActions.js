@@ -20,9 +20,9 @@ export const listBanner = () => async( dispatch ) =>
         
     } catch ( error )
     {
-        dispatch( {
+       dispatch( {
             type: BANNER_GET_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message ? error.response.data.message : error.response
         } )
         
     }

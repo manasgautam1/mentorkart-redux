@@ -2,12 +2,12 @@
   .showcase-heading {
     font-size: 57px;
   }
+
+  .find-a-mentor .content h1 {
+    font-size: 34px;
+  }
   .showcase-para {
     width: 100%;
-  }
-  .find-mentor .mentor-card img {
-    width: 150px;
-    height: 150px;
   }
   .banners-section .banner .banner-content .btn {
     font-size: 16px;

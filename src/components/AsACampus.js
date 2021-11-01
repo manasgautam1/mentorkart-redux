@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import { useDispatch } from 'react-redux';
+import { asCampus } from '../redux/actions/asCampusActions';
 
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
 
-import Axios from 'axios';
-
 const AsACampus = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
+
+  const dispatch = useDispatch();
   const [name, SetName] = useState('');
   const [email, SetEmail] = useState('');
   const [phone, SetPhone] = useState(0);
@@ -20,15 +22,9 @@ const AsACampus = () => {
   const [designation, SetDesignation] = useState('');
 
   const handleSubmit = () => {
-    Axios.post('https://www.test.pinsoutinnovation.com/campus', {
-      name: name,
-      email: email,
-      phone: phone,
-      orgName: orgName,
-      message: message,
-      address: address,
-      designation: designation,
-    }).then(() => console.log('Thanks'));
+    dispatch(
+      asCampus({ name, email, phone, orgName, message, address, designation })
+    );
   };
 
   return (
@@ -36,7 +32,7 @@ const AsACampus = () => {
       <MyNavbar />
       <div className='be-a-mentor'>
         <header className=''>
-          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
+          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
             <img className='guru-img' src='/images/mentorkartguru.png' alt='' />
             <h4 className='mt-3 mb-1'>Register Now</h4>
             <h1 className='mb-1'>As A Campus</h1>
@@ -77,6 +73,7 @@ const AsACampus = () => {
                         type='text'
                         name='OrgName'
                         id='org-name'
+                        required
                         value={orgName}
                         onChange={(e) => {
                           SetOrgName(e.target.value);
@@ -92,6 +89,7 @@ const AsACampus = () => {
                       name='Address'
                       id='address'
                       className='form-control'
+                      required
                       placeholder='Enter Address of Campus'
                       rows='3'
                       value={address}
@@ -105,6 +103,7 @@ const AsACampus = () => {
                         type='text'
                         name='FullName'
                         id='full-name'
+                        required
                         value={name}
                         onChange={(e) => {
                           SetName(e.target.value);
@@ -124,6 +123,7 @@ const AsACampus = () => {
                         type='text'
                         name='Designation'
                         id='designation'
+                        required
                         value={designation}
                         onChange={(e) => {
                           SetDesignation(e.target.value);
@@ -140,6 +140,7 @@ const AsACampus = () => {
                         type='email'
                         name='Email'
                         id='email'
+                        required
                         value={email}
                         onChange={(e) => {
                           SetEmail(e.target.value);
@@ -171,6 +172,7 @@ const AsACampus = () => {
                       id='message'
                       className='form-control'
                       placeholder='Enter Your Message'
+                      required
                       rows='4'
                       value={message}
                       onChange={(e) => SetMessage(e.target.value)}

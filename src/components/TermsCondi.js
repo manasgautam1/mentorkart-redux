@@ -10,7 +10,7 @@ const TermsCondi = () => {
   return (
     <div className='terms-condi'>
       <MyNavbar />
-      <div className='container py-5'>
+      <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
         <h1>Terms & Conditions</h1>
         <div className='section'>
           <p>

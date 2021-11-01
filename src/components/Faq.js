@@ -18,7 +18,7 @@ const Faq = () => {
           <h4 className='mt-3 mb-1'>FREQUENTLY ASKED QUESTIONS</h4>
         </div>
       </header>
-      <div className='container py-5'>
+      <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
         <div className='accordion accordion-flush' id='faq-accordian'>
           <div className='accordion-item'>
             <h2 className='accordion-header' id='flush-headingOne'>

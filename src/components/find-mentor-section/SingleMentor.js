@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import MentorCardButtons from './MentorCardButtons';
+import { Link } from 'react-router-dom';
 
 import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
 
-const SingleMentorCard = ({ id, img, name, categories, charges, position }) => {
+const SingleMentorCard = ({
+  id,
+  img,
+  name,
+  categories,
+  charges,
+  position,
+  designation,
+  about,
+}) => {
   const [showModal, setShowModal] = useState(false);
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
+  const url_name = name.toLowerCase().split(' ').join('-');
   return (
     <div className='col-lg-12 mt-4 px-lg-3 px-sm-2 px-0 mx-xl-2'>
       <div className='mentor-card p-2'>
@@ -38,12 +49,20 @@ const SingleMentorCard = ({ id, img, name, categories, charges, position }) => {
           <div className='d-flex justify-content-between align-items-center'>
             <div>
               <h2 className='mt-0 mb-0'>{name}</h2>
-              <span className='text-left my-0'>
-                {position ? position : 'NULL'}
+              <span className='text-left my-0 text-capitalize'>
+                {designation ? designation : 'NULL'}
               </span>
             </div>
-            <h6 className='mb-0'>Rs {charges} /-</h6>
+            <h6 className='mb-0 price'>
+              Rs {charges} <br /> <span>(per session)</span>
+            </h6>
           </div>
+          <p className='about'>
+            {about ? about.substring(0, 80) : 'NULL'}{' '}
+            <Link to={`/mentor-profile/${url_name}/${id}`} className=''>
+              <span className='view-profile'>view more</span>
+            </Link>
+          </p>
           <hr />
           <div className='row btn-container mb-3'>
             <div className='col-6'>
@@ -58,7 +77,7 @@ const SingleMentorCard = ({ id, img, name, categories, charges, position }) => {
               <MentorCardButtons
                 showModalBtn={showModalBtn}
                 classes='mentor-card-btn'
-                text='Chat with me'
+                text='Book a free session'
                 smtext=''
               />
             </div>

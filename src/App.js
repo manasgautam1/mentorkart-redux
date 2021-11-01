@@ -1,4 +1,3 @@
-
 import FindMentorSection from './components/find-mentor-section/FindMentorSection';
 import Header from './components/header-section/Header';
 import JoinMentorkart from './components/join-mentokart/JoinMentorkart';
@@ -28,26 +27,31 @@ import SingleBlog from './components/SingleBlog';
 import FindAMentor from './components/FindAMentor';
 import YoutubeSection from './components/youtube-section/YoutubeSection';
 import SubscriptionSection from './components/subscription-section/SubscriptionSection';
+import Packages from './components/packages-section/Packages';
+import PackagesSection from './components/packages-section/PackagesSection';
+import DetailsSection from './components/details-section/DetailsSection';
+import CampusSection from './components/campus/CampusSection';
+import BrandVideosSection from './components/brand-videos-section/BrandVideosSection';
 
-
-function App ()
-{
- 
-  
+function App() {
   return (
     <div>
       <Switch>
         <Route path='/' exact>
           <Header />
+          <PackagesSection />
           <FindMentorSection />
+          <DetailsSection />
           <BannerSection />
           <JoinMentorkart />
           <ProgramsSection />
           <SubscriptionSection />
+          <BrandVideosSection />
           <PartnersSection />
           <Testimonials />
           <FeaturedSection />
           <BlogsSection />
+          <CampusSection />
           <YoutubeSection />
           <Footer />
         </Route>
@@ -56,6 +60,9 @@ function App ()
         </Route>
         <Route path='/courses'>
           <Courses />
+        </Route>
+        <Route path='/packages'>
+          <Packages />
         </Route>
         <Route path='/be-a-mentor'>
           <BeAMentor />
@@ -90,7 +97,10 @@ function App ()
         <Route path='/find-a-mentor'>
           <FindAMentor />
         </Route>
-        <Route path='/mentor-profile/:id' component={MentorProfile}></Route>
+        <Route
+          path='/mentor-profile/:username/:id'
+          component={MentorProfile}
+        ></Route>
         <Route path='/blog/:id' component={SingleBlog}></Route>
       </Switch>
     </div>

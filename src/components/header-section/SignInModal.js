@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import Axios from 'axios';
+import PasswordStrengthBar from 'react-password-strength-bar';
+
+import { signIn } from '../../redux/actions/loginActions';
+import { signUp } from '../../redux/actions/loginActions';
+import { useDispatch } from 'react-redux';
 
 const SignInModal = (props) => {
+  const dispatch = useDispatch();
   const [btnEnabled, setBtnEnabled] = useState(false);
-  const [btnClass, setBtnClass] = useState('btn col-12 disabled');
+  const [btnClass, setBtnClass] = useState('disabled');
   const [email, SetEmail] = useState('');
   const [phone, SetPhone] = useState('');
   const [password, SetPassword] = useState('');
@@ -14,11 +19,11 @@ const SignInModal = (props) => {
   const [lastname, SetLastname] = useState('');
   const [username, SetUsername] = useState('');
 
-  const [signup_alert, SetSignupAlert] = useState(false);
-  const [signin_alert, SetSigninAlert] = useState(false);
-
   const [SignInEmail, SetSignInEmail] = useState('');
   const [SignInPassword, SetSignInPassword] = useState('');
+
+  const [signup_alert, SetSignupAlert] = useState(false);
+  const [signin_alert, SetSigninAlert] = useState(false);
 
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
@@ -27,86 +32,44 @@ const SignInModal = (props) => {
     setShowSignIn(true);
     setShowSignUp(false);
   };
+
   const ToggleSignUp = () => {
     setShowSignIn(false);
     setShowSignUp(true);
   };
 
   const SignInSubmit = (e) => {
-    Axios.post('https://mentorkart.org/api/login', {
-      email: SignInEmail,
-      password: SignInPassword,
-    }).then((res, err) => {
-      if (!err) {
-        console.log(res);
-        if (res.status === 200) {
-          SetSigninAlert(true);
-          console.log('hello');
-          SetSignInEmail('');
-          SetSignInPassword('');
-        }
-      } else {
-        console.log(err);
-      }
-    });
+    dispatch(
+      signIn({
+        email: SignInEmail,
+        password: SignInPassword,
+      })
+    );
   };
   const SignUpSubmit = (e) => {
-    console.log(
-      username,
-      phone.slice(2, 12),
-      email,
-      password,
-      confirm,
-      firstname,
-      lastname
+    dispatch(
+      signUp({
+        username: username,
+        mobile_no: +phone.slice(2, 12),
+        email: email,
+        password: password,
+        password_confirmation: confirm,
+        user_type: 'MENTEE',
+        first_name: firstname,
+        last_name: lastname,
+        country_code: 91,
+        country_name: 'INDIA',
+      })
     );
-    Axios.post('https://mentorkart.org/api/register', {
-      username: username,
-      mobile_no: +phone.slice(2, 12),
-      email: email,
-      password: password,
-      password_confirmation: confirm,
-      user_type: 'MENTEE',
-      first_name: firstname,
-      last_name: lastname,
-      country_code: 91,
-      country_name: 'INDIA',
-    }).then((res, err) => {
-      if (!err) {
-        console.log(res);
-        if (res.data.status === true) {
-          SetSignupAlert(true);
-          SetEmail('');
-          SetConfirm('');
-          SetFirstname('');
-          SetLastname('');
-          SetPassword('');
-          SetPhone('');
-          SetUsername('');
-        }
-      } else {
-        console.log(err);
-      }
-    });
   };
 
-  if (signup_alert === true) {
-    setTimeout(() => {
-      SetSignupAlert(false);
-      window.location.reload();
-    }, 3000);
-  }
-  if (signin_alert === true) {
-    setTimeout(() => {
-      SetSigninAlert(false);
-      window.location.reload();
-    }, 3000);
-  }
+  const [passwordType1, SetPasswordType1] = useState('password');
+  const [passwordType2, SetPasswordType2] = useState('password');
 
   return (
     <div className='signup-modal'>
       <div className='modal-img d-lg-block d-none col-lg-6'>
-        <img src='/images/sign-up.png' alt='' />
+        <img src='/images/signup-left.png' alt='' />
       </div>
       <div className='modal-form px-md-5 px-1 d-flex flex-column justify-content-center align-item-center col-lg-6 col-12'>
         {showSignUp === true && (
@@ -125,7 +88,7 @@ const SignInModal = (props) => {
             >
               <fieldset>
                 <legend className='d-flex justify-content-between align-items-center mb-3'>
-                  <h2>Sign up</h2>
+                  <h2>I am...</h2>
                   <button
                     onClick={() => {
                       props.showModalBtn(false);
@@ -135,45 +98,51 @@ const SignInModal = (props) => {
                     <i className='fas fa-times fa-2x'></i>
                   </button>
                 </legend>
-                {/* <div className='d-flex justify-content-between align-items-center mb-4'>
-                  <div className='form-check'>
+                <div className='d-md-flex d-none justify-content-between align-items-center mb-4'>
+                  <div className='form-check radio-btn'>
                     <label className='form-check-label'>
                       <input
                         type='radio'
                         className='form-check-input '
                         name='optionsRadios'
-                        id='optionsRadios1'
-                        value='option1'
+                        id='Professional'
+                        value='Professional'
                       />
                       Individual
                     </label>
                   </div>
-                  <div className='form-check'>
+                  <div className='form-check radio-btn'>
                     <label className='form-check-label'>
                       <input
                         type='radio'
                         className='form-check-input'
                         name='optionsRadios'
-                        id='optionsRadios2'
-                        value='option2'
+                        id='Professional'
+                        value='Professional'
                       />
                       Professional
                     </label>
                   </div>
-                  <div className='form-check disabled'>
+                  <div className='form-check radio-btn'>
                     <label className='form-check-label'>
                       <input
                         type='radio'
                         className='form-check-input'
                         name='optionsRadios'
-                        id='optionsRadios3'
-                        value='option3'
+                        id='Entrepreneur'
+                        value='Entrepreneur'
                       />
-                      entrepreneur
+                      Entrepreneur
                     </label>
                   </div>
-                </div> */}
-
+                </div>
+                <div className='d-md-none d-block mb-4'>
+                  <select className='form-select'>
+                    <option value='Student'>Student</option>
+                    <option value='Professional'>Professional</option>
+                    <option value='Entrepreneur'>Entrepreneur</option>
+                  </select>
+                </div>
                 <div className='row'>
                   <div className='col-md-6 mb-3'>
                     <input
@@ -204,21 +173,6 @@ const SignInModal = (props) => {
                     />
                   </div>
                 </div>
-
-                <div className='form-group mb-3'>
-                  <input
-                    type='text'
-                    name='username'
-                    id='username'
-                    value={username}
-                    onChange={(e) => {
-                      SetUsername(e.target.value);
-                    }}
-                    required
-                    className='form-control form-control-sm'
-                    placeholder='Username'
-                  />
-                </div>
                 <div className='form-group mb-3'>
                   <input
                     type='email'
@@ -245,35 +199,72 @@ const SignInModal = (props) => {
                     onChange={(phone) => SetPhone(phone)}
                   />
                 </div>
-                <div className='form-group mb-3'>
-                  <input
-                    required
-                    type='password'
-                    name='password'
-                    id='password'
-                    value={password}
-                    onChange={(e) => {
-                      SetPassword(e.target.value);
-                    }}
-                    className='form-control form-control-sm'
-                    placeholder='Password'
-                  />
+                <div className='form-group mb-0'>
+                  <div className='password-div'>
+                    <input
+                      required
+                      type={passwordType1}
+                      name='password'
+                      id='password'
+                      value={password}
+                      onChange={(e) => {
+                        SetPassword(e.target.value);
+                      }}
+                      className='form-control form-control-sm'
+                      placeholder='Password'
+                    />
+                    <button
+                      className='btn'
+                      onClick={(e) => {
+                        if (passwordType1 === 'password') {
+                          SetPasswordType1('text');
+                        } else {
+                          SetPasswordType1('password');
+                        }
+                      }}
+                    >
+                      {passwordType1 === 'password' ? (
+                        <i class='fas fa-eye'></i>
+                      ) : (
+                        <i class='fas fa-eye-slash'></i>
+                      )}
+                    </button>
+                  </div>
+                  <PasswordStrengthBar password={password} />
                 </div>
                 <div className='form-group mb-3'>
-                  <input
-                    required
-                    type='password'
-                    name='confirm-password'
-                    id='confirm-password'
-                    value={confirm}
-                    onChange={(e) => {
-                      SetConfirm(e.target.value);
-                    }}
-                    className='form-control form-control-sm'
-                    placeholder='Confirm password'
-                  />
+                  <div className='password-div'>
+                    <input
+                      required
+                      type={passwordType2}
+                      name='confirm-password'
+                      id='confirm-password'
+                      value={confirm}
+                      onChange={(e) => {
+                        SetConfirm(e.target.value);
+                      }}
+                      className='form-control form-control-sm'
+                      placeholder='Confirm password'
+                    />
+                    <button
+                      className='btn'
+                      onClick={(e) => {
+                        if (passwordType2 === 'password') {
+                          SetPasswordType2('text');
+                        } else {
+                          SetPasswordType2('password');
+                        }
+                      }}
+                    >
+                      {passwordType2 === 'password' ? (
+                        <i class='fas fa-eye'></i>
+                      ) : (
+                        <i class='fas fa-eye-slash'></i>
+                      )}
+                    </button>
+                  </div>
                 </div>
-                <div className='form-check mb-3'>
+                <div className='form-check mb-3 align-items-end'>
                   <input
                     className='form-check-input mt-2'
                     type='checkbox'
@@ -292,25 +283,27 @@ const SignInModal = (props) => {
                   />
 
                   <label className='form-check-label' htmlFor='agree'>
-                    I agree to the processing of personal data and accept the
-                    terms of the use aggreement
+                    I agree to terms and conditions
                   </label>
                 </div>
-                <button type='submit' className={btnClass}>
-                  Sign Up
-                </button>
+                <div className='row px-2'>
+                  <button type='submit' className='btn btn-dark'>
+                    Get OTP
+                  </button>
+                </div>
               </fieldset>
             </form>
 
-            <div className='text-center'>
-              <span>or</span>
-              <h6>Already have an account</h6>
-              <button
-                onClick={() => ToggleSignIn()}
-                className={'btn btn-outline-secondary btn-sm'}
-              >
-                Log In
-              </button>
+            <div className='text-center mt-2'>
+              <h6>
+                Already have an account ?
+                <span
+                  onClick={() => ToggleSignIn()}
+                  className={'toggle-span ps-2'}
+                >
+                  Log In
+                </span>
+              </h6>
             </div>
           </div>
         )}
@@ -368,21 +361,25 @@ const SignInModal = (props) => {
                     placeholder='Password'
                   />
                 </div>
-                <button type='submit' className={'btn col-12'}>
-                  Log In
-                </button>
+                <div className='row px-2'>
+                  <button type='submit' className='btn btn-dark'>
+                    Login
+                  </button>
+                </div>
               </fieldset>
             </form>
 
             <div className='text-center'>
               <span>or</span>
-              <h6>Don't have an account</h6>
-              <button
-                onClick={() => ToggleSignUp()}
-                className={'btn btn-outline-secondary btn-sm'}
-              >
-                Sign Up
-              </button>
+              <h6>
+                Don't have an account ?
+                <span
+                  onClick={() => ToggleSignUp()}
+                  className={'toggle-span ps-2'}
+                >
+                  Sign Up
+                </span>
+              </h6>
             </div>
           </div>
         )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'react-phone-input-2/lib/style.css';
-import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { listMentorDetails } from '../redux/actions/mentorActions';
 
 import SignUpModal from './join-mentokart/SignUpModal';
 import Modal from 'react-modal';
@@ -9,47 +9,31 @@ import Modal from 'react-modal';
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
 
-const MentorProfile = (props) => {
+const MentorProfile = ({ match }) => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
-  const [profile, setProfile] = useState({});
-  const [firstName, setFirstName] = useState('');
-  const [middleName, setMiddleName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [mentorType, setMentorType] = useState('');
-  const [categories, setCategories] = useState([]);
-  const [imageURL, setImageURL] = useState('/images/user.png');
+  const dispatch = useDispatch();
+  const mentorDetails = useSelector((state) => state.mentorDetailsList);
+  const { mentorDetail } = mentorDetails;
+  const {
+    user,
+    userDetail,
+    user_achievement,
+    user_experience,
+    user_testimonial,
+    menteerating,
+  } = mentorDetail;
+
+  console.log(mentorDetail);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    Axios.get(
-      'https://mentorkart.org/api/sso-mentor/' + props.match.params.id
-    ).then((res, err) => {
-      // console.log(res.data.data);
-      setProfile(res.data.data);
-      if (res.data.data.user.first_name) {
-        setFirstName(res.data.data.user.first_name);
-      }
-      if (res.data.data.user.middle_name) {
-        setMiddleName(res.data.data.user.second_name);
-      }
-      if (res.data.data.user.second_name) {
-        setLastName(res.data.data.user.last_name);
-      }
-      if (res.data.data.mentor.mentor_type) {
-        setMentorType(res.data.data.mentor.mentor_type);
-      }
-      if (res.data.data.user.user_categories) {
-        setCategories(
-          res.data.data.user.user_categories.split(',').join(' | ')
-        );
-      }
-    });
-  }, [props.match.params.id]);
+    dispatch(listMentorDetails(match.params.id));
+    window.scroll(0, 0);
+  }, [dispatch, match]);
 
   return (
     <div className='mentor-profile'>
@@ -60,40 +44,44 @@ const MentorProfile = (props) => {
           <h1 className='mb-1'>MENTOR PROFILE</h1>
         </div>
       </header>
-      <div className='content'>
-        <div className='section-1 py-4'>
-          <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-            <div className='row align-items-center'>
-              <div className='col-md-3'>
-                <div className='profile-img'>
-                  <img
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                      height: '100%',
-                      width: '100%',
-                    }}
-                    src={imageURL}
-                    className='img-fluid'
-                    alt=''
-                  />
-                </div>
-              </div>
-              <div className='col-md-9 ps-3'>
-                <h2 className='text-capitalize mt-md-0 mt-3'>
-                  {firstName + ' ' + middleName + ' ' + lastName}
-                </h2>
-                <p>{categories}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className='secondary pb-5 pt-md-5'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
           <div className='section-3'>
             <div className='row'>
               <div className='col-md-4'>
+                <div className='bio text-center pt-3 mb-4'>
+                  <div className='profile-img'>
+                    <img
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        height: '100%',
+                        width: '100%',
+                      }}
+                      src={user?.profile_image}
+                      className='img-fluid'
+                      alt=''
+                    />
+                  </div>
+                  <h2 className='text-capitalize mt-3'>
+                    {user?.first_name +
+                      ' ' +
+                      user?.middle_name +
+                      ' ' +
+                      user?.last_name}
+                  </h2>
+                  <h6>
+                    Designation:{' '}
+                    <span className='text-capitalize'>{user?.designation}</span>
+                  </h6>
+                  <h6>
+                    Industry:{' '}
+                    <span className='text-capitalize'>
+                      {userDetail?.industry}
+                    </span>
+                  </h6>
+                  <small>{user?.user_categories.split(',').join(' | ')}</small>
+                </div>
                 <div className='book-sec mb-4 px-md-0 px-3'>
                   <div className='row'>
                     <div className='col-6'>
@@ -211,15 +199,7 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>
-                          Entrepreneur I Certified Business Coach I Certified
-                          Life coach I Public speaker I Startup mentor. With
-                          more than 25 years’ experience in successful business
-                          leadership, led teams and organizations to innovative,
-                          build, implement business solutions & products in the
-                          field of Information Technology and services for
-                          customers across 20+ countries.
-                        </p>
+                        <p>{user?.about}</p>
                       </div>
                     </div>
                   </div>
@@ -245,34 +225,18 @@ const MentorProfile = (props) => {
                       <div className='accordion-body'>
                         <div className='experience'>
                           <ul>
-                            <li>
-                              <h6>Founder & CEO, Mentorkart</h6>
-                              <p>
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Iste voluptates laudantium
-                                aliquid, mollitia ipsa deserunt amet ea
-                                consequatur et suscipit numquam, natus fugit
-                                reprehenderit aliquam at sed minus
-                              </p>
-                            </li>
-                            <li>
-                              <h6>Numer of the board Advisors</h6>
-                              <p>
-                                Lorem ipsum dolor sit, amet consectetur
-                                adipisicing elit. Doloremque doloribus ullam
-                                nisi quaerat odit beatae officiis repellat
-                                facere corporis minima.
-                              </p>
-                            </li>
-                            <li>
-                              <h6>Co-Founder</h6>
-                              <p>
-                                Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Tenetur animi quaerat sit in
-                                sequi, ea illo est incidunt amet, beatae
-                                veritatis ipsa tempora, maxime ratione.
-                              </p>
-                            </li>
+                            {user_experience &&
+                              user_experience.map((experience, index) => {
+                                return (
+                                  <li key={index}>
+                                    <h6>
+                                      {experience.title} at{' '}
+                                      {experience.organisation}{' '}
+                                    </h6>
+                                    <p>{experience.description}</p>
+                                  </li>
+                                );
+                              })}
                           </ul>
                         </div>
                       </div>
@@ -298,11 +262,19 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>
-                          MentorKart® has intelligent algorithms for matching a
-                          mentee with a relevant and highly rated mentor. So you
-                          can be assured of getting the best.
-                        </p>
+                        <ul>
+                          {user_achievement &&
+                            user_achievement.map((achievement, index) => {
+                              return (
+                                <li key={index}>
+                                  <h6>
+                                    {achievement.name} on {achievement.year}{' '}
+                                  </h6>
+                                  <p>{achievement.description}</p>
+                                </li>
+                              );
+                            })}
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -326,11 +298,23 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>
-                          Sign up on MentorKart® as a mentee and set your
-                          professional and personal goals. You can set upto 6
-                          goals.
-                        </p>
+                        <ul>
+                          {user_testimonial &&
+                            user_testimonial.map((testimonial, index) => {
+                              return (
+                                <li key={index}>
+                                  <p className='mb-0'>
+                                    {testimonial.description}
+                                  </p>
+                                  <address>
+                                    {' '}
+                                    ~ {testimonial.given_by} on{' '}
+                                    {testimonial.year}{' '}
+                                  </address>
+                                </li>
+                              );
+                            })}
+                        </ul>
                       </div>
                     </div>
                   </div>

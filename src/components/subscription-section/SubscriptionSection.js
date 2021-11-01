@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { listSubscribe } from '../../redux/actions/subscribeActions';
 import Modal from 'react-modal';
 import SignUpModal from '../join-mentokart/SignUpModal';
 import ReactHtmlParser from 'react-html-parser';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { listSubscribe } from '../../redux/actions/subscribeActions';
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 // import Swiper core and required modules
 import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
 
@@ -21,7 +21,10 @@ const SubscriptionSection = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const subscribeList = useSelector((state) => state.subscribeList);
+  const websiteContentList = useSelector((state) => state.websiteContentList);
+
   const { subscribe } = subscribeList;
+  const { websiteContent } = websiteContentList;
 
   useEffect(() => {
     dispatch(listSubscribe());
@@ -30,13 +33,12 @@ const SubscriptionSection = () => {
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
-
   return (
     <div className='subscription-section mt-md-5 mt-3 pt-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
-          <span>PRICING</span>
-          <h1>Subscription Plans</h1>
+          <span>{websiteContent[0]?.data[19]?.field_data}</span>
+          <h1>{websiteContent[0]?.data[20]?.subscription_section_heading}</h1>
         </div>
         <div className='mt-3 align-items-center'>
           <Swiper
@@ -61,7 +63,6 @@ const SubscriptionSection = () => {
             {subscribe[0] &&
               subscribe[0].data &&
               subscribe[0].data.plans.map((plan, index) => {
-                console.log(plan);
                 return (
                   <SwiperSlide key={index}>
                     <div
@@ -80,13 +81,17 @@ const SubscriptionSection = () => {
                           <p className='description'>
                             {ReactHtmlParser(plan.description)}
                           </p>
-                          <hr />
-                          <button
-                            onClick={() => showModalBtn(true)}
-                            className='btn btn-sm'
-                          >
-                            Subscribe Now
-                          </button>
+                          <div className='bottom-subs'>
+                            <hr />
+                            <div className='row '>
+                              <button
+                                onClick={() => showModalBtn(true)}
+                                className='btn btn-sm btn-ani'
+                              >
+                                Enroll Now
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

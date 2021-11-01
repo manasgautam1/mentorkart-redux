@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
 
-const ProgramCard = () => {
+const ProgramCard = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalBtn = (bool) => {
@@ -33,12 +33,10 @@ const ProgramCard = () => {
         </Modal>
 
         <div className='row align-items-center'>
-          <div className='col-7 ps-lg-4'>
-            <h2>Student entrepreneurship Program</h2>
-            <h1>₹ 2799* /-</h1>
-            <p className='mb-md-3 mb-2'>
-              *Get 30% Off (Use Coupon Code “FIRST”)
-            </p>
+          <div className='col-6 ps-lg-4'>
+            <h2>{data.mk_course_name}</h2>
+            <h1>₹ {data.price} /-</h1>
+            <p className='mb-md-3 mb-2'>{data.description}</p>
             <button
               onClick={() => {
                 setShowModal(true);
@@ -48,8 +46,32 @@ const ProgramCard = () => {
               Enroll Now
             </button>
           </div>
-          <div className='col-5'>
-            <img src='/images/programs-bg.png' alt='' />
+          <div className='col-6'>
+            <div className='img'>
+              {data.icon_url === null ? (
+                <img src='/images/user.png' alt='' />
+              ) : (
+                <img
+                  src={
+                    'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                    data.icon_url
+                  }
+                  style={{
+                    borderRadius: '10px',
+                  }}
+                  alt=''
+                />
+              )}
+              <div className='category-tags mt-2'>
+                {data.user_category.split(',').map((cate, index) => {
+                  return (
+                    <span key={index} className='btn btn-sm me-2'>
+                      {cate}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

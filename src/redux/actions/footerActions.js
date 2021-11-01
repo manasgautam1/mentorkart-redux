@@ -17,19 +17,19 @@ export const listFooter = ({email}) => async( dispatch ) =>
         }
         dispatch( { type: FOOTER_GET_REQUEST} )
         const { data } = await axios.post( 'https://www.test.pinsoutinnovation.com/newsletter', { email }, config )
-        console.log({data})
+        const res = data.data
       
        
         dispatch( {
             type: FOOTER_GET_SUCCESS,
-            payload: [data]
+            payload: res
         } )
         
     } catch ( error )
     {
         dispatch( {
             type: FOOTER_GET_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message ? error.response.data.message : error.response
         } )
         
     }

@@ -20,9 +20,9 @@ export const listTestimonial = () => async( dispatch ) =>
         
     } catch ( error )
     {
-        dispatch( {
+       dispatch( {
             type: TESTIMONIAL_GET_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message ? error.response.data.message : error.response
         } )
         
     }

@@ -1,8 +1,7 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import TestimonialCardContent from './TestimonialCardContent';
 import { useDispatch, useSelector } from 'react-redux';
 import { listTestimonial } from '../../redux/actions/testimonialsActions';
-
 
 // import Swiper core and required modules
 import SwiperCore, { A11y, Autoplay, Navigation } from 'swiper';
@@ -17,18 +16,14 @@ import 'swiper/components/navigation/navigation.scss';
 // install Swiper modules
 SwiperCore.use([A11y, Autoplay, Navigation]);
 
-const TestimonialCard = () =>
-{
-  const dispatch = useDispatch()
-  const testimonialList = useSelector( state => state.testimonialList )
-  const { testimonial } = testimonialList
-  
-  
-  useEffect( () =>
-  {
-    dispatch(listTestimonial())
-  },[dispatch])
-  
+const TestimonialCard = () => {
+  const dispatch = useDispatch();
+  const testimonialList = useSelector((state) => state.testimonialList);
+  const { testimonial } = testimonialList;
+
+  useEffect(() => {
+    dispatch(listTestimonial());
+  }, [dispatch]);
 
   return (
     <div className='testimonial-card p-5'>
@@ -49,7 +44,7 @@ const TestimonialCard = () =>
           },
         }}
       >
-        {testimonial[0] && testimonial[0].map((testimonial, index) => {
+        {testimonial[0]?.data?.map((testimonial, index) => {
           return (
             <SwiperSlide key={index}>
               <TestimonialCardContent data={testimonial} />

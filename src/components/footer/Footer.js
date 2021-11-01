@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
-import {listFooter} from '../../redux/actions/footerActions'
+import { useDispatch } from 'react-redux';
+import { listFooter } from '../../redux/actions/footerActions';
 
 const Footer = () => {
   const [newsletterText, SetNewsletterText] = useState('Submit');
-  const [ newsletterEmail, SetNewsletterEmail ] = useState( '' );
-  const dispatch = useDispatch()
+  const [newsletterEmail, SetNewsletterEmail] = useState('');
+  const dispatch = useDispatch();
 
   const newsletterSubmit = (e) => {
     e.preventDefault();
-    dispatch(listFooter({email: newsletterEmail}))
+    dispatch(listFooter({ email: newsletterEmail }));
     SetNewsletterText('Done');
     SetNewsletterEmail('');
   };
@@ -107,7 +107,7 @@ const Footer = () => {
                       </li>
                       <li className='list-group-item'>
                         <Link className='footer-list-links' to='/find-a-mentor'>
-                          Carrers
+                          Careers
                         </Link>
                       </li>
                     </ul>

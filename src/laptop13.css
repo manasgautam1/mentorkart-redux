@@ -27,4 +27,10 @@
   .banners-section img {
     height: 300px;
   }
+  .find-a-mentor .content .section-1 .card h2 {
+    font-size: 27px;
+  }
+  .find-a-mentor .content h1 {
+    font-size: 40px;
+  }
 }

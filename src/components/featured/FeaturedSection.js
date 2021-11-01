@@ -1,8 +1,8 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Featured from './Featured';
 import { useDispatch, useSelector } from 'react-redux';
 import { listFeature } from '../../redux/actions/featureActions';
-
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 
 // import Swiper core and required modules
 import SwiperCore, { A11y, Autoplay } from 'swiper';
@@ -16,26 +16,23 @@ import 'swiper/components/pagination/pagination.scss';
 // install Swiper modules
 SwiperCore.use([A11y, Autoplay]);
 
-const FeaturedSection = () =>
-{
-  
-  const dispatch = useDispatch()
-  const featureList = useSelector( state => state.featureList )
-  const { feature } = featureList
-  
+const FeaturedSection = () => {
+  const dispatch = useDispatch();
+  const featureList = useSelector((state) => state.featureList);
+  const websiteContentList = useSelector((state) => state.websiteContentList);
 
-  useEffect( () =>
-  {
-    dispatch(listFeature())
-  }, [ dispatch ] )
-  
+  const { feature } = featureList;
+  const { websiteContent } = websiteContentList;
 
-  
+  useEffect(() => {
+    dispatch(listFeature());
+    dispatch(listWebsiteContent());
+  }, [dispatch]);
 
   return (
     <div className='partners my-md-5 my-0 mb-5 pt-4'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-        <h1>In News</h1>
+        <h1>{websiteContent[0]?.data[22]?.field_data}</h1>
         <div className='partners-images pt-3'>
           <Swiper
             spaceBetween={0}
@@ -55,7 +52,7 @@ const FeaturedSection = () =>
               },
             }}
           >
-            {feature[0] && feature[0].map((x, index) => {
+            {feature[0]?.data?.map((x, index) => {
               return (
                 <SwiperSlide key={index}>
                   <Featured url={x.news_img} />

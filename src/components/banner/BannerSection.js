@@ -1,7 +1,7 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Banners from './Banners';
-import { useDispatch,useSelector } from 'react-redux';
-import {listBanner} from '../../redux/actions/bannerActions'
+import { useDispatch, useSelector } from 'react-redux';
+import { listBanner } from '../../redux/actions/bannerActions';
 
 // import Swiper core and required modules
 import SwiperCore, { A11y, Autoplay } from 'swiper';
@@ -15,45 +15,44 @@ import 'swiper/components/pagination/pagination.scss';
 // install Swiper modules
 SwiperCore.use([A11y, Autoplay]);
 
-const BannerSection = () =>
-{
-  const dispatch = useDispatch()
-  const bannerList = useSelector( state => state.bannerList )
-  const { banner, loading } = bannerList
-  
-  
-  useEffect( () =>
-  {
-    dispatch( listBanner() )
-  }, [ dispatch ] )
-  
+const BannerSection = () => {
+  const dispatch = useDispatch();
+  const bannerList = useSelector((state) => state.bannerList);
+  const { banner, loading } = bannerList;
 
+  useEffect(() => {
+    dispatch(listBanner());
+  }, [dispatch]);
 
+  // console.log(banner[0]?.data);
   return (
     <>
-      { loading ? <h1>Loading...</h1> : ( <div className='banners-section mt-md-0 mt-4'>
-        <Swiper
-          spaceBetween={ 0 }
-          slidesPerView={ 1 }
-          autoplay={ { autoplay: true, delay: 10000 } }
-          breakpoints={ {
-            // when window width is >= 0px
-            0: {
-              slidesPerView: 1,
-            },
-          } }
-        >
-          { banner[0]&&banner[0].map( ( banner, index ) =>
-          {
-            return (
-              <SwiperSlide key={ index }>
-                <Banners banner={ banner } myclass='overlay' />
-              </SwiperSlide>
-            )
-          } ) }
-        </Swiper>
-      </div> ) }
+      {loading ? (
+        <div></div>
+      ) : (
+        <div className='banners-section mt-md-0 mt-4'>
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            autoplay={{ autoplay: true, delay: 10000 }}
+            breakpoints={{
+              // when window width is >= 0px
+              0: {
+                slidesPerView: 1,
+              },
+            }}
+          >
+            {banner[0]?.data?.map((banner, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Banners banner={banner} myclass='overlay' />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      )}
     </>
-  )
-}
-export default BannerSection
+  );
+};
+export default BannerSection;
