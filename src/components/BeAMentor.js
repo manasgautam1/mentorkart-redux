@@ -60,6 +60,12 @@ const BeAMentor = () => {
         designation: designation,
         about: about,
         getToKnow: getToKnow,
+        grad_college: grad_college,
+        grad_degree: grad_degree,
+        grad_year: grad_year,
+        post_grad_college: post_grad_college,
+        post_grad_degree: post_grad_degree,
+        post_grad_year: post_grad_year,
       })
     );
   };

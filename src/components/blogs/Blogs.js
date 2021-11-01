@@ -43,21 +43,20 @@ const Blogs = () => {
               </span>
               <input type='text' name='search-text' placeholder='Search Blog' />
             </div>
-            <button type='submit' className='btn btn-md-md btn-sm'>
-              Search
-            </button>
           </form>
-          <div className='tags d-flex mt-3'>
-            <span>Popular Tags : </span>
-            <ul className='d-flex align-items-center ps-2 mb-0'>
+          <div className='tags d-flex mt-3 justify-content-center'>
+            <ul className='d-flex flex-wrap'>
               <li>
-                <Link to='#design'>Design</Link>
+                <button className='btn'>All</button>
               </li>
               <li>
-                <Link to='#ui-ux'>UI/UX</Link>
+                <button className='btn'>Design</button>
               </li>
               <li>
-                <Link to='#development'>Development</Link>
+                <button className='btn'>UI/UX</button>
+              </li>
+              <li>
+                <button className='btn'>Development</button>
               </li>
             </ul>
           </div>
@@ -84,44 +83,43 @@ const Blogs = () => {
                 },
               }}
             >
-              {blogs[0] &&
-                blogs[0].map((blog, index) => {
-                  return (
-                    <SwiperSlide key={index}>
-                      <Link to={'/blog/' + blog.id}>
-                        <div className='cards' style={{ height: '400px' }}>
-                          <img
-                            style={{
-                              height: '400px',
-                              width: '100%',
-                              objectFit: 'cover',
-                            }}
-                            src={
-                              'https://www.test.pinsoutinnovation.com/uploaded-images/' +
-                              blog.blog_bg
-                            }
-                            alt=''
-                          />
-                          <span className='tag'>{blog.blog_tag}</span>
-                          <div className='cards-content'>
-                            <div>
-                              <p className='text mt-2'>{blog.blog_title}</p>
-                              <hr />
-                              <div className='d-flex justify-content-between align-items-center'>
-                                <span>{blog.blog_author}</span>
-                                <span>
-                                  {blog.blog_date
-                                    ? blog.blog_date.split('T')[0]
-                                    : ''}
-                                </span>
-                              </div>
+              {blogs[0]?.data?.map((blog, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Link to={'/blog/' + blog.id}>
+                      <div className='cards' style={{ height: '400px' }}>
+                        <img
+                          style={{
+                            height: '400px',
+                            width: '100%',
+                            objectFit: 'cover',
+                          }}
+                          src={
+                            'https://www.test.pinsoutinnovation.com/uploaded-images/' +
+                            blog.blog_bg
+                          }
+                          alt=''
+                        />
+                        <span className='tag'>{blog.blog_tag}</span>
+                        <div className='cards-content'>
+                          <div>
+                            <p className='text mt-2'>{blog.blog_title}</p>
+                            <hr />
+                            <div className='d-flex justify-content-between align-items-center'>
+                              <span>{blog.blog_author}</span>
+                              <span>
+                                {blog.blog_date
+                                  ? blog.blog_date.split('T')[0]
+                                  : ''}
+                              </span>
                             </div>
                           </div>
                         </div>
-                      </Link>
-                    </SwiperSlide>
-                  );
-                })}
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </div>

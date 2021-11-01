@@ -41,11 +41,11 @@ const FindMentorSection = () => {
             <div className='row'>
               <div className='col-md-4 left mb-md-0 mb-lg-5 mb-3 '>
                 <span className='ms-1'>
-                  {websiteContent[0]?.data[7]?.field_data}
+                  {websiteContent[0]?.data[6]?.field_data}
                 </span>
-                <h1>{websiteContent[0]?.data[8]?.field_data}</h1>
-                <p className=''>{websiteContent[0]?.data[9]?.field_data}</p>
-                <p className='sec'>{websiteContent[0]?.data[10]?.field_data}</p>
+                <h1>{websiteContent[0]?.data[7]?.field_data}</h1>
+                <p className=''>{websiteContent[0]?.data[8]?.field_data}</p>
+                <p className='sec'>{websiteContent[0]?.data[9]?.field_data}</p>
 
                 <Link to='/all-mentors' className='btn px-5 btn-ani'>
                   Explore

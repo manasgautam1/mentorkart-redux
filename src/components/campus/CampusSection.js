@@ -32,7 +32,7 @@ const CampusSection = () => {
   return (
     <div className='partners mt-md-5 mt-2 mb-4 pt-3'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-        <h1>{websiteContent[0]?.data[23]?.field_data}</h1>
+        <h1>{websiteContent[0]?.data[22]?.field_data}</h1>
         <div className='partners-images pt-3'>
           <div className='row'>
             <div className='col-lg-6 col-md-10 col-12 offset-lg-3 offset-md-1'>

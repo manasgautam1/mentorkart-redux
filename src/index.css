@@ -534,23 +534,18 @@ a {
   font-weight: 600;
 }
 .ad-cards .swiper-container {
-  height: 350px;
+  height: 300px;
 }
 .ad-cards .swiper-wrapper {
-  height: 350px;
+  height: 300px;
 }
 .ad-card {
-  background-color: #f4f4f4;
-  color: #2d2d2d;
-  font-weight: 600;
   border-radius: 25px;
-  height: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 300px;
+  overflow: hidden;
 }
 .ad-cards img {
+  height: 100%;
   width: 100%;
 }
 
@@ -1019,7 +1014,7 @@ a {
   list-style: none;
   margin-right: 10px;
 }
-.our-blogs .our-blogs-head .tags li a,
+.our-blogs .our-blogs-head .tags li .btn,
 .courses .courses-head .tags li .btn,
 .courses .mentor-card .category-tags .btn,
 .mentors-card .mentor-card .category-tags .btn,
@@ -1033,7 +1028,8 @@ a {
   border-radius: 4px;
   font-size: 14px;
 }
-.our-blogs .our-blogs-head .tags li a:hover,
+.our-blogs .our-blogs-head .tags li .btn.show,
+.our-blogs .our-blogs-head .tags li .btn:hover,
 .mentors .mentors-head .tags li .btn.show,
 .mentors .mentors-head .tags li .btn:hover,
 .our-blogs .our-blogs-head .tags li a.show,

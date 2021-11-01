@@ -130,9 +130,33 @@ export const searchMentor = (query) => async (dispatch) => {
       if (x.area_of_experties) {
         return x.area_of_experties.toLowerCase().includes(query.toLowerCase());
       }
+      if (x.user_category) {
+        return x.user_category.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.organisation) {
+        return x.organisation.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.industry) {
+        return x.industry.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.current_position) {
+        return x.current_position.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.designation) {
+        return x.designation.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.first_name) {
+        return x.first_name.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.middle_name) {
+        return x.middle_name.toLowerCase().includes(query.toLowerCase());
+      }
+      if (x.last_name) {
+        return x.last_name.toLowerCase().includes(query.toLowerCase());
+      }
       return x.user_categories;
     });
-    console.log(std);
+    // console.log(std);
 
     dispatch({
       type: MENTOR_LIST_SEARCH,

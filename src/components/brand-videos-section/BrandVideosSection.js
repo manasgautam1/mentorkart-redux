@@ -25,8 +25,8 @@ const BrandVideosSection = () => {
     <div className='brand-videos-section'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
         <div className='row text-center'>
-          <span>{websiteContent[0]?.data[29]?.field_data}</span>
-          <h1>{websiteContent[0]?.data[30]?.field_data}</h1>
+          <span>{websiteContent[0]?.data[28]?.field_data}</span>
+          <h1>{websiteContent[0]?.data[29]?.field_data}</h1>
         </div>
         <div className='content'>
           <div className='row pt-lg-3 pt-3'>

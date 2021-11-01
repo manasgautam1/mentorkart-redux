@@ -46,16 +46,16 @@ const JoinMentorkart = () => {
         <div className='row'>
           <div className='col-md-4 left'>
             <span className='ms-1'>
-              {websiteContent[0]?.data[11]?.field_data}
+              {websiteContent[0]?.data[10]?.field_data}
             </span>
-            <h1>{websiteContent[0]?.data[12]?.field_data}</h1>
-            <p className=''>{websiteContent[0]?.data[13]?.field_data}</p>
-            <div className='d-flex py-3'>
+            <h1>{websiteContent[0]?.data[11]?.field_data}</h1>
+            <p className=''>{websiteContent[0]?.data[12]?.field_data}</p>
+            <div className='d-flex py-3 align-items-center'>
               <div className='icon-container text-white d-flex justify-content-center align-items-center px-2'>
                 <i className='fas fa-graduation-cap fa-2x'></i>
               </div>
-              <p className='sec ms-3'>
-                {websiteContent[0]?.data[14]?.field_data}
+              <p className='sec ms-3 mb-0'>
+                {websiteContent[0]?.data[13]?.field_data}
               </p>
             </div>
           </div>
@@ -114,50 +114,51 @@ const JoinMentorkart = () => {
           <SignUpModal showModalBtn={showModalBtn} />
         </Modal>
 
-        <div className='ad-cards mt-5 pt-4 align-items-center text-center'>
-          <Swiper
-            spaceBetween={50}
-            slidesPerView={1}
-            autoplay={{ autoplay: true, delay: 10000 }}
-            breakpoints={{
-              // when window width is >= 0px
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 100,
-              },
-              // when window width is >= 1000px
-              600: {
-                slidesPerView: 2,
-              },
-              900: {
-                slidesPerView: 3,
-              },
-            }}
-          >
-            {advertisements[0]?.data?.map((ad, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <div className='ad-card'>
-                    <h3>Advertisement</h3>
-                    <a
-                      target='_blank'
-                      rel='noreferrer'
-                      href={'https://' + ad.ad_url}
-                    >
-                      <img
-                        src={
-                          'https://www.test.pinsoutinnovation.com/uploaded-images/' +
-                          ad.ad_image
-                        }
-                        alt=''
-                      />
-                    </a>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
+        {advertisements[0]?.data?.length !== 0 && (
+          <div className='ad-cards mt-5 pt-4 align-items-center text-center'>
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={1}
+              autoplay={{ autoplay: true, delay: 10000 }}
+              breakpoints={{
+                // when window width is >= 0px
+                0: {
+                  slidesPerView: 1,
+                  spaceBetween: 100,
+                },
+                // when window width is >= 1000px
+                600: {
+                  slidesPerView: 2,
+                },
+                900: {
+                  slidesPerView: 3,
+                },
+              }}
+            >
+              {advertisements[0]?.data?.map((ad, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <div className='ad-card'>
+                      <a
+                        target='_blank'
+                        rel='noreferrer'
+                        href={'https://' + ad.ad_url}
+                      >
+                        <img
+                          src={
+                            'https://www.test.pinsoutinnovation.com/uploaded-images/' +
+                            ad.ad_image
+                          }
+                          alt=''
+                        />
+                      </a>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        )}
       </div>
     </div>
   );

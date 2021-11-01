@@ -53,7 +53,7 @@ const Packages = () => {
       <MyNavbar />
       <div className='courses-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
-          <h1>Packagess and courses</h1>
+          <h1>Packages and courses</h1>
           <form
             action='/search-blogs'
             className='courses-search d-flex justify-content-between align-items-center'

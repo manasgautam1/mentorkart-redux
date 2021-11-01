@@ -25,9 +25,9 @@ const BlogsSection = () => {
   return (
     <div className='blogs-section pb-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-        <span>{websiteContent[0]?.data[24]?.field_data}</span>
-        <h1>{websiteContent[0]?.data[25]?.field_data}</h1>
-        <p>{websiteContent[0]?.data[26]?.field_data}</p>
+        <span>{websiteContent[0]?.data[23]?.field_data}</span>
+        <h1>{websiteContent[0]?.data[24]?.field_data}</h1>
+        <p>{websiteContent[0]?.data[25]?.field_data}</p>
         <div className=' mt-4'>
           <div className='blogs row'>
             {blogs[0]?.data?.map((blog, index) => {
@@ -46,8 +46,8 @@ const BlogsSection = () => {
           </div>
         </div>
         <div className='mt-4'>
-          <Link to='/our-blogs' className='btn btn-outline-secondary'>
-            Our Blog
+          <Link to='/our-blogs' className='btn btn-dark'>
+            Our Blogs
           </Link>
         </div>
       </div>

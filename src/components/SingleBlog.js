@@ -19,6 +19,8 @@ const SingleBlog = ({ match }) => {
     }
   }, [dispatch, match]);
 
+  console.log(blogsDetail);
+
   return (
     <div className='single-blog'>
       <MyNavbar />
@@ -26,18 +28,18 @@ const SingleBlog = ({ match }) => {
         <img
           src={
             'https://www.test.pinsoutinnovation.com/uploaded-images/' +
-            blogsDetail[0]?.blog_bg
+            blogsDetail?.data?.blog_bg
           }
           alt=''
         />
         <div className='content'>
           <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 d-flex flex-column justify-content-between py-3'>
-            <h1 className='mb-3'>{blogsDetail[0]?.blog_title}</h1>
+            <h1 className='mb-3'>{blogsDetail?.data?.blog_title}</h1>
             <div className='d-flex sec justify-content-between align-items-center mb-2'>
               <span className='badge rounded-pill bg-warning'>
-                {blogsDetail[0]?.blog_tag}
+                {blogsDetail?.data?.blog_tag}
               </span>
-              <span>{blogsDetail[0]?.blog_date.split('T')[0]}</span>
+              <span>{blogsDetail?.data?.blog_date.split('T')[0]}</span>
             </div>
           </div>
         </div>
@@ -45,8 +47,10 @@ const SingleBlog = ({ match }) => {
       <div className='section-2'>
         <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
           <div className='main-content'>
-            <div>{parse(`${blogsDetail[0]?.blog_content}`)}</div>
-            <address className='lead'>~ {blogsDetail[0]?.blog_author}</address>
+            <div>{parse(`${blogsDetail?.data?.blog_content}`)}</div>
+            <address className='lead'>
+              ~ {blogsDetail?.data?.blog_author}
+            </address>
           </div>
         </div>
       </div>

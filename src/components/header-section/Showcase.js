@@ -32,7 +32,7 @@ const Showcase = () => {
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
-  // console.log(websiteContent);
+  // console.log(websiteContent[0]?.data);
   return (
     <div className='showcase-section'>
       <Modal

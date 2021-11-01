@@ -23,10 +23,10 @@ const Testimonials = () => {
             </div>
           </div>
           <div className='col-md-6 offset-md-1 right mb-md-0 mb-5 order-md-last order-first'>
-            <span>{websiteContent[0]?.data[15]?.field_data}</span>
-            <h1>{websiteContent[0]?.data[16]?.field_data}</h1>
-            <p>{websiteContent[0]?.data[17]?.field_data}</p>
-            <p className='sec'>{websiteContent[0]?.data[18]?.field_data}</p>
+            <span>{websiteContent[0]?.data[14]?.field_data}</span>
+            <h1>{websiteContent[0]?.data[15]?.field_data}</h1>
+            <p>{websiteContent[0]?.data[16]?.field_data}</p>
+            <p className='sec'>{websiteContent[0]?.data[17]?.field_data}</p>
           </div>
         </div>
       </div>

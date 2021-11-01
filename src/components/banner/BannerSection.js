@@ -30,27 +30,29 @@ const BannerSection = () => {
       {loading ? (
         <div></div>
       ) : (
-        <div className='banners-section mt-md-0 mt-4'>
-          <Swiper
-            spaceBetween={0}
-            slidesPerView={1}
-            autoplay={{ autoplay: true, delay: 10000 }}
-            breakpoints={{
-              // when window width is >= 0px
-              0: {
-                slidesPerView: 1,
-              },
-            }}
-          >
-            {banner[0]?.data?.map((banner, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <Banners banner={banner} myclass='overlay' />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
+        banner[0]?.data.length !== 0 && (
+          <div className='banners-section mt-md-0 mt-4'>
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              autoplay={{ autoplay: true, delay: 10000 }}
+              breakpoints={{
+                // when window width is >= 0px
+                0: {
+                  slidesPerView: 1,
+                },
+              }}
+            >
+              {banner[0]?.data?.map((banner, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Banners banner={banner} myclass='overlay' />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        )
       )}
     </>
   );
