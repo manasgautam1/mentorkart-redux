@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
-import SelectSearch from 'react-select-search';
+// import SelectSearch from 'react-select-search';
 import { industryOptions } from './data/industryOptions';
 
 const BeAMentor = () => {

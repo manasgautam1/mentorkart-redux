@@ -13,6 +13,8 @@ import Courses from './components/programs-section/Courses';
 import BeAMentor from './components/BeAMentor';
 import About from './components/About';
 import OurTeam from './components/OurTeam';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Switch, Route } from 'react-router-dom';
 import Mentors from './components/find-mentor-section/Mentors';
@@ -39,6 +41,7 @@ function App() {
       <Switch>
         <Route path='/' exact>
           <Header />
+          <ToastContainer />
           <PackagesSection />
           <FindMentorSection />
           <DetailsSection />

@@ -24,7 +24,6 @@ const BannerSection = () => {
     dispatch(listBanner());
   }, [dispatch]);
 
-  // console.log(banner[0]?.data);
   return (
     <>
       {loading ? (

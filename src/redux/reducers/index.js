@@ -13,6 +13,8 @@ import { packages } from './packagesReducer';
 import { mentorDetails } from './mentorReducer';
 import { blogsDetails } from './blogsReducer';
 import { login } from './loginReducer';
+import { signup } from './loginReducer';
+import { otpverify } from './loginReducer';
 import { websiteContent } from './websiteContentReducer';
 import { advertisements } from './advertisementsReducer';
 
@@ -30,6 +32,8 @@ export default combineReducers({
   mentorDetailsList: mentorDetails,
   blogsDetailsList: blogsDetails,
   loginDetails: login,
+  signupDetails: signup,
+  otpDetails: otpverify,
   websiteContentList: websiteContent,
   advertisementsList: advertisements,
 });

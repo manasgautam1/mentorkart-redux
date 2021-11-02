@@ -16,7 +16,6 @@ const BlogsSection = () => {
 
   useEffect(() => {
     dispatch(listBlogs());
-
     dispatch(listWebsiteContent());
   }, [dispatch]);
 

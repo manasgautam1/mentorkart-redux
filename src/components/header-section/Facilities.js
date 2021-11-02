@@ -7,17 +7,26 @@ import SignUpModal from '../join-mentokart/SignUpModal';
 Modal.setAppElement('#root');
 
 const Facilities = () => {
+  const user = localStorage.getItem('userInfo');
   const [showModal, setShowModal] = useState(false);
 
   const showModalBtn = (bool) => {
     setShowModal(bool);
+  };
+
+  const handleClick = () => {
+    if (user) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
   };
   return (
     <div className='facilities-section bg-white pt-lg-3'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center py-sm-3 pt-4 pb-3'>
           <div
-            onClick={() => showModalBtn(true)}
+            onClick={handleClick}
             className='col-md-2 col-4 mb-2 facility-card'
           >
             <div className='facility-img-container'>
@@ -40,7 +49,7 @@ const Facilities = () => {
             </div>
           </Link>
           <div
-            onClick={() => showModalBtn(true)}
+            onClick={handleClick}
             className='col-md-2 col-4 mb-2 facility-card'
           >
             <div className='facility-img-container'>
@@ -53,7 +62,7 @@ const Facilities = () => {
             </div>
           </div>
           <div
-            onClick={() => showModalBtn(true)}
+            onClick={handleClick}
             className='col-md-2 col-4 mb-2 facility-card'
           >
             <div className='facility-img-container'>
@@ -66,7 +75,7 @@ const Facilities = () => {
             </div>
           </div>
           <div
-            onClick={() => showModalBtn(true)}
+            onClick={handleClick}
             className='col-md-2 col-4 mb-2 facility-card'
           >
             <div className='facility-img-container'>

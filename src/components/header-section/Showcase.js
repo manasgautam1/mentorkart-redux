@@ -19,6 +19,8 @@ import 'swiper/components/pagination/pagination.scss';
 SwiperCore.use([A11y, Autoplay]);
 
 const Showcase = () => {
+  const user = localStorage.getItem('userInfo');
+
   const dispatch = useDispatch();
   const websiteContentList = useSelector((state) => state.websiteContentList);
   const { websiteContent, loading } = websiteContentList;
@@ -32,7 +34,15 @@ const Showcase = () => {
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
-  // console.log(websiteContent[0]?.data);
+
+  const handleClick = () => {
+    if (user) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  };
+
   return (
     <div className='showcase-section'>
       <Modal
@@ -71,12 +81,7 @@ const Showcase = () => {
             </p>
             <div className='row showcase-cards'>
               <div className='col-xl-5 col-6'>
-                <div
-                  onClick={() => {
-                    setShowModal(true);
-                  }}
-                  className='showcase-card one'
-                >
+                <div onClick={handleClick} className='showcase-card one'>
                   <div className='showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2'>
                     <div>
                       <img src='/images/showcase-card-one.png' alt='' />
@@ -92,12 +97,7 @@ const Showcase = () => {
                 </div>
               </div>
               <div className='col-xl-5 col-6'>
-                <div
-                  onClick={() => {
-                    setShowModal(true);
-                  }}
-                  className='showcase-card two'
-                >
+                <div onClick={handleClick} className='showcase-card two'>
                   <div className='showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2'>
                     <div className=''>
                       <img src='/images/showcase-card-two.png' alt='' />

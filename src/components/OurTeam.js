@@ -101,34 +101,6 @@ const OurTeam = () => {
               </div>
             </div>
           </div>
-          <div className='team team-alt py-5'>
-            <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-              <div className='row align-items-center'>
-                <div className='col-lg-7 order-2 mt-lg-0 mt-4'>
-                  <h2 className='mb-0'>Priyank Saini</h2>
-                  <span className='lead'>
-                    <strong>Vice President – Product Growth & Strategy</strong>
-                  </span>
-                  <p className='mt-4'>
-                    Priyank has been working in the startup ecosystem for about
-                    4 years. He has previously cofounded a startup and has
-                    experience working in multiple sectors including healthcare,
-                    real estate, etc across various domains. Priyank is skilled
-                    in Product Management, Operations, and Growth & Strategy.
-                    Priyank is a Computer Science Engineer by profession and an
-                    avid traveler.
-                  </p>
-                </div>
-                <div className='col-lg-5 order-1 text-center'>
-                  <img
-                    src='/images/team/priyank.png'
-                    alt=''
-                    className='img-fluid'
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
         </main>
       </div>
       <Footer />

@@ -19,8 +19,6 @@ const SingleBlog = ({ match }) => {
     }
   }, [dispatch, match]);
 
-  console.log(blogsDetail);
-
   return (
     <div className='single-blog'>
       <MyNavbar />
