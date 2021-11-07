@@ -1,5 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+import CryptoJS from 'crypto-js';
+
 import {
   LOGIN_GET_REQUEST,
   LOGIN_GET_SUCCESS,
@@ -14,6 +16,20 @@ import {
   OTPRESEND_GET_REQUEST,
   OTPRESEND_GET_FAIL,
 } from '../constants/loginConstants';
+
+function base64url(source) {
+  // Encode in classical base64
+  let encodedSource = CryptoJS.enc.Base64.stringify(source);
+
+  // Remove padding equal characters
+  encodedSource = encodedSource.replace(/=+$/, '');
+
+  // Replace characters according to base64url specifications
+  encodedSource = encodedSource.replace(/\+/g, '-');
+  encodedSource = encodedSource.replace(/\//g, '_');
+
+  return encodedSource;
+}
 
 export const signIn =
   ({ email, password }) =>
@@ -38,17 +54,17 @@ export const signIn =
       });
 
       if (data) {
-        jwt.sign(
-          { email: email, password: password },
-          'website-secret',
-          (err, token) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(token);
-            localStorage.setItem('userInfo', JSON.stringify(token));
-          }
-        );
+        const payload = {
+          email: email,
+          password: password,
+          app_key: 'mkwebsite',
+        };
+
+        const secretKey = Buffer.from('website-secret', 'base64');
+
+        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
+
+        localStorage.setItem('userInfo', JSON.stringify(token));
       }
     } catch (error) {
       dispatch({
@@ -169,19 +185,44 @@ export const otpsection =
         payload: data,
       });
 
+      const header = {
+        alg: 'HS256',
+        typ: 'JWT',
+      };
+
+      const stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
+      const encodedHeader = base64url(stringifiedHeader);
+
+      const payload = {
+        email: email,
+        password: password,
+        app_key: 'mkwebsite',
+      };
+
+      const stringifiedData = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));
+      const encodedData = base64url(stringifiedData);
+
+      const unsignedToken = encodedHeader + '.' + encodedData;
+
+      const secretKey = 'website-secret';
+
+      let signature = CryptoJS.HmacSHA256(unsignedToken, secretKey);
+      signature = base64url(signature);
+
+      const signedToken = unsignedToken + '.' + signature;
+
       if (data) {
-        jwt.sign(
-          { email: email, password: password },
-          'website-secret',
-          (err, token) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(token);
-            localStorage.setItem('userInfo', JSON.stringify(token));
-          }
-        );
+        localStorage.setItem('userInfo', JSON.stringify(signedToken));
       }
+
+      // if (data) {
+      //   const token = jwt.sign(
+      //     { email: email, password: password, app_key: 'mkwebsite' },
+      //     'website-secret'
+      //   );
+      //   const encodedString = Buffer.from(token).toString('base64');
+      //   localStorage.setItem('userInfo', encodedString);
+      // }
     } catch (error) {
       dispatch({
         type: OTP_GET_FAIL,

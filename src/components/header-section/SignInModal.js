@@ -214,14 +214,14 @@ const SignInModal = (props) => {
                 <fieldset>
                   <legend className='d-flex justify-content-between align-items-center mb-3'>
                     <h2>I am...</h2>
-                    <button
+                    <span
                       onClick={() => {
                         props.showModalBtn(false);
                       }}
                       className='btn'
                     >
                       <i className='fas fa-times fa-2x'></i>
-                    </button>
+                    </span>
                   </legend>
                   <div className='d-md-flex d-none justify-content-between align-items-center mb-4'>
                     <div className='form-check radio-btn'>
@@ -356,9 +356,9 @@ const SignInModal = (props) => {
                         }}
                       >
                         {passwordType1 === 'password' ? (
-                          <i class='fas fa-eye'></i>
+                          <i className='fas fa-eye'></i>
                         ) : (
-                          <i class='fas fa-eye-slash'></i>
+                          <i className='fas fa-eye-slash'></i>
                         )}
                       </span>
                     </div>
@@ -378,7 +378,7 @@ const SignInModal = (props) => {
                         className='form-control form-control-sm'
                         placeholder='Confirm password'
                       />
-                      <button
+                      <span
                         className='btn'
                         onClick={(e) => {
                           if (passwordType2 === 'password') {
@@ -389,11 +389,11 @@ const SignInModal = (props) => {
                         }}
                       >
                         {passwordType2 === 'password' ? (
-                          <i class='fas fa-eye'></i>
+                          <i className='fas fa-eye'></i>
                         ) : (
-                          <i class='fas fa-eye-slash'></i>
+                          <i className='fas fa-eye-slash'></i>
                         )}
-                      </button>
+                      </span>
                     </div>
                   </div>
                   <div className='form-check mb-3 align-items-end'>
@@ -449,14 +449,14 @@ const SignInModal = (props) => {
                 <fieldset>
                   <legend className='d-flex justify-content-between align-items-center mb-3'>
                     <h2>Log In</h2>
-                    <button
+                    <span
                       onClick={() => {
                         props.showModalBtn(false);
                       }}
                       className='btn'
                     >
                       <i className='fas fa-times fa-2x'></i>
-                    </button>
+                    </span>
                   </legend>
                   <div className='form-group mb-3'>
                     <input
@@ -486,7 +486,7 @@ const SignInModal = (props) => {
                         className='form-control'
                         placeholder='Password'
                       />
-                      <button
+                      <span
                         className='btn'
                         onClick={(e) => {
                           if (passwordType3 === 'password') {
@@ -497,11 +497,11 @@ const SignInModal = (props) => {
                         }}
                       >
                         {passwordType1 === 'password' ? (
-                          <i class='fas fa-eye'></i>
+                          <i className='fas fa-eye'></i>
                         ) : (
-                          <i class='fas fa-eye-slash'></i>
+                          <i className='fas fa-eye-slash'></i>
                         )}
-                      </button>
+                      </span>
                     </div>
                   </div>
                   <div className='row px-2'>
