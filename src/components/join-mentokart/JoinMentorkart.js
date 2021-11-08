@@ -124,7 +124,6 @@ const JoinMentorkart = () => {
                 // when window width is >= 0px
                 0: {
                   slidesPerView: 1,
-                  spaceBetween: 100,
                 },
                 // when window width is >= 1000px
                 600: {

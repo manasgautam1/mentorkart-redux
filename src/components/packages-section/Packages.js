@@ -4,6 +4,7 @@ import MyNavbar from '../header-section/MyNavbar';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   listPackages,
+  searchPackages,
   listStudentPackages,
   listProfessionalPackages,
   listEntrepreneurPackages,
@@ -29,6 +30,7 @@ const Packages = () => {
   const { packages } = packagesList;
 
   const [sort, setSort] = useState('');
+  const [search, setSearch] = useState('');
 
   const handleCLick = (value) => () => {
     setSort(value);
@@ -36,7 +38,12 @@ const Packages = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(listPackages());
+    if (search === '') {
+      dispatch(listPackages());
+    } else {
+      dispatch(searchPackages(search));
+    }
+
     if (sort === 'student') {
       dispatch(listStudentPackages());
     }
@@ -46,18 +53,15 @@ const Packages = () => {
     if (sort === 'entrepreneur') {
       dispatch(listEntrepreneurPackages());
     }
-  }, [dispatch, sort]);
+  }, [dispatch, sort, search]);
 
   return (
     <div className='courses'>
       <MyNavbar />
       <div className='courses-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
-          <h1>Packages and courses</h1>
-          <form
-            action='/search-blogs'
-            className='courses-search d-flex justify-content-between align-items-center'
-          >
+          <h1>Packages</h1>
+          <form action='' className='courses-search'>
             <div className='form-group'>
               <span>
                 <i className='fas fa-search me-2 ms-1'></i>
@@ -66,6 +70,8 @@ const Packages = () => {
                 type='text'
                 name='search-text'
                 placeholder='Search Packages'
+                className='form-control'
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
           </form>
@@ -118,6 +124,16 @@ const Packages = () => {
                             alt=''
                           />
                         )}
+                      </div>
+                      <div className='p-3'>
+                        <div className='d-flex justify-content-between align-items-center'>
+                          <div>
+                            <h2 className='mt-0 mb-0 pe-3'>
+                              {course.package_name}
+                            </h2>
+                          </div>
+                          <h6 className='mb-0'>₹ {course.price_INR} /-</h6>
+                        </div>
                         <div className='category-tags mt-2'>
                           {course.user_category &&
                             course.user_category
@@ -130,27 +146,9 @@ const Packages = () => {
                                 );
                               })}
                         </div>
-                      </div>
-                      <div className='p-3'>
-                        <div className='d-flex justify-content-between align-items-center'>
-                          <div>
-                            <h2 className='mt-0 mb-0 pe-3'>
-                              {course.package_name}
-                            </h2>
-                          </div>
-                          <h6 className='mb-0'>₹ {course.price_INR} /-</h6>
+                        <div className='mt-2 mb-3'>
+                          {Parser(course.description.substring(0, 200))}
                         </div>
-                        <p className='mt-2 mb-3'>
-                          {Parser(course.description.substring(0, 100))}
-                          <button
-                            onClick={() => {
-                              setShowPackagesModal(true);
-                            }}
-                            className='btn'
-                          >
-                            read more...
-                          </button>
-                        </p>
                         <div className='row'>
                           <button
                             onClick={() => {

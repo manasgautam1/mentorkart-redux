@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 
 // import Swiper core and required modules
-import SwiperCore, { A11y, Autoplay } from 'swiper';
+import SwiperCore, { EffectFade, A11y, Autoplay } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/effect-fade/effect-fade.scss';
 
 // install Swiper modules
-SwiperCore.use([A11y, Autoplay]);
+SwiperCore.use([EffectFade, A11y, Autoplay]);
 
 const Showcase = () => {
   const user = localStorage.getItem('userInfo');
@@ -68,17 +70,17 @@ const Showcase = () => {
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row'>
           <div className='col-md-6 left d-flex flex-column justify-content-center'>
-            <h1 className='showcase-heading mb-0'>
+            <p className='showcase-para mb-0 mt-md-0 mt-4'>
+              {ReactHtmlParser(websiteContent[0]?.data[1]?.field_data)}
+            </p>
+            <h1 className='showcase-heading mt-md-3 mb-md-5 mt-3 mb-4'>
               {websiteContent[0]?.data[0]?.field_data}
               <sup>
                 <h6 className='d-inline'>
-                  <sup>R</sup>
+                  <sup>&reg;</sup>
                 </h6>
               </sup>
             </h1>
-            <p className='showcase-para lead mt-3 mb-4'>
-              {websiteContent[0]?.data[1]?.field_data}
-            </p>
             <div className='row showcase-cards'>
               <div className='col-xl-5 col-6'>
                 <div onClick={handleClick} className='showcase-card one'>
@@ -117,9 +119,10 @@ const Showcase = () => {
           <div className='col-md-6 right d-md-block d-none'>
             <div className='right-img container'>
               <Swiper
+                effect={'fade'}
                 spaceBetween={30}
                 slidesPerView={1}
-                autoplay={{ autoplay: true, delay: 10000 }}
+                autoplay={{ autoplay: true, delay: 2000 }}
                 breakpoints={{
                   // when window width is >= 0px
                   0: {
@@ -136,7 +139,7 @@ const Showcase = () => {
                   >
                     <img
                       className='fluid-img'
-                      src='/images/showcase-right.png'
+                      src='/images/showcase-right.jpg'
                       alt=''
                     />
                   </Link>
@@ -150,7 +153,7 @@ const Showcase = () => {
                   >
                     <img
                       className='fluid-img'
-                      src='/images/showcase-right.png'
+                      src='/images/showcase-right-1.jpg'
                       alt=''
                     />
                   </Link>
@@ -164,7 +167,7 @@ const Showcase = () => {
                   >
                     <img
                       className='fluid-img'
-                      src='/images/showcase-right.png'
+                      src='/images/showcase-right-2.jpg'
                       alt=''
                     />
                   </Link>
@@ -174,6 +177,7 @@ const Showcase = () => {
           </div>
           <div className='d-md-none d-block py-3 px-5'>
             <Swiper
+              effect={'fade'}
               spaceBetween={30}
               slidesPerView={1}
               autoplay={{ autoplay: true, delay: 10000 }}
@@ -193,7 +197,7 @@ const Showcase = () => {
                 >
                   <img
                     className='img-fluid'
-                    src='/images/showcase-right.png'
+                    src='/images/showcase-right.jpg'
                     alt=''
                   />
                 </Link>
@@ -207,7 +211,7 @@ const Showcase = () => {
                 >
                   <img
                     className='img-fluid'
-                    src='/images/showcase-right.png'
+                    src='/images/showcase-right-1.jpg'
                     alt=''
                   />
                 </Link>
@@ -221,7 +225,7 @@ const Showcase = () => {
                 >
                   <img
                     className='img-fluid'
-                    src='/images/showcase-right.png'
+                    src='/images/showcase-right-2.jpg'
                     alt=''
                   />
                 </Link>

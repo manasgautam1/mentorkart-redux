@@ -1,3 +1,67 @@
+@media (max-width: 576px) {
+  .find-mentor .mentor-card .img {
+    width: 100%;
+  }
+  .mentor-card-content {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 572px) {
+  .find-mentor .swiper-wrapper {
+    height: 600px;
+  }
+  .find-mentor .swiper-container {
+    height: 600px;
+  }
+  .find-mentor .mentor-card .mentor-card-btn,
+  .mentors-card .mentor-card .mentor-card-btn {
+    border-radius: 15px;
+    width: 100%;
+    line-height: 0.7rem;
+  }
+
+  .find-mentor .mentor-card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .mentors-card .mentor-card .img,
+  .find-mentor .mentor-card .img {
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+    position: relative;
+  }
+  .mentors-card .mentor-card img,
+  .find-mentor .mentor-card img {
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+  }
+  .find-mentor .mentor-card .mentor-card-content {
+    margin-top: 10px;
+    margin-left: 0 !important;
+    text-align: left !important;
+  }
+
+  .find-mentor .mentor-card .mentor-card-btn {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .find-mentor .mentor-card div h2,
+  .mentors-card .mentor-card div h2,
+  .courses .program-card div h2 {
+    font-size: 20px;
+  }
+  .find-mentor .mentor-card div span,
+  .mentors-card .mentor-card div span {
+    font-size: 13.5px;
+  }
+}
 @media (max-width: 550px) {
   .navbar {
     min-height: 7vh;
@@ -25,8 +89,7 @@
     padding-bottom: 0.25rem !important;
   }
   .showcase-heading {
-    padding-top: 22px;
-    font-size: 30px;
+    font-size: 21.5px;
   }
   .showcase-section,
   .showcase-section .left {
@@ -36,8 +99,7 @@
     width: 80%;
   }
   .showcase-para {
-    font-size: 14px;
-    width: 90%;
+    font-size: 24px;
   }
   .showcase-card img {
     width: 27px;
@@ -62,12 +124,6 @@
   .find-mentor .mentor-card .mentor-card-content {
     text-align: center;
     margin-top: 2.2rem;
-  }
-  .find-mentor .swiper-container {
-    height: 550px;
-  }
-  .find-mentor .swiper-wrapper {
-    height: 550px;
   }
   .find-mentor .mentor-card div h2 {
     font-size: 1.75rem;
@@ -379,73 +435,6 @@
   .courses .courses-content .category-tags .btn,
   .mentors .mentors-head .tags li .btn {
     font-size: 10px;
-  }
-  .find-mentor .mentor-card .mentor-card-btn,
-  .mentors-card .mentor-card .mentor-card-btn {
-    border-radius: 15px;
-    height: 30px;
-    line-height: 0.7rem;
-  }
-
-  .find-mentor .mentor-card {
-    border-radius: 10px;
-    border: none;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .mentors-card .mentor-card .img,
-  .find-mentor .mentor-card .img {
-    width: 100%;
-    height: 220px;
-    border-radius: 10px;
-    position: relative;
-  }
-  .mentors-card .mentor-card img,
-  .find-mentor .mentor-card img {
-    width: 100%;
-    height: 220px;
-    border-radius: 10px;
-  }
-  .find-mentor .mentor-card .img .category-tags {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-  }
-  .find-mentor .mentor-card .img .category-tags .btn {
-    background: #fff !important;
-    color: #3d3d3d !important;
-    font-weight: 700;
-    letter-spacing: 1px;
-    border: none;
-  }
-  .find-mentor .mentor-card .mentor-card-btn {
-    padding: 2px 12px !important;
-    border-radius: 10px;
-  }
-  .find-mentor .mentor-card .mentor-card-content {
-    margin-top: 10px;
-    margin-left: 0 !important;
-    text-align: left !important;
-  }
-
-  .find-mentor .mentor-card hr {
-    width: 80%;
-    margin: 0.5rem auto 1rem;
-  }
-
-  .find-mentor .mentor-card .mentor-card-btn {
-    border: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-
-  .find-mentor .mentor-card div h2,
-  .mentors-card .mentor-card div h2,
-  .courses .program-card div h2 {
-    font-size: 20px;
-  }
-  .find-mentor .mentor-card div span,
-  .mentors-card .mentor-card div span {
-    font-size: 13.5px;
   }
   .details-section .details-card {
     height: 150px;

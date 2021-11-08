@@ -8,7 +8,7 @@ const Header = () => {
     <div id='header-section'>
       <MyNavbar />
       <Showcase />
-      <Facilities />
+      {/* <Facilities /> */}
     </div>
   );
 };

@@ -35,15 +35,6 @@ const MentorCard = ({
               alt=''
             />
           )}
-          <div className='category-tags mt-2'>
-            {categories.split(',').map((cate, index) => {
-              return (
-                <span key={index} className='btn btn-sm me-2'>
-                  {cate}
-                </span>
-              );
-            })}
-          </div>
         </div>
         <div className='ms-lg-4 mentor-card-content ms-3'>
           <div className='d-flex justify-content-between align-items-center'>
@@ -57,48 +48,43 @@ const MentorCard = ({
               Rs {charges} <br /> <span>(per session)</span>
             </h6>
           </div>
-          <p className='about'>
-            {about ? about.substring(0, 40) : 'NULL'}{' '}
-            <Link to={`/mentor-profile/${url_name}/${id}`} className=''>
-              <span className='view-profile'>view more</span>
-            </Link>
-          </p>
-          <hr />
-          <div className='row btn-container mb-3'>
-            <div className='col-6'>
-              <MentorCardButtons
-                showModalBtn={showModalBtn}
-                classes='mentor-card-btn active'
-                text='Book a call'
-                smtext=''
-              />
-            </div>
-            <div className='col-6'>
-              <MentorCardButtons
-                showModalBtn={showModalBtn}
-                classes='mentor-card-btn'
-                text='Book a free session'
-                smtext=''
-              />
-            </div>
+
+          <div className='category-tags mt-0 mb-3'>
+            {categories.split(',').map((cate, index) => {
+              return (
+                <span key={index} className='btn btn-sm me-2'>
+                  {cate}
+                </span>
+              );
+            })}
           </div>
+          <p className='about'>
+            {about ? about.substring(0, 400) : 'NULL'}
+            ...
+          </p>
           <div className='row btn-container'>
-            <div className='col-6'>
-              <MentorCardButtons
-                showModalBtn={showModalBtn}
-                classes='mentor-card-btn'
-                text='Mentor Me'
-                smtext='(for 3 Months)'
-              />
+            <div className='span-checks mb-3'>
+              <div className='d-flex justify-content-between ms-2'>
+                <div className='me-2'>
+                  <i className='fas fa-check-square me-1'></i>
+                  Book a call
+                </div>
+                <div className=''>
+                  <i className='fas fa-check-square me-1'></i>
+                  Mentorship Packages
+                </div>
+              </div>
             </div>
-            <div className='col-6'>
+            <Link
+              to={`/mentor-profile/${url_name}/${id}`}
+              className='ms-3 px-0'
+            >
               <MentorCardButtons
-                showModalBtn={showModalBtn}
-                classes='mentor-card-btn'
-                text='Mentor Me'
-                smtext='(for 6 Months)'
+                classes='mentor-card-btn active'
+                text='View Profile'
+                smtext=''
               />
-            </div>
+            </Link>
           </div>
         </div>
       </div>

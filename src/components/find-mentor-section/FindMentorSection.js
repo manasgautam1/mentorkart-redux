@@ -69,8 +69,9 @@ const FindMentorSection = () => {
                         slidesPerView: 1,
                       },
                       // when window width is >= 1000px
-                      1200: {
+                      1300: {
                         slidesPerView: 1.2,
+                        spaceBetween: 0,
                       },
                     }}
                   >

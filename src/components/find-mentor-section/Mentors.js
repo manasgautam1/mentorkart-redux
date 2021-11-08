@@ -15,6 +15,7 @@ const Mentors = () => {
   const dispatch = useDispatch();
   const mentorList = useSelector((state) => state.mentorList);
   const { mentor } = mentorList;
+
   const [sort, setSort] = useState('');
   const [search, setSearch] = useState('');
 
@@ -48,10 +49,7 @@ const Mentors = () => {
       <div className='mentors-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
           <h1>Our Mentors</h1>
-          <form
-            action='/search-mentors'
-            className='mentors-search d-flex justify-content-between align-items-center'
-          >
+          <form action='/search-mentors' className='mentors-search'>
             <div className='form-group'>
               <span>
                 <i className='fas fa-search me-2 ms-1'></i>
@@ -61,6 +59,7 @@ const Mentors = () => {
                 name='search-text'
                 placeholder='Search Mentor'
                 value={search}
+                className='form-control'
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>

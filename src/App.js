@@ -34,6 +34,7 @@ import PackagesSection from './components/packages-section/PackagesSection';
 import DetailsSection from './components/details-section/DetailsSection';
 import CampusSection from './components/campus/CampusSection';
 import BrandVideosSection from './components/brand-videos-section/BrandVideosSection';
+import Facilities from './components/header-section/Facilities';
 
 function App() {
   return (
@@ -42,13 +43,14 @@ function App() {
         <Route path='/' exact>
           <Header />
           <ToastContainer />
-          <PackagesSection />
           <FindMentorSection />
           <DetailsSection />
-          <BannerSection />
+          <PackagesSection />
+          <Facilities />
           <JoinMentorkart />
           <ProgramsSection />
           <SubscriptionSection />
+          <BannerSection />
           <BrandVideosSection />
           <PartnersSection />
           <Testimonials />

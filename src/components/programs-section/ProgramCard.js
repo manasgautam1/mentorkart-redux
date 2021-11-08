@@ -34,9 +34,20 @@ const ProgramCard = ({ data }) => {
 
         <div className='row align-items-center'>
           <div className='col-6 ps-lg-4'>
+            <div className='category-tags mt-2'>
+              {data.user_category.split(',').map((cate, index) => {
+                return (
+                  <span key={index} className='btn btn-sm me-2'>
+                    {cate}
+                  </span>
+                );
+              })}
+            </div>
             <h2>{data.mk_course_name}</h2>
-            <h1>₹ {data.price} /-</h1>
-            <p className='mb-md-3 mb-2'>{data.description}</p>
+            <h1>₹ {data.price} </h1>
+            <p className='mb-md-3 mb-2 packages-description-homepage'>
+              {data.description}
+            </p>
             <button
               onClick={() => {
                 setShowModal(true);
@@ -46,7 +57,7 @@ const ProgramCard = ({ data }) => {
               Enroll Now
             </button>
           </div>
-          <div className='col-6'>
+          <div className='col-6 px-0'>
             <div className='img'>
               {data.icon_url === null ? (
                 <img src='/images/user.png' alt='' />
@@ -62,15 +73,6 @@ const ProgramCard = ({ data }) => {
                   alt=''
                 />
               )}
-              <div className='category-tags mt-2'>
-                {data.user_category.split(',').map((cate, index) => {
-                  return (
-                    <span key={index} className='btn btn-sm me-2'>
-                      {cate}
-                    </span>
-                  );
-                })}
-              </div>
             </div>
           </div>
         </div>

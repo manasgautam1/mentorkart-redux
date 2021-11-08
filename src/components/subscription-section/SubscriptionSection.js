@@ -34,7 +34,7 @@ const SubscriptionSection = () => {
     setShowModal(bool);
   };
   return (
-    <div className='subscription-section mt-md-5 mt-3 pt-5'>
+    <div className='subscription-section my-md-5 my-3 px-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
           <span>{websiteContent[0]?.data[18]?.field_data}</span>

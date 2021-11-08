@@ -67,7 +67,7 @@ const ProgramsSection = () => {
                       800: {
                         slidesPerView: 1.25,
                       },
-                      1100: {
+                      1200: {
                         slidesPerView: 1.5,
                       },
                     }}

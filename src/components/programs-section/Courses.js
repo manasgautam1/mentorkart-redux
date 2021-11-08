@@ -4,6 +4,7 @@ import MyNavbar from '../header-section/MyNavbar';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   listProgram,
+  searchProgram,
   listStudentCourse,
   listProfessionalCourse,
   listEntrepreneurCourse,
@@ -24,6 +25,7 @@ const Courses = () => {
   const { program } = programList;
 
   const [sort, setSort] = useState('');
+  const [search, setSearch] = useState('');
 
   const handleCLick = (value) => () => {
     setSort(value);
@@ -31,7 +33,12 @@ const Courses = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(listProgram());
+    if (search === '') {
+      dispatch(listProgram());
+    } else {
+      dispatch(searchProgram(search));
+    }
+
     if (sort === 'student') {
       dispatch(listStudentCourse());
     }
@@ -41,7 +48,7 @@ const Courses = () => {
     if (sort === 'entrepreneur') {
       dispatch(listEntrepreneurCourse());
     }
-  }, [dispatch, sort]);
+  }, [dispatch, sort, search]);
 
   return (
     <div className='courses'>
@@ -49,10 +56,7 @@ const Courses = () => {
       <div className='courses-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
           <h1>Programs and courses</h1>
-          <form
-            action='/search-blogs'
-            className='courses-search d-flex justify-content-between align-items-center'
-          >
+          <form action='' className='courses-search'>
             <div className='form-group'>
               <span>
                 <i className='fas fa-search me-2 ms-1'></i>
@@ -61,6 +65,8 @@ const Courses = () => {
                 type='text'
                 name='search-text'
                 placeholder='Search Course'
+                className='form-control'
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
           </form>
@@ -113,6 +119,17 @@ const Courses = () => {
                             alt=''
                           />
                         )}
+                      </div>
+                      <div className='p-3'>
+                        <div className='d-flex justify-content-between align-items-center'>
+                          <div>
+                            <h2 className='mt-0 mb-0 pe-3'>
+                              {course.mk_course_name}
+                            </h2>
+                          </div>
+                          <h6 className='mb-0'>₹ {course.price} /-</h6>
+                        </div>
+
                         <div className='category-tags mt-2'>
                           {course.user_category &&
                             course.user_category
@@ -124,16 +141,6 @@ const Courses = () => {
                                   </span>
                                 );
                               })}
-                        </div>
-                      </div>
-                      <div className='p-3'>
-                        <div className='d-flex justify-content-between align-items-center'>
-                          <div>
-                            <h2 className='mt-0 mb-0 pe-3'>
-                              {course.mk_course_name}
-                            </h2>
-                          </div>
-                          <h6 className='mb-0'>₹ {course.price} /-</h6>
                         </div>
                         <p className='mt-2 mb-3'>{course.description}</p>
                         <div className='row'>

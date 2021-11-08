@@ -2,6 +2,7 @@ import {
   PACKAGES_GET_REQUEST,
   PACKAGES_GET_SUCCESS,
   PACKAGES_GET_FAIL,
+  PACKAGES_GET_SEARCH,
 } from '../constants/packagesConstants';
 
 export const packages = (state = { packages: [] }, action) => {
@@ -12,6 +13,11 @@ export const packages = (state = { packages: [] }, action) => {
       return { loading: false, packages: action.payload };
     case PACKAGES_GET_FAIL:
       return { loading: false, error: action.payload };
+    case PACKAGES_GET_SEARCH:
+      return {
+        ...state,
+        packages: action.payload,
+      };
     default:
       return state;
   }
