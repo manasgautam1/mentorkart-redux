@@ -12,7 +12,7 @@ const PackagesCard = ({ data }) => {
 
   return (
     <div>
-      <div className='program-card py-3 px-4'>
+      <div className='program-card p-3'>
         <Modal
           id='signup-modal'
           isOpen={showModal}
@@ -33,32 +33,8 @@ const PackagesCard = ({ data }) => {
           <SignUpModal showModalBtn={showModalBtn} />
         </Modal>
 
-        <div className='row align-items-center'>
-          <div className='col-6 ps-lg-4'>
-            <div className='category-tags mt-2'>
-              {data.user_category.split(',').map((cate, index) => {
-                return (
-                  <span key={index} className='btn btn-sm me-2'>
-                    {cate}
-                  </span>
-                );
-              })}
-            </div>
-            <h2>{data.package_name}</h2>
-            <h1>₹ {data.price_INR} /-</h1>
-            <p className='mb-md-3 mb-2 packages-description-homepage'>
-              {Parser(data.description.substring(0, 100))}
-            </p>
-            <button
-              onClick={() => {
-                setShowModal(true);
-              }}
-              className='enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani'
-            >
-              Enroll Now
-            </button>
-          </div>
-          <div className='col-6 px-0'>
+        <div className=''>
+          <div className='px-0'>
             <div className='img'>
               {data.icon_url === null ? (
                 <img src='/images/user.png' alt='' />
@@ -75,6 +51,30 @@ const PackagesCard = ({ data }) => {
                 />
               )}
             </div>
+          </div>
+          <div className=''>
+            <div className='category-tags my-2'>
+              {data.user_category.split(',').map((cate, index) => {
+                return (
+                  <span key={index} className='btn btn-sm me-2'>
+                    {cate}
+                  </span>
+                );
+              })}
+            </div>
+            <h2>{data.package_name}</h2>
+            <h1>₹ {data.price_INR}</h1>
+            <p className='mb-md-3 mb-2 packages-description-homepage'>
+              {Parser(data.description.substring(0, 100))}
+            </p>
+            <button
+              onClick={() => {
+                setShowModal(true);
+              }}
+              className='enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani'
+            >
+              Enroll Now
+            </button>
           </div>
         </div>
       </div>

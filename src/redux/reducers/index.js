@@ -5,7 +5,11 @@ import { banner } from './bannerReducer';
 import { blogs } from './blogsReducer';
 import { feature } from './featureReducer';
 import { partner } from './partnerReducer';
-import { subscribe } from './subscribeReducer';
+import {
+  subscribeStudent,
+  subscribeProfessional,
+  subscribeEntrepreneur,
+} from './subscribeReducer';
 import { testimonial } from './testimonialsReducer';
 import { youtube } from './youtubeReducer';
 import { program } from './programReducer';
@@ -24,7 +28,9 @@ export default combineReducers({
   partnerList: partner,
   featureList: feature,
   blogsList: blogs,
-  subscribeList: subscribe,
+  subscribeStudent,
+  subscribeProfessional,
+  subscribeEntrepreneur,
   testimonialList: testimonial,
   youtubeList: youtube,
   programList: program,

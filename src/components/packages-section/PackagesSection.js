@@ -52,7 +52,7 @@ const PackagesSection = () => {
                 </Link>
               </div>
               <div className='col-lg-8 col-md-7'>
-                <div className='programs-cards mt-md-5 mb-md-4 pt-4'>
+                <div className='programs-cards mt-md-0 mt-4'>
                   <Swiper
                     spaceBetween={30}
                     slidesPerView={1}
@@ -61,14 +61,23 @@ const PackagesSection = () => {
                     breakpoints={{
                       // when window width is >= 0px
                       0: {
-                        slidesPerView: 1,
-                      },
-                      // when window width is >= 1000px
-                      800: {
                         slidesPerView: 1.25,
                       },
-                      1200: {
+                      480: {
                         slidesPerView: 1.5,
+                      },
+                      580: {
+                        slidesPerView: 2,
+                      },
+                      // when window width is >= 1000px
+                      780: {
+                        slidesPerView: 1.5,
+                      },
+                      1000: {
+                        slidesPerView: 2,
+                      },
+                      1200: {
+                        slidesPerView: 2.5,
                       },
                     }}
                   >

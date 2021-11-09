@@ -11,7 +11,7 @@ const ProgramCard = ({ data }) => {
 
   return (
     <div>
-      <div className='program-card py-3 px-4'>
+      <div className='program-card p-3'>
         <Modal
           id='signup-modal'
           isOpen={showModal}
@@ -32,9 +32,27 @@ const ProgramCard = ({ data }) => {
           <SignUpModal showModalBtn={showModalBtn} />
         </Modal>
 
-        <div className='row align-items-center'>
-          <div className='col-6 ps-lg-4'>
-            <div className='category-tags mt-2'>
+        <div className=''>
+          <div className='px-0'>
+            <div className='img'>
+              {data.icon_url === null ? (
+                <img src='/images/user.png' alt='' />
+              ) : (
+                <img
+                  src={
+                    'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                    data.icon_url
+                  }
+                  style={{
+                    borderRadius: '10px',
+                  }}
+                  alt=''
+                />
+              )}
+            </div>
+          </div>
+          <div className=''>
+            <div className='category-tags my-2'>
               {data.user_category.split(',').map((cate, index) => {
                 return (
                   <span key={index} className='btn btn-sm me-2'>
@@ -56,24 +74,6 @@ const ProgramCard = ({ data }) => {
             >
               Enroll Now
             </button>
-          </div>
-          <div className='col-6 px-0'>
-            <div className='img'>
-              {data.icon_url === null ? (
-                <img src='/images/user.png' alt='' />
-              ) : (
-                <img
-                  src={
-                    'https://mentorkart-admin-staging.s3.amazonaws.com/' +
-                    data.icon_url
-                  }
-                  style={{
-                    borderRadius: '10px',
-                  }}
-                  alt=''
-                />
-              )}
-            </div>
           </div>
         </div>
       </div>

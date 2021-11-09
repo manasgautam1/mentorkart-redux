@@ -195,7 +195,7 @@ a {
   height: 60px;
   margin: auto;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 1.5px solid #222;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,7 +205,7 @@ a {
 }
 .facility-text {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -312,19 +312,6 @@ a {
   overflow: hidden;
   position: relative;
 }
-.programs .programs-cards .img {
-  height: 190px;
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-.find-mentor .mentor-card .img .category-tags,
-.programs .programs-cards .img .category-tags {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
 .find-mentor .mentor-card .category-tags .btn,
 .programs .programs-cards .category-tags .btn {
   background-color: #222;
@@ -334,9 +321,7 @@ a {
 }
 .find-mentor .mentor-card img,
 .programs .programs-cards img {
-  position: absolute;
-  top: 0;
-  left: 0;
+  object-fit: contain;
   width: 100%;
   height: 100%;
 }
@@ -623,7 +608,7 @@ a {
   color: #6483f6;
 }
 .programs .program-card {
-  height: 240px;
+  height: 400px;
   position: relative;
   background-color: #fff;
   font-family: 'Montserrat', sans-serif;
@@ -657,7 +642,7 @@ a {
   font-weight: 500;
 }
 .programs .programs-cards .swiper-container {
-  height: 260px;
+  height: 440px;
 }
 .details-section .details-card {
   background: #fefefe;
@@ -1319,13 +1304,6 @@ a {
   /* height: 250px; */
 }
 
-.mentors-card .mentor-card .img .category-tags,
-.courses .program-card .img .category-tags,
-.programs .programs-cards .img .category-tags {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
 .programs .programs-cards .category-tags .btn {
   background: #222 !important;
   color: #fff !important;
@@ -1736,14 +1714,13 @@ a {
 }
 .subscription-section .swiper-container,
 .subscription-section .swiper-wrapper {
-  height: 500px !important;
+  height: 550px !important;
 }
-.subscription-section .subs-card,
-.subscription-section .subs-card-alt {
-  height: 460px !important;
+.subscription-section .card {
+  height: 510px !important;
 }
 .subscription-section h1 {
-  font-size: 50px;
+  font-size: 44px;
 }
 .subscription-section .card {
   height: 100%;
@@ -1769,7 +1746,7 @@ a {
   border-bottom-right-radius: 10px;
 }
 
-.subscription-section .card h1 {
+.subscription-section h2.price {
   font-size: 32px;
   margin-top: -10px;
   font-weight: 700;
@@ -1857,4 +1834,73 @@ input[type='number']:focus,
   position: absolute;
   right: 10px;
   bottom: -5px;
+}
+
+.subscription-section .hide {
+  display: none;
+}
+.subscription-section .toggle,
+.subscription-section .toggler {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.subscription-section .toggler {
+  color: #ddd;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.subscription-section .toggler-is-active {
+  color: #f07867;
+}
+
+.subscription-section .b {
+  display: block;
+}
+
+.subscription-section .toggle {
+  position: relative;
+  width: 80px;
+  height: 35px;
+  border-radius: 100px;
+  background-color: #f07867;
+  overflow: hidden;
+  box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.05);
+}
+
+.subscription-section .check {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 6;
+}
+
+.subscription-section .check:checked ~ .switch {
+  right: 2px;
+  left: 57.5%;
+  transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition-property: left, right;
+  transition-delay: 0.08s, 0s;
+}
+
+.subscription-section .switch {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 57.5%;
+  background-color: #fff;
+  border-radius: 36px;
+  z-index: 1;
+  transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition-property: left, right;
+  transition-delay: 0s, 0.08s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }

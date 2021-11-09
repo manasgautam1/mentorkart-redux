@@ -122,7 +122,7 @@ const Showcase = () => {
                 effect={'fade'}
                 spaceBetween={30}
                 slidesPerView={1}
-                autoplay={{ autoplay: true, delay: 2000 }}
+                autoplay={{ autoplay: true, delay: 10000 }}
                 breakpoints={{
                   // when window width is >= 0px
                   0: {

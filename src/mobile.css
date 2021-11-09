@@ -15,9 +15,7 @@
   }
   .find-mentor .mentor-card .mentor-card-btn,
   .mentors-card .mentor-card .mentor-card-btn {
-    border-radius: 15px;
     width: 100%;
-    line-height: 0.7rem;
   }
 
   .find-mentor .mentor-card {
@@ -445,10 +443,10 @@
   .details-section .details-card p.lead {
     font-size: 14.5px;
   }
-  .programs .programs-cards .img {
+  /* .programs .programs-cards .img {
     height: 190px;
     width: 210px;
-  }
+  } */
 
   .navbar .heading.dropdown-toggle.btn {
     padding: 0.375rem 0rem !important;
