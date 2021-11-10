@@ -15,6 +15,7 @@ import Modal from 'react-modal';
 import SignUpModal from '../join-mentokart/SignUpModal';
 
 const Courses = () => {
+  const loggedIn = JSON.parse(localStorage.getItem('userInfo'));
   const [showModal, setShowModal] = useState(false);
   const showModalBtn = (bool) => {
     setShowModal(bool);
@@ -146,7 +147,11 @@ const Courses = () => {
                         <div className='row'>
                           <button
                             onClick={() => {
-                              setShowModal(true);
+                              if (loggedIn === null) {
+                                setShowModal(true);
+                              } else {
+                                window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`;
+                              }
                             }}
                             className='enroll-btn btn btn-ani'
                           >

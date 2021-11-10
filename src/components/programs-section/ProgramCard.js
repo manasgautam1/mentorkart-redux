@@ -3,6 +3,7 @@ import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
 
 const ProgramCard = ({ data }) => {
+  const loggedIn = JSON.parse(localStorage.getItem('userInfo'));
   const [showModal, setShowModal] = useState(false);
 
   const showModalBtn = (bool) => {
@@ -68,7 +69,11 @@ const ProgramCard = ({ data }) => {
             </p>
             <button
               onClick={() => {
-                setShowModal(true);
+                if (loggedIn === null) {
+                  setShowModal(true);
+                } else {
+                  window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`;
+                }
               }}
               className='enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani'
             >

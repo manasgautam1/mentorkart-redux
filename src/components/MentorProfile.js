@@ -9,8 +9,9 @@ import Modal from 'react-modal';
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
 
-const MentorProfile = ({ match }) => {
+const MentorProfile = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const loggedIn = JSON.parse(localStorage.getItem('userInfo'));
 
   const showModalBtn = (bool) => {
     setShowModal(bool);
@@ -31,9 +32,9 @@ const MentorProfile = ({ match }) => {
   console.log(mentorDetail);
 
   useEffect(() => {
-    dispatch(listMentorDetails(match.params.id));
     window.scroll(0, 0);
-  }, [dispatch, match]);
+    dispatch(listMentorDetails(props.match.params.id));
+  }, [dispatch, props.match]);
 
   return (
     <div className='mentor-profile'>
@@ -88,7 +89,9 @@ const MentorProfile = ({ match }) => {
                       <div className='row me-1'>
                         <button
                           onClick={() => {
-                            setShowModal(true);
+                            if (loggedIn === null) {
+                              setShowModal(true);
+                            }
                           }}
                           className='btn btn-primary'
                         >
@@ -100,7 +103,9 @@ const MentorProfile = ({ match }) => {
                       <div className='ms-1 row'>
                         <button
                           onClick={() => {
-                            setShowModal(true);
+                            if (loggedIn === null) {
+                              setShowModal(true);
+                            }
                           }}
                           className='btn btn-outline-primary'
                         >
@@ -131,7 +136,11 @@ const MentorProfile = ({ match }) => {
                   <div className='col-lg-6 col-md-12 col-6 ps-0'>
                     <div
                       onClick={() => {
-                        setShowModal(true);
+                        if (loggedIn === null) {
+                          setShowModal(true);
+                        } else {
+                          window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`;
+                        }
                       }}
                       className='showcase-card one'
                     >

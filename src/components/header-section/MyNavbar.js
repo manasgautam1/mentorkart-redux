@@ -60,15 +60,31 @@ const MyNavbar = () => {
               <div className=''>
                 <li className='navbar-btn nav-item'>
                   {user ? (
-                    <Link
-                      to={{
-                        pathname: `http://mentorkart.org/mentorkart?SSO_Mtoken=${user}&domain=https://mentorkart-new-ui.netlify.app`,
-                      }}
-                      target='_blank'
-                      className='nav-link btn'
-                    >
-                      Go to dashboard
-                    </Link>
+                    <div className='row no-gutters'>
+                      <div className='col-6'>
+                        <Link
+                          to={{
+                            pathname: `http://mentorkart.org/mentorkart?SSO_Mtoken=${user}&domain=https://mentorkart-new-ui.netlify.app`,
+                          }}
+                          target='_blank'
+                          className='nav-link btn'
+                        >
+                          Dashboard
+                        </Link>
+                      </div>
+                      <div className='col-6'>
+                        <Link
+                          to='#'
+                          onClick={() => {
+                            localStorage.setItem('userInfo', null);
+                            window.location.reload();
+                          }}
+                          className='nav-link btn'
+                        >
+                          Logout
+                        </Link>
+                      </div>
+                    </div>
                   ) : (
                     <Link
                       onClick={() => showModalBtn(true)}

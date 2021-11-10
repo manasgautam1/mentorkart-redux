@@ -10,7 +10,7 @@ import MyNavbar from './header-section/MyNavbar';
 import { industryOptions } from './data/industryOptions';
 
 const BeAMentor = () => {
-  console.log(industryOptions);
+  // console.log(industryOptions);
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
