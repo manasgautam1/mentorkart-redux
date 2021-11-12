@@ -47,6 +47,9 @@ const PackagesCard = ({ data }) => {
                   }
                   style={{
                     borderRadius: '10px',
+                    objectFit: 'cover',
+                    width: '100%',
+                    height: '170px'
                   }}
                   alt=''
                 />

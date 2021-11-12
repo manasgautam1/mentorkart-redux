@@ -97,7 +97,7 @@ const SubscriptionSection = () => {
                       </h2>
                     )}
                   </div>
-                  <div className='toggle-option-button'>
+                  <div className='toggle-option-button' >
                     <label
                       class={
                         active1 == 'quaterly'
@@ -107,7 +107,7 @@ const SubscriptionSection = () => {
                     >
                       Quaterly
                     </label>
-                    <div class='toggle'>
+                    <div class='toggle'  >
                       <input
                         type='checkbox'
                         id='switcher'
@@ -200,7 +200,7 @@ const SubscriptionSection = () => {
                     >
                       Quaterly
                     </label>
-                    <div class='toggle'>
+                    <div class='toggle' >
                       <input
                         type='checkbox'
                         id='switcher'

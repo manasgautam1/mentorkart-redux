@@ -191,7 +191,7 @@
   .subscription-section h1,
   .youtube-section h1,
   .brand-videos-section h1 {
-    font-size: 45px;
+    font-size: 35px;
   }
   .subscription-section h1 {
     font-size: 35px;
@@ -308,7 +308,7 @@
     background: rgba(255, 255, 255, 0.75);
   }
   .be-a-mentor header .container {
-    margin-top: 10vh;
+    margin-top: 4vh;
     text-align: center;
     position: relative;
   }
@@ -353,7 +353,7 @@
   .our-blogs .our-blogs-head h1,
   .courses .courses-head h1,
   .mentors .mentors-head h1 {
-    font-size: 32px;
+    font-size: 25px;
   }
 
   .single-blog .section-1 {
