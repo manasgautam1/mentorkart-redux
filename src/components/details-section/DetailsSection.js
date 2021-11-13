@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
-const DetailsSection = () => {
+const DetailsSection = () =>
+{
+  
   return (
     <div
       id='details-section'
@@ -12,7 +15,15 @@ const DetailsSection = () => {
           <div className='col-md-3 col-6 mb-md-0 mb-4'>
             <div className='details-card'>
               <h1 className='mb-0'>
-                <CountUp start={0} end={200} duration={5} delay={5}></CountUp>
+                <CountUp start={0} end={200} duration={10}>
+
+                        {({ countUpRef, start }) => (
+                            <VisibilitySensor onChange={start} delayedCall>
+                                <span ref={countUpRef} />
+                            </VisibilitySensor>
+                        )}
+
+                    </CountUp>
               </h1>
               <p className='lead'>Mentors onboarded</p>
             </div>
@@ -20,7 +31,15 @@ const DetailsSection = () => {
           <div className='col-md-3 col-6 mb-md-0 mb-4'>
             <div className='details-card'>
               <h1 className='mb-0'>
-                <CountUp start={0} end={20} duration={5} delay={5}></CountUp>
+                <CountUp start={0} end={20} duration={10} >
+
+                        {({ countUpRef, start }) => (
+                            <VisibilitySensor onChange={start} delayedCall>
+                                <span ref={countUpRef} />
+                            </VisibilitySensor>
+                        )}
+
+                    </CountUp>
               </h1>
               <p className='lead'>Universities onboarded</p>
             </div>
@@ -28,7 +47,15 @@ const DetailsSection = () => {
           <div className='col-md-3 col-6'>
             <div className='details-card'>
               <h1 className='mb-0'>
-                <CountUp start={0} end={100} duration={5} delay={5}></CountUp>
+               <CountUp start={0} end={100} duration={10} >
+
+                        {({ countUpRef, start }) => (
+                            <VisibilitySensor onChange={start} delayedCall>
+                                <span ref={countUpRef} />
+                            </VisibilitySensor>
+                        )}
+
+                    </CountUp>
               </h1>
               <p className='lead'>Partnered organisations</p>
             </div>
@@ -36,7 +63,15 @@ const DetailsSection = () => {
           <div className='col-md-3 col-6'>
             <div className='details-card'>
               <h1 className='mb-0'>
-                <CountUp start={0} end={10000} duration={5} delay={5}></CountUp>
+                <CountUp start={0} end={10000} duration={10}>
+
+                        {({ countUpRef, start }) => (
+                            <VisibilitySensor onChange={start} delayedCall>
+                                <span ref={countUpRef} />
+                            </VisibilitySensor>
+                        )}
+
+                    </CountUp>
               </h1>
               <p className='lead'>Current mentees</p>
             </div>
