@@ -91,7 +91,7 @@ const MyNavbar = () => {
                       className='nav-link btn'
                       to='#'
                     >
-                      Login
+                      Login/SignUp
                     </Link>
                   )}
                 </li>
