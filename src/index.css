@@ -2,6 +2,9 @@ body {
   overflow-x: hidden;
   width: 100vw;
 }
+
+
+
 .navbar {
   position: fixed;
   top: 0;
@@ -1224,6 +1227,7 @@ a {
   right: 0;
   bottom: 0;
   height: 100%;
+  z-index: -1;
 }
 .find-a-mentor .guru-img {
   width: 350px;
@@ -1414,7 +1418,7 @@ a {
   background-color: rgba(253, 240, 233, 0.45);
 }
 .about .section-2 p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 30px;
 }
 .about .section-2 p.my-4 {
@@ -1718,7 +1722,8 @@ a {
   height: 550px !important;
 }
 .subscription-section .card {
-  height: 510px !important;
+  height: 500px !important;
+  width:367px !important
 }
 .subscription-section h1 {
   font-size: 44px;
@@ -1748,8 +1753,8 @@ a {
 }
 
 .subscription-section h2.price {
-  font-size: 32px;
-  margin-top: -10px;
+  font-size: 25px;
+  margin-top: 6px;
   font-weight: 700;
 }
 .subscription-section .card p {
@@ -1765,7 +1770,7 @@ a {
 }
 .subscription-section .card .description {
   line-height: 26px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
 }
 .subscription-section .card .btn {

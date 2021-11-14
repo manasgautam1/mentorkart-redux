@@ -12,14 +12,14 @@ const OurTeam = () => {
     <div>
       <MyNavbar />
       <div className='our-team'>
-        <header className='pt-sm-0 pt-5'>
+        <header className='pt-sm-0 pt-2'>
           <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
             <img className='guru-img' src='/images/mentorkartguru.png' alt='' />
             <h1 className='mb-1'>MEET OUR TEAM</h1>
           </div>
         </header>
         <main className='text-lg-left text-center'>
-          <div className='team py-5'>
+          <div className='team '>
             <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-lg-1 order-2 mt-lg-0 mt-4'>
@@ -41,12 +41,13 @@ const OurTeam = () => {
                     src='/images/team/ashishkhare.png'
                     alt=''
                     className='img-fluid'
+                    style={{height:'300px'}}
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className='team team-alt py-5'>
+          <div className='team team-alt py-2'>
             <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-2 mt-lg-0 mt-4'>
@@ -69,12 +70,13 @@ const OurTeam = () => {
                     src='/images/team/skmohanty.png'
                     alt=''
                     className='img-fluid'
+                     style={{height:'300px'}}
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className='team py-5'>
+          <div className='team py-2'>
             <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
               <div className='row align-items-center'>
                 <div className='col-lg-7 order-lg-1 order-2 mt-lg-0 mt-4'>
@@ -96,6 +98,7 @@ const OurTeam = () => {
                     src='/images/team/harsh.png'
                     alt=''
                     className='img-fluid'
+                     style={{height:'300px'}}
                   />
                 </div>
               </div>

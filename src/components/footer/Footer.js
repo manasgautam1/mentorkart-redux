@@ -38,6 +38,7 @@ const Footer = () => {
                     <input
                       type='email'
                       name='email'
+                      required
                       value={newsletterEmail}
                       onChange={(e) => SetNewsletterEmail(e.target.value)}
                       className='form-control'

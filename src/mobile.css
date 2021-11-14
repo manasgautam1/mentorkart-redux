@@ -226,7 +226,7 @@
   .banners-section .swiper-container,
   .banners-section .swiper-wrapper,
   .banners-section img {
-    height: 200px;
+    height: 250px !important;
   }
   .banners-section .banner .banner-content {
     padding: 0 1rem !important;
