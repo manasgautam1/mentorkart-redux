@@ -12,6 +12,7 @@ import { otpsection } from '../../redux/actions/loginActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SignInModal = (props) => {
+  const [show, setShow] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const loginDetails = useSelector((state) => state.loginDetails);
@@ -33,6 +34,7 @@ const SignInModal = (props) => {
   const [showOtp, setshowOtp] = useState(false);
   const [otp, setOtp] = useState('');
   const [user, setUser] = useState('');
+  const [isDisabled, SetIsDisabled] = useState(true);
 
   const [SignInEmail, SetSignInEmail] = useState('');
   const [SignInPassword, SetSignInPassword] = useState('');
@@ -68,13 +70,27 @@ const SignInModal = (props) => {
     } else {
       toast.error(err);
     }
+  }, [login, error]);
+
+  useEffect(() => {
+    if (signup) {
+      toast.success('Verify your OTP');
+      setshowOtp(true);
+      setShowSignIn(false);
+      setShowSignUp(false);
+    } else {
+      toast.error(err);
+    }
+  }, [signup, err]);
+
+  useEffect(() => {
     if (otpverify) {
       toast.success('Verified');
       window.location.reload();
     } else {
       toast.error(errr);
     }
-  }, [login, signup, error, err, otpverify, errr]);
+  }, [otpverify, errr]);
 
   const SignInSubmit = (e) => {
     e.preventDefault();
@@ -239,7 +255,10 @@ const SignInModal = (props) => {
                           id='Student'
                           value='Student'
                           checked={user === 'Student'}
-                          onClick={() => setUser('Student')}
+                          onClick={() => {
+                            setUser('Student');
+                            setShow(true);
+                          }}
                         />
                         Student
                       </label>
@@ -253,7 +272,10 @@ const SignInModal = (props) => {
                           id='Professional'
                           value='Professional'
                           checked={user === 'Professional'}
-                          onClick={() => setUser('Professional')}
+                          onClick={() => {
+                            setUser('Professional');
+                            setShow(true);
+                          }}
                         />
                         Professional
                       </label>
@@ -267,7 +289,10 @@ const SignInModal = (props) => {
                           id='Entrepreneur'
                           value='Entrepreneur'
                           checked={user === 'Entrepreneur'}
-                          onClick={() => setUser('Entrepreneur')}
+                          onClick={() => {
+                            setUser('Entrepreneur');
+                            setShow(true);
+                          }}
                         />
                         Entrepreneur
                       </label>
@@ -277,164 +302,181 @@ const SignInModal = (props) => {
                     <select className='form-select' required>
                       <option
                         value='Student'
-                        onChange={() => setUser('Student')}
+                        onChange={() => {
+                          setUser('Student');
+                          setShow(true);
+                        }}
                       >
                         Student
                       </option>
                       <option
                         value='Professional'
-                        onChange={() => setUser('Professional')}
+                        onChange={() => {
+                          setUser('Professional');
+                          setShow(true);
+                        }}
                       >
                         Professional
                       </option>
                       <option
                         value='Entrepreneur'
-                        onChange={() => setUser('Entrepreneur')}
+                        onChange={() => {
+                          setUser('Entrepreneur');
+                          setShow(true);
+                        }}
                       >
                         Entrepreneur
                       </option>
                     </select>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-6 mb-3'>
+                  <div style={show === false ? { display: 'none' } : {}}>
+                    <div className='row'>
+                      <div className='col-md-6 mb-3'>
+                        <input
+                          type='text'
+                          name='Firstname'
+                          id='firstname'
+                          value={firstname}
+                          onChange={(e) => {
+                            SetFirstname(e.target.value);
+                          }}
+                          required
+                          className='form-control form-control-sm'
+                          placeholder='Firstname'
+                        />
+                      </div>
+                      <div className='col-md-6 mb-3'>
+                        <input
+                          type='text'
+                          name='Lastname'
+                          id='lastname'
+                          value={lastname}
+                          onChange={(e) => {
+                            SetLastname(e.target.value);
+                          }}
+                          required
+                          className='form-control form-control-sm'
+                          placeholder='Lastname'
+                        />
+                      </div>
+                    </div>
+                    <div className='form-group mb-3'>
                       <input
-                        type='text'
-                        name='Firstname'
-                        id='firstname'
-                        value={firstname}
+                        type='email'
+                        name='email'
+                        id='email'
+                        value={email}
                         onChange={(e) => {
-                          SetFirstname(e.target.value);
+                          SetEmail(e.target.value);
                         }}
                         required
                         className='form-control form-control-sm'
-                        placeholder='Firstname'
+                        placeholder='Email'
                       />
                     </div>
-                    <div className='col-md-6 mb-3'>
-                      <input
-                        type='text'
-                        name='Lastname'
-                        id='lastname'
-                        value={lastname}
-                        onChange={(e) => {
-                          SetLastname(e.target.value);
+                    <div className='form-group mb-3'>
+                      <PhoneInput
+                        inputExtraProps={{
+                          name: 'phone',
+                          required: true,
                         }}
-                        required
                         className='form-control form-control-sm'
-                        placeholder='Lastname'
+                        country={'in'}
+                        value={phone}
+                        onChange={(phone) => SetPhone(phone)}
                       />
                     </div>
-                  </div>
-                  <div className='form-group mb-3'>
-                    <input
-                      type='email'
-                      name='email'
-                      id='email'
-                      value={email}
-                      onChange={(e) => {
-                        SetEmail(e.target.value);
-                      }}
-                      required
-                      className='form-control form-control-sm'
-                      placeholder='Email'
-                    />
-                  </div>
-                  <div className='form-group mb-3'>
-                    <PhoneInput
-                      inputExtraProps={{
-                        name: 'phone',
-                        required: true,
-                      }}
-                      className='form-control form-control-sm'
-                      country={'in'}
-                      value={phone}
-                      onChange={(phone) => SetPhone(phone)}
-                    />
-                  </div>
-                  <div className='form-group mb-0'>
-                    <div className='password-div'>
+                    <div className='form-group mb-0'>
+                      <div className='password-div'>
+                        <input
+                          required
+                          type={passwordType1}
+                          name='password'
+                          id='password'
+                          value={password}
+                          onChange={(e) => {
+                            SetPassword(e.target.value);
+                          }}
+                          className='form-control form-control-sm'
+                          placeholder='Password'
+                        />
+                        <span
+                          className='btn'
+                          onClick={(e) => {
+                            if (passwordType1 === 'password') {
+                              SetPasswordType1('text');
+                            } else {
+                              SetPasswordType1('password');
+                            }
+                          }}
+                        >
+                          {passwordType1 === 'password' ? (
+                            <i className='fas fa-eye'></i>
+                          ) : (
+                            <i className='fas fa-eye-slash'></i>
+                          )}
+                        </span>
+                        <abbr
+                          style={{ cursor: 'pointer' }}
+                          title='minimum 14 characters with atleast 1 small letter, 1 capital letter, 1 special character and 1 numeric value '
+                        >
+                          <i className='fas fa-info'></i>
+                        </abbr>
+                      </div>
+                      <PasswordStrengthBar password={password} />
+                    </div>
+                    <div className='form-group mb-3'>
+                      <div className='password-div'>
+                        <input
+                          required
+                          type={passwordType2}
+                          name='confirm-password'
+                          id='confirm-password'
+                          value={confirm}
+                          onChange={(e) => {
+                            SetConfirm(e.target.value);
+                          }}
+                          className='form-control form-control-sm'
+                          placeholder='Confirm password'
+                        />
+                        <span
+                          className='btn'
+                          onClick={(e) => {
+                            if (passwordType2 === 'password') {
+                              SetPasswordType2('text');
+                            } else {
+                              SetPasswordType2('password');
+                            }
+                          }}
+                        >
+                          {passwordType2 === 'password' ? (
+                            <i className='fas fa-eye'></i>
+                          ) : (
+                            <i className='fas fa-eye-slash'></i>
+                          )}
+                        </span>
+                      </div>
+                    </div>
+                    <div className='form-check mb-3 align-items-end'>
                       <input
-                        required
-                        type={passwordType1}
-                        name='password'
-                        id='password'
-                        value={password}
+                        className='form-check-input mt-2'
+                        type='checkbox'
                         onChange={(e) => {
-                          SetPassword(e.target.value);
-                        }}
-                        className='form-control form-control-sm'
-                        placeholder='Password'
-                      />
-                      <span
-                        className='btn'
-                        onClick={(e) => {
-                          if (passwordType1 === 'password') {
-                            SetPasswordType1('text');
+                          if (btnEnabled) {
+                            setBtnEnabled(false);
+                            setBtnClass('btn col-12 disabled');
                           } else {
-                            SetPasswordType1('password');
+                            setBtnEnabled(true);
+                            setBtnClass('btn col-12');
                           }
                         }}
-                      >
-                        {passwordType1 === 'password' ? (
-                          <i class='fas fa-eye'></i>
-                        ) : (
-                          <i class='fas fa-eye-slash'></i>
-                        )}
-                      </span>
-                    </div>
-                    <PasswordStrengthBar password={password} />
-                  </div>
-                  <div className='form-group mb-3'>
-                    <div className='password-div'>
-                      <input
-                        required
-                        type={passwordType2}
-                        name='confirm-password'
-                        id='confirm-password'
-                        value={confirm}
-                        onChange={(e) => {
-                          SetConfirm(e.target.value);
-                        }}
-                        className='form-control form-control-sm'
-                        placeholder='Confirm password'
+                        id='agree'
                       />
-                      <span
-                        className='btn'
-                        onClick={(e) => {
-                          if (passwordType2 === 'password') {
-                            SetPasswordType2('text');
-                          } else {
-                            SetPasswordType2('password');
-                          }
-                        }}
-                      >
-                        {passwordType2 === 'password' ? (
-                          <i class='fas fa-eye'></i>
-                        ) : (
-                          <i class='fas fa-eye-slash'></i>
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                  <div className='form-check mb-3 align-items-end'>
-                    <input
-                      className='form-check-input mt-2'
-                      type='checkbox'
-                      onChange={(e) => {
-                        if (btnEnabled) {
-                          setBtnEnabled(false);
-                          setBtnClass('btn col-12 disabled');
-                        } else {
-                          setBtnEnabled(true);
-                          setBtnClass('btn col-12');
-                        }
-                      }}
-                      id='agree'
-                    />
 
-                    <label className='form-check-label' htmlFor='agree'>
-                      I agree to terms and conditions
-                    </label>
+                      <label className='form-check-label' htmlFor='agree'>
+                        I agree to terms and conditions
+                      </label>
+                    </div>
                   </div>
                   <div className='row px-2'>
                     <button type='submit' className='btn btn-dark'>
@@ -517,9 +559,9 @@ const SignInModal = (props) => {
                         }}
                       >
                         {passwordType1 === 'password' ? (
-                          <i class='fas fa-eye'></i>
+                          <i className='fas fa-eye'></i>
                         ) : (
-                          <i class='fas fa-eye-slash'></i>
+                          <i className='fas fa-eye-slash'></i>
                         )}
                       </span>
                     </div>
