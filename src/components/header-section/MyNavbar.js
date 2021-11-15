@@ -76,7 +76,7 @@ const MyNavbar = () => {
                         <Link
                           to='#'
                           onClick={() => {
-                            localStorage.setItem('userInfo', null);
+                            localStorage.clear();
                             window.location.reload();
                           }}
                           className='nav-link btn'
@@ -91,7 +91,7 @@ const MyNavbar = () => {
                       className='nav-link btn'
                       to='#'
                     >
-                      Login
+                      Login / SignUp
                     </Link>
                   )}
                 </li>

@@ -36,7 +36,7 @@ const FindMentorSection = () => {
       {loading ? (
         <div></div>
       ) : (
-        <div className='find-mentor py-sm-5 mt-sm-0 mt-5'>
+        <div className='find-mentor pt-5'>
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
             <div className='row'>
               <div className='col-md-4 left mb-md-0 mb-lg-5 mb-3 '>

@@ -25,19 +25,7 @@ const Facilities = () => {
     <div className='facilities-section bg-white pt-lg-3'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center py-sm-3 pt-4 pb-3'>
-          <div
-            onClick={handleClick}
-            className='col-md-2 col-4 mb-2 facility-card'
-          >
-            <div className='facility-img-container'>
-              <img className='' src='/images/icon1.png' alt='' />
-            </div>
-            <div>
-              <p className='facility-text mt-2'>
-                Jobs <br /> (Coming soon)
-              </p>
-            </div>
-          </div>
+         
           <Link to='/all-mentors' className='col-md-2 col-4 mb-2 facility-card'>
             <div className='facility-img-container'>
               <img className='' src='/images/icon2.png' alt='' />
@@ -48,6 +36,20 @@ const Facilities = () => {
               </p>
             </div>
           </Link>
+
+           <div
+            onClick={handleClick}
+            className='col-md-2 col-4 mb-2 facility-card'
+          >
+            <div className='facility-img-container'>
+              <img className='' src='/images/icon4.png' alt='' />
+            </div>
+            <div>
+              <p className='facility-text mt-2'>
+                Dtawk (Group <br /> Chat with Mentors)
+              </p>
+            </div>
+          </div>
           <div
             onClick={handleClick}
             className='col-md-2 col-4 mb-2 facility-card'
@@ -61,19 +63,7 @@ const Facilities = () => {
               </p>
             </div>
           </div>
-          <div
-            onClick={handleClick}
-            className='col-md-2 col-4 mb-2 facility-card'
-          >
-            <div className='facility-img-container'>
-              <img className='' src='/images/icon4.png' alt='' />
-            </div>
-            <div>
-              <p className='facility-text mt-2'>
-                Dtawk (Group <br /> Chat with Mentors)
-              </p>
-            </div>
-          </div>
+         
           <div
             onClick={handleClick}
             className='col-md-2 col-4 mb-2 facility-card'
@@ -93,6 +83,19 @@ const Facilities = () => {
               <p className='facility-text mt-2'>Programs</p>
             </div>
           </Link>
+                     <div
+            onClick={handleClick}
+            className='col-md-2 col-4 mb-2 facility-card'
+          >
+            <div className='facility-img-container'>
+              <img className='' src='/images/icon1.png' alt='' />
+            </div>
+            <div>
+              <p className='facility-text mt-2'>
+                Jobs <br /> (Coming soon)
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <Modal

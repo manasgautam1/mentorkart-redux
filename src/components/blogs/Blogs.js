@@ -44,7 +44,7 @@ const Blogs = () => {
               <input type='text' name='search-text' placeholder='Search Blog' />
             </div>
           </form>
-          <div className='tags d-flex mt-3 justify-content-center'>
+          <div className='tags d-flex mt-3 justify-content-center '>
             <ul className='d-flex flex-wrap'>
               <li>
                 <button className='btn'>All</button>
@@ -64,7 +64,7 @@ const Blogs = () => {
       </div>
       <div className='our-blogs-content'>
         <div id='#all' className='blogs-cards-one container mt-5 mb-5'>
-          <div className='mt-4'>
+          <div className='mt-4' style={{padding:'10px'}}>
             <Swiper
               spaceBetween={30}
               slidesPerView={1}

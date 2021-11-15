@@ -2,6 +2,7 @@ body {
   overflow-x: hidden;
   width: 100vw;
 }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -530,9 +531,7 @@ a {
   font-size: 10px;
   font-weight: 600;
 }
-.ad-cards .swiper-container {
-  height: 300px;
-}
+.ad-cards .swiper-container,
 .ad-cards .swiper-wrapper {
   height: 300px;
 }
@@ -962,7 +961,7 @@ a {
   color: #333;
   font-weight: 700;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 1rem;
 }
 .our-blogs .our-blogs-head .blog-search,
@@ -1224,6 +1223,7 @@ a {
   right: 0;
   bottom: 0;
   height: 100%;
+  z-index: -1;
 }
 .find-a-mentor .guru-img {
   width: 350px;
@@ -1254,7 +1254,8 @@ a {
 .be-a-mentor input[type='date'],
 .be-a-mentor input[type='tel'],
 .be-a-mentor textarea,
-.be-a-mentor .css-yk16xz-control {
+.be-a-mentor .css-yk16xz-control,
+.be-a-mentor .form-select {
   background-color: rgba(244, 244, 244, 0.25) !important;
   /* color: #f07867; */
 }
@@ -1274,7 +1275,8 @@ a {
 .be-a-mentor input[type='search']:focus,
 .be-a-mentor input[type='tel']:focus,
 .be-a-mentor input[type='color']:focus,
-.uneditable-input:focus {
+.uneditable-input:focus,
+.be-a-mentor .form-select:focus {
   border-color: rgba(240, 120, 103, 0.8);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
     0 0 8px rgba(240, 120, 103, 0.6);
@@ -1300,8 +1302,8 @@ a {
 .courses .program-card img,
 .courses .program-card .img {
   border-radius: 10px;
-  object-fit: contain;
-  /* height: 250px; */
+  object-fit: fill;
+  height: 250px;
 }
 
 .programs .programs-cards .category-tags .btn {
@@ -1413,12 +1415,15 @@ a {
   background-color: rgba(253, 240, 233, 0.45);
 }
 .about .section-2 p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 30px;
 }
 .about .section-2 p.my-4 {
   font-size: 21px;
   line-height: 30px;
+}
+.about .section-2 img {
+  width: 75%;
 }
 .about .section-4 h2,
 .about .section-5 h2,
@@ -1717,7 +1722,7 @@ a {
   height: 550px !important;
 }
 .subscription-section .card {
-  height: 510px !important;
+  height: 500px !important;
 }
 .subscription-section h1 {
   font-size: 44px;
@@ -1747,8 +1752,8 @@ a {
 }
 
 .subscription-section h2.price {
-  font-size: 32px;
-  margin-top: -10px;
+  font-size: 25px;
+  margin-top: 6px;
   font-weight: 700;
 }
 .subscription-section .card p {
@@ -1764,7 +1769,7 @@ a {
 }
 .subscription-section .card .description {
   line-height: 26px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
 }
 .subscription-section .card .btn {
@@ -1862,8 +1867,8 @@ input[type='number']:focus,
 
 .subscription-section .toggle {
   position: relative;
-  width: 80px;
-  height: 35px;
+  width: 65px;
+  height: 25px;
   border-radius: 100px;
   background-color: #f07867;
   overflow: hidden;

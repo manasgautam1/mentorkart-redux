@@ -12,7 +12,9 @@ const TestimonialCardContent = ({ data }) => {
           alt=''
         />
       </div>
-      <p>{data.text}</p>
+      <p>
+        {data.text.substring(0, 250)} {data.text.length > 250 ? '...' : ''}
+      </p>
       <div className='d-flex justify-content-between align-items-center'>
         <div>
           <p className='testimonial-writer mb-0'>{data.author}</p>

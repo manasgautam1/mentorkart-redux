@@ -33,6 +33,7 @@ const SignInModal = (props) => {
   const [showOtp, setshowOtp] = useState(false);
   const [otp, setOtp] = useState('');
   const [user, setUser] = useState('');
+  const [isDisabled, SetIsDisabled] = useState(true);
 
   const [SignInEmail, SetSignInEmail] = useState('');
   const [SignInPassword, SetSignInPassword] = useState('');
@@ -153,15 +154,22 @@ const SignInModal = (props) => {
           {signup && showOtp && (
             <div>
               <div className='content'>
-                <h1>Otp send to </h1>
-                <p>{phone}</p>
+                <h1 style={{ display: 'flex', justifyContent: 'center' }}>
+                  Otp send to{' '}
+                </h1>
+                <p style={{ display: 'flex', justifyContent: 'center' }}>
+                  {phone}
+                </p>
               </div>
-              <h3>Enter otp</h3>
+              <h3 style={{ display: 'flex', justifyContent: 'center' }}>
+                Enter otp
+              </h3>
+
               <OtpInput
                 inputStyle={{
                   width: '3rem',
                   height: '3rem',
-                  margin: '0 1rem',
+                  margin: '5px',
                   fontSize: '2rem',
                   color: '#FCCF31',
                   borderRadius: 4,
@@ -173,13 +181,25 @@ const SignInModal = (props) => {
                 onChange={setOtp}
                 numInputs={6}
                 shouldAutoFocus={true}
+                containerStyle={{ justifyContent: 'center' }}
                 focusStyle={{
                   border: '1px solid #FCCF31',
                   outline: 'none',
                 }}
               />
-              <div>
-                <button className='btn btn-dark' onClick={otpVerify}>
+
+              <div
+                style={{
+                  justifyContent: 'center',
+                  display: 'flex',
+                  marginTop: '30px',
+                }}
+              >
+                <button
+                  className='btn btn-dark'
+                  style={{ marginRight: '20px' }}
+                  onClick={otpVerify}
+                >
                   Verify
                 </button>
                 <div>
@@ -228,9 +248,9 @@ const SignInModal = (props) => {
                       <label className='form-check-label'>
                         <input
                           type='radio'
-                          required
+                          required='required'
                           className='form-check-input '
-                          name='Student'
+                          name='radio'
                           id='Student'
                           value='Student'
                           checked={user === 'Student'}
@@ -244,7 +264,7 @@ const SignInModal = (props) => {
                         <input
                           type='radio'
                           className='form-check-input'
-                          name='Professional'
+                          name='radio'
                           id='Professional'
                           value='Professional'
                           checked={user === 'Professional'}
@@ -258,21 +278,36 @@ const SignInModal = (props) => {
                         <input
                           type='radio'
                           className='form-check-input'
-                          name='Entrepreneur'
+                          name='radio'
                           id='Entrepreneur'
                           value='Entrepreneur'
                           checked={user === 'Entrepreneur'}
-                          onClick={() => setUser('Enterpreneur')}
+                          onClick={() => setUser('Entrepreneur')}
                         />
                         Entrepreneur
                       </label>
                     </div>
                   </div>
                   <div className='d-md-none d-block mb-4'>
-                    <select className='form-select'>
-                      <option value='Student'>Student</option>
-                      <option value='Professional'>Professional</option>
-                      <option value='Entrepreneur'>Entrepreneur</option>
+                    <select className='form-select' required>
+                      <option
+                        value='Student'
+                        onChange={() => setUser('Student')}
+                      >
+                        Student
+                      </option>
+                      <option
+                        value='Professional'
+                        onChange={() => setUser('Professional')}
+                      >
+                        Professional
+                      </option>
+                      <option
+                        value='Entrepreneur'
+                        onChange={() => setUser('Entrepreneur')}
+                      >
+                        Entrepreneur
+                      </option>
                     </select>
                   </div>
                   <div className='row'>

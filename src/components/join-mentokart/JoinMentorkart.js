@@ -41,7 +41,7 @@ const JoinMentorkart = () => {
   // console.log(advertisements);
 
   return (
-    <div className='join-mentorkart py-5 my-md-5'>
+    <div className='join-mentorkart'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row'>
           <div className='col-md-4 left'>
@@ -115,7 +115,7 @@ const JoinMentorkart = () => {
         </Modal>
 
         {advertisements[0]?.data?.length !== 0 && (
-          <div className='ad-cards mt-5 pt-4 align-items-center text-center'>
+          <div className='ad-cards pb-5 pt-4 align-items-center text-center'>
             <Swiper
               spaceBetween={50}
               slidesPerView={1}

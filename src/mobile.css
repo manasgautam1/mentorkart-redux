@@ -191,14 +191,14 @@
   .subscription-section h1,
   .youtube-section h1,
   .brand-videos-section h1 {
-    font-size: 45px;
+    font-size: 35px;
   }
   .subscription-section h1 {
     font-size: 35px;
   }
   .testimonials-section .testimonial-card .testi-img {
-    width: 150px !important;
-    height: 150px !important;
+    width: 100px !important;
+    height: 100px !important;
   }
   .find-mentor .left p,
   .join-mentorkart .left p,
@@ -217,7 +217,7 @@
   }
   .youtube-section .swiper-container,
   .youtube-section .swiper-wrapper {
-    height: 400px;
+    height: 300px;
   }
   .youtube-video,
   .youtube-video iframe,
@@ -226,7 +226,7 @@
   .banners-section .swiper-container,
   .banners-section .swiper-wrapper,
   .banners-section img {
-    height: 200px;
+    height: 250px !important;
   }
   .banners-section .banner .banner-content {
     padding: 0 1rem !important;
@@ -308,7 +308,7 @@
     background: rgba(255, 255, 255, 0.75);
   }
   .be-a-mentor header .container {
-    margin-top: 10vh;
+    margin-top: 4vh;
     text-align: center;
     position: relative;
   }
@@ -353,7 +353,7 @@
   .our-blogs .our-blogs-head h1,
   .courses .courses-head h1,
   .mentors .mentors-head h1 {
-    font-size: 32px;
+    font-size: 25px;
   }
 
   .single-blog .section-1 {
@@ -372,7 +372,13 @@
   .be-a-mentor h1,
   .faq h1,
   .mentor-profile h1 {
-    font-size: 35px;
+    font-size: 32px;
+  }
+  .about header p {
+    font-size: 16px;
+  }
+  .about main p {
+    font-size: 14.5px;
   }
   .mentor-profile .accordion p {
     text-align: left;
@@ -450,5 +456,13 @@
 
   .navbar .heading.dropdown-toggle.btn {
     padding: 0.375rem 0rem !important;
+  }
+
+  .ad-cards .swiper-container,
+  .ad-cards .swiper-wrapper {
+    height: 250px;
+  }
+  .programs .left h1 {
+    line-height: 40px;
   }
 }

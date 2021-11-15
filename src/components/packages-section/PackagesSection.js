@@ -61,7 +61,7 @@ const PackagesSection = () => {
                     breakpoints={{
                       // when window width is >= 0px
                       0: {
-                        slidesPerView: 1.25,
+                        slidesPerView: 1,
                       },
                       480: {
                         slidesPerView: 1.5,

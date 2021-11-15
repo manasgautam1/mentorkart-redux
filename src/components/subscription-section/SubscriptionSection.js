@@ -52,15 +52,15 @@ const SubscriptionSection = () => {
     setShowModal(bool);
   };
   return (
-    <div className='subscription-section my-md-5 my-3 px-5'>
+    <div className='subscription-section my-md-5 my-3 mt-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
           <span>{websiteContent[0]?.data[18]?.field_data}</span>
           <h1>{websiteContent[0]?.data[19]?.field_data}</h1>
         </div>
-        <div className='mt-3 align-items-center'>
+        <div className='mt-3 align-items-center '>
           <Swiper
-            spaceBetween={50}
+            spaceBetween={0}
             slidesPerView={1}
             pagination={{ clickable: true }}
             autoplay={{ autoplay: true, delay: 20000 }}
@@ -79,7 +79,7 @@ const SubscriptionSection = () => {
             }}
           >
             <SwiperSlide>
-              <div>
+              <div className='px-lg-3 px-md-2 px-md-1'>
                 <div className='card align-items-center'>
                   <span className='category'>
                     {Studentsubscribe && Studentsubscribe[0]?.category}
@@ -100,7 +100,7 @@ const SubscriptionSection = () => {
                   <div className='toggle-option-button'>
                     <label
                       class={
-                        active1 == 'quaterly'
+                        active1 === 'quaterly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
                       }
@@ -163,7 +163,7 @@ const SubscriptionSection = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div>
+              <div className='px-lg-3 px-md-2 px-md-1'>
                 <div className='card align-items-center'>
                   <span className='category'>
                     {Professionalsubscribe &&
@@ -193,7 +193,7 @@ const SubscriptionSection = () => {
                   <div className='toggle-option-button'>
                     <label
                       class={
-                        active2 == 'quaterly'
+                        active2 === 'quaterly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
                       }
@@ -260,7 +260,7 @@ const SubscriptionSection = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div>
+              <div className='px-lg-3 px-md-2 px-md-1'>
                 <div className='card align-items-center'>
                   <span className='category'>
                     {Entrepreneursubscribe &&
@@ -290,7 +290,7 @@ const SubscriptionSection = () => {
                   <div className='toggle-option-button'>
                     <label
                       class={
-                        active3 == 'quaterly'
+                        active3 === 'quaterly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
                       }

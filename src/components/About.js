@@ -1,10 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-phone-input-2/lib/style.css';
-
+import SignUpModal from '../components/join-mentokart/SignUpModal';
+import Modal from 'react-modal';
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
-
+Modal.setAppElement('#root');
 const About = () => {
+  const user = localStorage.getItem('userInfo');
+  const [showModal, setShowModal] = useState(false);
+
+  const showModalBtn = (bool) => {
+    setShowModal(bool);
+  };
+
+  const handleClick = () => {
+    if (user) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -25,12 +40,16 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <button className='btn btn-dark btn-lg'>Signup Now</button>
+            <div className='mt-3'>
+              <button className='btn btn-dark btn-lg' onClick={handleClick}>
+                {user ? 'Know More' : 'Signup Now'}
+              </button>
+            </div>
           </div>
         </header>
         <main>
           <div className=''>
-            <div className='section-3 text-center py-5 px-lg-0 px-3'>
+            <div className='section-3 text-center py-3 px-lg-0 px-3'>
               <div className='row text-center'>
                 <div className='col-lg-6 offset-lg-3'>
                   <h3>
@@ -64,7 +83,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className='section-2 py-5 pb-lg-0 pb-5'>
+            <div className='section-2 py-lg-5 py-3'>
               <div className='container'>
                 <div className='row align-items-center'>
                   <div className='col-lg-7 order-lg-1 order-2 text-md-left text-center'>
@@ -96,11 +115,11 @@ const About = () => {
                       Mentor.
                     </p>
                   </div>
-                  <div className='col-lg-5 order-lg-2 order-1'>
+                  <div className='col-lg-5 order-lg-2 order-1 text-center'>
                     <img
                       src='/images/about-main.png'
                       alt=''
-                      className='img-fluid'
+                      className='img-fluid mx-auto'
                     />
                   </div>
                 </div>
@@ -128,7 +147,9 @@ const About = () => {
                     </div>
                   </div>
                 </div>
-                <button className='btn btn-dark btn-lg'>Signup Now</button>
+                <button className='btn btn-dark btn-lg' onClick={handleClick}>
+                  {user ? 'Know More' : 'Signup Now'}
+                </button>
               </div>
             </div>
 
@@ -192,6 +213,26 @@ const About = () => {
         </main>
       </div>
       <Footer />
+
+      <Modal
+        id='signup-modal'
+        isOpen={showModal}
+        onRequestClose={() => setShowModal(false)}
+        style={{
+          overlay: {
+            zIndex: '5000',
+          },
+          content: {
+            maxWidth: '1100px',
+            margin: 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '15px',
+          },
+        }}
+      >
+        <SignUpModal showModalBtn={showModalBtn} />
+      </Modal>
     </div>
   );
 };

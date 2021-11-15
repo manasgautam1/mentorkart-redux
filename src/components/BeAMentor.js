@@ -1731,7 +1731,7 @@ const BeAMentor = () => {
               <div className='form-group mb-4'>
                 <label htmlFor='grad_college'>Graduation (mandatory)</label>
                 <div className='row'>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 p-2'>
                     <input
                       type='text'
                       name='GradCollege'
@@ -1743,7 +1743,7 @@ const BeAMentor = () => {
                       onChange={(e) => SetGradCollege(e.target.value)}
                     />
                   </div>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 p-2'>
                     <input
                       type='text'
                       name='GradDegree'
@@ -1755,7 +1755,7 @@ const BeAMentor = () => {
                       onChange={(e) => SetGradDegree(e.target.value)}
                     />
                   </div>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 p-2'>
                     <input
                       type='text'
                       name='GradYear'
@@ -1772,7 +1772,7 @@ const BeAMentor = () => {
               <div className='form-group mb-4'>
                 <label htmlFor='post_grad_college'>Post Graduation</label>
                 <div className='row'>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 p-2'>
                     <input
                       type='text'
                       name='GradCollege'
@@ -1783,7 +1783,7 @@ const BeAMentor = () => {
                       onChange={(e) => SetPostGradCollege(e.target.value)}
                     />
                   </div>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 p-2'>
                     <input
                       type='text'
                       name='GradDegree'
@@ -1794,7 +1794,7 @@ const BeAMentor = () => {
                       onChange={(e) => SetPostGradDegree(e.target.value)}
                     />
                   </div>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 p-2'>
                     <input
                       type='text'
                       name='GradYear'

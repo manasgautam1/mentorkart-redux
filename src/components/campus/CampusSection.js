@@ -30,7 +30,7 @@ const CampusSection = () => {
   }, [dispatch]);
 
   return (
-    <div className='partners mt-2 mb-4 pt-3'>
+    <div className='partners mb-4 pt-3'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <h1>{websiteContent[0]?.data[22]?.field_data}</h1>
         <div className='partners-images pt-3'>
@@ -41,10 +41,13 @@ const CampusSection = () => {
             breakpoints={{
               // when window width is >= 0px
               0: {
+                slidesPerView: 2,
+              },
+              500: {
                 slidesPerView: 3,
               },
               // when window width is >= 1000px
-              600: {
+              700: {
                 slidesPerView: 5,
               },
               900: {

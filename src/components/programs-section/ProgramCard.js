@@ -46,6 +46,9 @@ const ProgramCard = ({ data }) => {
                   }
                   style={{
                     borderRadius: '10px',
+                    objectFit: 'cover',
+                    width: '100%',
+                    height: '165px'
                   }}
                   alt=''
                 />

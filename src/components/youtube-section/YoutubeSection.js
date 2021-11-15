@@ -38,7 +38,7 @@ const YoutubeSection = () => {
     },
   };
   return (
-    <div className='youtube-section py-5 mb-5'>
+    <div className='youtube-section py-5 mb-lg-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
           <span>{websiteContent[0]?.data[26]?.field_data}</span>

@@ -57,7 +57,7 @@ const BrandVideosSection = () => {
               </div>
             </div>
           </div>
-          <div className='row pt-lg-5 pt-3'>
+          <div className='row pt-lg-5 pt-3 flex-column-reverse flex-md-row'>
             <div className='col-lg-6'>
               <div className='row px-lg-4'>
                 <div className='youtube-video'>
@@ -70,7 +70,7 @@ const BrandVideosSection = () => {
                 </div>
               </div>
             </div>
-            <div className='col-lg-6 py-md-5 py-3'>
+            <div className='col-lg-6 py-md-5 py-3 order-sm-12'>
               <h2>Life is a</h2>
               <h1>Big University</h1>
 
