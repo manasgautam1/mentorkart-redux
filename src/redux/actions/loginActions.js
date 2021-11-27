@@ -1,5 +1,5 @@
-import axios from 'axios';
-import jwt from 'jsonwebtoken';
+import axios from 'axios'
+import jwt from 'jsonwebtoken'
 
 import {
   LOGIN_GET_REQUEST,
@@ -14,7 +14,7 @@ import {
   OTPRESEND_GET_SUCCESS,
   OTPRESEND_GET_REQUEST,
   OTPRESEND_GET_FAIL,
-} from '../constants/loginConstants';
+} from '../constants/loginConstants'
 
 export const signIn =
   ({ email, password }) =>
@@ -24,32 +24,32 @@ export const signIn =
         header: {
           'Content-type': 'multipart/form-data',
         },
-      };
+      }
 
-      dispatch({ type: LOGIN_GET_REQUEST });
+      dispatch({ type: LOGIN_GET_REQUEST })
       const { data } = await axios.post(
         'https://mentorkart.org/api/login',
         { email, password },
         config
-      );
+      )
 
       dispatch({
         type: LOGIN_GET_SUCCESS,
         payload: data,
-      });
-
+      })
+      localStorage.setItem('user', JSON.stringify(data))
       if (data) {
         const payload = {
           email: email,
           password: password,
           app_key: 'mkwebsite',
-        };
+        }
 
-        const secretKey = Buffer.from('website-secret', 'base64');
+        const secretKey = Buffer.from('website-secret', 'base64')
 
-        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
+        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' })
 
-        localStorage.setItem('userInfo', JSON.stringify(token));
+        localStorage.setItem('userInfo', JSON.stringify(token))
       }
     } catch (error) {
       dispatch({
@@ -58,9 +58,9 @@ export const signIn =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }
 
 export const signUp =
   ({
@@ -83,9 +83,9 @@ export const signUp =
         header: {
           'Content-type': 'multipart/form-data',
         },
-      };
+      }
 
-      dispatch({ type: SIGNUP_GET_REQUEST });
+      dispatch({ type: SIGNUP_GET_REQUEST })
       const { data } = await axios.post(
         'https://mentorkart.org/api/register',
         {
@@ -102,12 +102,12 @@ export const signUp =
           country_name,
         },
         config
-      );
+      )
 
       dispatch({
         type: SIGNUP_GET_SUCCESS,
         payload: data.data,
-      });
+      })
     } catch (error) {
       dispatch({
         type: SIGNUP_GET_FAIL,
@@ -115,9 +115,9 @@ export const signUp =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }
 
 export const otpsection =
   ({
@@ -140,15 +140,15 @@ export const otpsection =
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      };
+      }
 
-      dispatch({ type: OTP_GET_REQUEST });
+      dispatch({ type: OTP_GET_REQUEST })
       const { data } = await axios.post(
         'https://mentorkart.org/api/verify-otp',
         { otp, country_code, country_name },
         config
-      );
-      console.log(data);
+      )
+      console.log(data)
 
       const res = await axios.post(
         'https://mentorkart.org/api/store-leads',
@@ -162,25 +162,25 @@ export const otpsection =
           //   user_category,
         },
         config
-      );
-      console.log(res);
+      )
+      console.log(res)
 
       dispatch({
         type: OTP_GET_SUCCESS,
         payload: data,
-      });
+      })
       if (data) {
         const payload = {
           email: email,
           password: password,
           app_key: 'mkwebsite',
-        };
+        }
 
-        const secretKey = Buffer.from('website-secret', 'base64');
+        const secretKey = Buffer.from('website-secret', 'base64')
 
-        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
+        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' })
 
-        localStorage.setItem('userInfo', JSON.stringify(token));
+        localStorage.setItem('userInfo', JSON.stringify(token))
       }
     } catch (error) {
       dispatch({
@@ -189,9 +189,9 @@ export const otpsection =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }
 
 export const resend =
   ({ country_code, token }) =>
@@ -201,20 +201,20 @@ export const resend =
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      };
+      }
 
-      dispatch({ type: OTPRESEND_GET_REQUEST });
+      dispatch({ type: OTPRESEND_GET_REQUEST })
       const { data } = await axios.post(
         'https://mentorkart.org/api/resend-otp',
         { country_code },
         config
-      );
-      console.log(data);
+      )
+      console.log(data)
 
       dispatch({
         type: OTPRESEND_GET_SUCCESS,
         payload: data,
-      });
+      })
     } catch (error) {
       dispatch({
         type: OTPRESEND_GET_FAIL,
@@ -222,6 +222,6 @@ export const resend =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }
