@@ -14,6 +14,7 @@ import Parser from 'react-html-parser'
 
 import SignUpModal from '../join-mentokart/SignUpModal'
 import PackagesModal from './PackagesModal'
+import PackageFilter from './PackageFilter'
 
 const Packages = () => {
   const loggedIn = JSON.parse(localStorage.getItem('userInfo'))
@@ -24,6 +25,11 @@ const Packages = () => {
   const [showPackagesModal, setShowPackagesModal] = useState(false)
   const showPackagesModalBtn = (bool) => {
     setShowPackagesModal(bool)
+  }
+
+  const [packageFilter, setpackageFilter] = useState(false)
+  const packageFilterBtn = (bool) => {
+    setpackageFilter(bool)
   }
 
   const dispatch = useDispatch()
@@ -105,7 +111,12 @@ const Packages = () => {
                 </button>
               </li>
               <li>
-                <button className="nav-link btn">More Filters</button>
+                <button
+                  className="nav-link btn"
+                  onClick={() => setpackageFilter(true)}
+                >
+                  More Filters
+                </button>
               </li>
             </ul>
           </div>
@@ -182,6 +193,26 @@ const Packages = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+        id="packages-modal"
+        isOpen={packageFilter}
+        onRequestClose={() => setpackageFilter(false)}
+        style={{
+          overlay: {
+            zIndex: '5000',
+          },
+          content: {
+            maxWidth: '700px',
+            margin: 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '15px',
+          },
+        }}
+      >
+        <PackageFilter packageFilterBtn={packageFilterBtn} />
+      </Modal>
       <Modal
         id="signup-modal"
         isOpen={showModal}

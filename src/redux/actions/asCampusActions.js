@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from 'axios'
 import {
   CAMPUS_GET_REQUEST,
   CAMPUS_GET_SUCCESS,
   CAMPUS_GET_FAIL,
-} from '../constants/asCampusConstants';
+} from '../constants/asCampusConstants'
 
 export const asCampus =
   ({ name, email, phone, orgName, message, address, designation }) =>
@@ -13,20 +13,20 @@ export const asCampus =
         header: {
           'Content-type': 'multipart/form-data',
         },
-      };
+      }
 
-      dispatch({ type: CAMPUS_GET_REQUEST });
+      dispatch({ type: CAMPUS_GET_REQUEST })
       const { data } = await axios.post(
-        'https://www.test.pinsoutinnovation.com/campus',
+        `${process.env.REACT_APP_WEBSITE_URL_PINS}/campus`,
         { name, email, phone, orgName, message, address, designation },
         config
-      );
-      console.log(data);
+      )
+      console.log(data)
 
       dispatch({
         type: CAMPUS_GET_SUCCESS,
         payload: data,
-      });
+      })
     } catch (error) {
       dispatch({
         type: CAMPUS_GET_FAIL,
@@ -34,9 +34,9 @@ export const asCampus =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }
 
 export const asOrganisation =
   ({ name, email, phone, orgName, message, address, designation }) =>
@@ -46,20 +46,20 @@ export const asOrganisation =
         header: {
           'Content-type': 'multipart/form-data',
         },
-      };
+      }
 
-      dispatch({ type: CAMPUS_GET_REQUEST });
+      dispatch({ type: CAMPUS_GET_REQUEST })
       const { data } = await axios.post(
-        'https://www.test.pinsoutinnovation.com/organisation',
+        `${process.env.REACT_APP_WEBSITE_URL_PINS}/organisation`,
         { name, email, phone, orgName, message, address, designation },
         config
-      );
-      console.log(data);
+      )
+      console.log(data)
 
       dispatch({
         type: CAMPUS_GET_SUCCESS,
         payload: data,
-      });
+      })
     } catch (error) {
       dispatch({
         type: CAMPUS_GET_FAIL,
@@ -67,9 +67,9 @@ export const asOrganisation =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }
 
 export const beMentor =
   ({
@@ -103,11 +103,11 @@ export const beMentor =
         header: {
           'Content-type': 'multipart/form-data',
         },
-      };
+      }
 
-      dispatch({ type: CAMPUS_GET_REQUEST });
+      dispatch({ type: CAMPUS_GET_REQUEST })
       const { data } = await axios.post(
-        'https://www.test.pinsoutinnovation.com/be-a-mentor',
+        `${process.env.REACT_APP_WEBSITE_URL_PINS}/be-a-mentor`,
         {
           name,
           email,
@@ -134,13 +134,13 @@ export const beMentor =
           post_grad_year,
         },
         config
-      );
-      console.log(data);
+      )
+      console.log(data)
 
       dispatch({
         type: CAMPUS_GET_SUCCESS,
         payload: data,
-      });
+      })
     } catch (error) {
       dispatch({
         type: CAMPUS_GET_FAIL,
@@ -148,6 +148,6 @@ export const beMentor =
           error.response && error.response.data.message
             ? error.response.data.message
             : error.response,
-      });
+      })
     }
-  };
+  }

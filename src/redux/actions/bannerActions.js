@@ -1,21 +1,21 @@
-import axios from 'axios';
+import axios from 'axios'
 import {
   BANNER_GET_REQUEST,
   BANNER_GET_SUCCESS,
   BANNER_GET_FAIL,
-} from '../constants/bannerConstants';
+} from '../constants/bannerConstants'
 
 export const listBanner = () => async (dispatch) => {
   try {
-    dispatch({ type: BANNER_GET_REQUEST });
+    dispatch({ type: BANNER_GET_REQUEST })
     const { data } = await axios.get(
-      'https://www.test.pinsoutinnovation.com/banners'
-    );
+      `${process.env.REACT_APP_WEBSITE_URL_PINS}/banners`
+    )
 
     dispatch({
       type: BANNER_GET_SUCCESS,
       payload: [data],
-    });
+    })
   } catch (error) {
     dispatch({
       type: BANNER_GET_FAIL,
@@ -23,6 +23,6 @@ export const listBanner = () => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.response,
-    });
+    })
   }
-};
+}

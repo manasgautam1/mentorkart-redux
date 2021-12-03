@@ -292,37 +292,19 @@ const SignInModal = (props) => {
                     </div>
                   </div>
                   <div className="d-md-none d-block mb-4">
-                    <select className="form-select" required>
-                      <option
-                        value="Student"
-                        name="radio"
-                        onChange={() => {
-                          setUser('Student')
-                          setShow(true)
-                        }}
-                      >
-                        Student
-                      </option>
-                      <option
-                        value="Professional"
-                        name="radio"
-                        onChange={() => {
-                          setUser('Professional')
-                          setShow(true)
-                        }}
-                      >
-                        Professional
-                      </option>
-                      <option
-                        value="Entrepreneur"
-                        name="radio"
-                        onChange={() => {
-                          setUser('Entrepreneur')
-                          setShow(true)
-                        }}
-                      >
-                        Entrepreneur
-                      </option>
+                    <select
+                      className="form-select"
+                      onChange={(e) => {
+                        console.log(e.target.value)
+                        setUser(e.target.value)
+                        setShow(true)
+                      }}
+                      required
+                    >
+                      <option value="">----</option>
+                      <option value="Student">Student</option>
+                      <option value="Professional">Professional</option>
+                      <option value="Entrepreneur">Entrepreneur</option>
                     </select>
                   </div>
                   <div style={show === false ? { display: 'none' } : {}}>
@@ -476,10 +458,7 @@ const SignInModal = (props) => {
                     </div>
                   </div>
                   <div className="row px-2">
-                    <button
-                      type="submit"
-                      className="btn btn-dark"
-                    >
+                    <button type="submit" className="btn btn-dark">
                       Get OTP
                     </button>
                   </div>

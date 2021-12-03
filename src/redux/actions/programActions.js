@@ -10,7 +10,10 @@ import {
 export const listProgram = () => async (dispatch) => {
   try {
     dispatch({ type: PROGRAM_GET_REQUEST })
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses')
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-courses`
+    )
+    console.log(`${process.env.REACT_APP_WEBSITE_URL}`)
     console.log(data)
     dispatch({
       type: PROGRAM_GET_SUCCESS,
@@ -31,7 +34,9 @@ export const filterProgram = (chec) => async (dispatch) => {
   try {
     dispatch({ type: PROGRAM_GET_REQUEST })
     console.log(chec.toString())
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses')
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-courses`
+    )
     const fil = data.data
     const d = chec
       .map((g) =>
@@ -58,7 +63,9 @@ export const filterProgram = (chec) => async (dispatch) => {
 export const listStudentCourse = () => async (dispatch) => {
   try {
     dispatch({ type: PROGRAM_GET_REQUEST })
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses')
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-courses`
+    )
     const fil = data.data
     const std = fil.filter((x) =>
       x.user_category.split(',').includes('STUDENT')
@@ -82,7 +89,9 @@ export const listStudentCourse = () => async (dispatch) => {
 export const listProfessionalCourse = () => async (dispatch) => {
   try {
     dispatch({ type: PROGRAM_GET_REQUEST })
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses')
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-courses`
+    )
     const fil = data.data
     const std = fil.filter((x) =>
       x.user_category.split(',').includes('PROFESSIONAL')
@@ -106,7 +115,9 @@ export const listProfessionalCourse = () => async (dispatch) => {
 export const listEntrepreneurCourse = () => async (dispatch) => {
   try {
     dispatch({ type: PROGRAM_GET_REQUEST })
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses')
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-courses`
+    )
     const fil = data.data
     const std = fil.filter((x) =>
       x.user_category.split(',').includes('ENTREPRENEUR')
@@ -130,7 +141,9 @@ export const listEntrepreneurCourse = () => async (dispatch) => {
 export const searchProgram = (query) => async (dispatch) => {
   try {
     dispatch({ type: PROGRAM_GET_REQUEST })
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses')
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-courses`
+    )
     const fil = data.data
     const std = fil.filter((x) => {
       if (x.LMS_course_name) {

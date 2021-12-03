@@ -13,7 +13,7 @@ export const listMentor = () => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_REQUEST })
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-mentor-list'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor-list`
     )
     const fil = data.data
 
@@ -36,7 +36,7 @@ export const listStudentMentor = () => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_REQUEST })
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-mentor-list'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor-list`
     )
     const fil = data.data
     const std = fil.filter((x) => {
@@ -65,7 +65,7 @@ export const listProfessionalMentor = () => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_REQUEST })
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-mentor-list'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor-list`
     )
     const fil = data.data
     const std = fil.filter((x) => {
@@ -94,7 +94,7 @@ export const listEntrepreneurMentor = () => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_REQUEST })
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-mentor-list'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor-list`
     )
     const fil = data.data
     const std = fil.filter((x) => {
@@ -123,7 +123,7 @@ export const searchMentor = (query) => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_REQUEST })
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-mentor-list'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor-list`
     )
     const fil = data.data
     const std = fil.filter((x) => {
@@ -154,7 +154,7 @@ export const listMentorDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_DETAILS_REQUEST })
     const { data } = await axios.get(
-      `https://mentorkart.org/api/sso-mentor/${id}`
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor/${id}`
     )
     const fil = data.data
 

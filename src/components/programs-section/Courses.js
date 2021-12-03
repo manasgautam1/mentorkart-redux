@@ -114,7 +114,7 @@ const Courses = () => {
       <div className="courses-content">
         <div id="#all" className="blogs-cards-two container py-5">
           <div className="row">
-            {program.map((course, index) => {
+            {program?.map((course, index) => {
               return (
                 <div
                   className="col-lg-4 col-md-6 col-12 px-lg-3 px-sm-2 px-3 mb-5"

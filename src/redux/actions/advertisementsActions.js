@@ -1,21 +1,21 @@
-import axios from 'axios';
+import axios from 'axios'
 import {
   ADVERTISEMENTS_GET_REQUEST,
   ADVERTISEMENTS_GET_SUCCESS,
   ADVERTISEMENTS_GET_FAIL,
-} from '../constants/advertisementsConstants';
+} from '../constants/advertisementsConstants'
 
 export const listAdvertisements = () => async (dispatch) => {
   try {
-    dispatch({ type: ADVERTISEMENTS_GET_REQUEST });
+    dispatch({ type: ADVERTISEMENTS_GET_REQUEST })
     const { data } = await axios.get(
-      'https://www.test.pinsoutinnovation.com/advertisements'
-    );
+      `${process.env.REACT_APP_WEBSITE_URL_PINS}/advertisements`
+    )
 
     dispatch({
       type: ADVERTISEMENTS_GET_SUCCESS,
       payload: [data],
-    });
+    })
   } catch (error) {
     dispatch({
       type: ADVERTISEMENTS_GET_FAIL,
@@ -23,6 +23,6 @@ export const listAdvertisements = () => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.response,
-    });
+    })
   }
-};
+}

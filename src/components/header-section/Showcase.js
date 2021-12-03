@@ -1,54 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import SignUpModal from '../join-mentokart/SignUpModal';
-import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser';
+import React, { useState, useEffect } from 'react'
+import SignUpModal from '../join-mentokart/SignUpModal'
+import Modal from 'react-modal'
+import { Link } from 'react-router-dom'
+import ReactHtmlParser from 'react-html-parser'
 
-import { useDispatch, useSelector } from 'react-redux';
-import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
+import { useDispatch, useSelector } from 'react-redux'
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions'
 
 // import Swiper core and required modules
-import SwiperCore, { EffectFade, A11y, Autoplay } from 'swiper';
+import SwiperCore, { EffectFade, A11y, Autoplay } from 'swiper'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Import Swiper styles
-import 'swiper/swiper.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/effect-fade/effect-fade.scss';
+import 'swiper/swiper.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/effect-fade/effect-fade.scss'
 
 // install Swiper modules
-SwiperCore.use([EffectFade, A11y, Autoplay]);
+SwiperCore.use([EffectFade, A11y, Autoplay])
 
 const Showcase = () => {
-  const user = localStorage.getItem('userInfo');
+  const user = localStorage.getItem('userInfo')
 
-  const dispatch = useDispatch();
-  const websiteContentList = useSelector((state) => state.websiteContentList);
-  const { websiteContent, loading } = websiteContentList;
+  const dispatch = useDispatch()
+  const websiteContentList = useSelector((state) => state.websiteContentList)
+  const { websiteContent, loading } = websiteContentList
 
   useEffect(() => {
-    dispatch(listWebsiteContent());
-  }, [dispatch]);
+    dispatch(listWebsiteContent())
+  }, [dispatch])
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   const showModalBtn = (bool) => {
-    setShowModal(bool);
-  };
+    setShowModal(bool)
+  }
 
   const handleClick = () => {
     if (user) {
-      setShowModal(false);
+      setShowModal(false)
     } else {
-      setShowModal(true);
+      setShowModal(true)
     }
-  };
+  }
 
   return (
-    <div className='showcase-section'>
+    <div className="showcase-section">
       <Modal
-        id='signup-modal'
+        id="signup-modal"
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
         style={{
@@ -67,57 +67,57 @@ const Showcase = () => {
         <SignUpModal showModalBtn={showModalBtn} />
       </Modal>
 
-      <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-        <div className='row'>
-          <div className='col-md-6 left d-flex flex-column justify-content-center'>
-            <p className='showcase-para mb-0 mt-md-0 mt-4'>
-              {ReactHtmlParser(websiteContent[0]?.data[1]?.field_data)}
+      <div className="container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3">
+        <div className="row">
+          <div className="col-md-6 left d-flex flex-column justify-content-center">
+            <p className="showcase-para mb-0 mt-md-0 mt-4">
+              {ReactHtmlParser(websiteContent?.field_data)}
             </p>
-            <h1 className='showcase-heading mt-md-3 mb-md-5 mt-3 mb-4'>
-              {websiteContent[0]?.data[0]?.field_data}
+            <h1 className="showcase-heading mt-md-3 mb-md-5 mt-3 mb-4">
+              {websiteContent?.field_data}
               <sup>
-                <h6 className='d-inline'>
+                <h6 className="d-inline">
                   <sup>&reg;</sup>
                 </h6>
               </sup>
             </h1>
-            <div className='row showcase-cards'>
-              <div className='col-xl-5 col-6'>
-                <div onClick={handleClick} className='showcase-card one'>
-                  <div className='showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2'>
+            <div className="row showcase-cards">
+              <div className="col-xl-5 col-6">
+                <div onClick={handleClick} className="showcase-card one">
+                  <div className="showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2">
                     <div>
-                      <img src='/images/showcase-card-one.png' alt='' />
+                      <img src="/images/showcase-card-one.png" alt="" />
                     </div>
-                    <div className='ms-2'>
+                    <div className="ms-2">
                       <span>Find a</span>
                       <h2>Mentor</h2>
                     </div>
                   </div>
-                  <div className='showcase-card-bottom text-center'>
+                  <div className="showcase-card-bottom text-center">
                     Find a mentor
                   </div>
                 </div>
               </div>
-              <div className='col-xl-5 col-6'>
-                <div onClick={handleClick} className='showcase-card two'>
-                  <div className='showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2'>
-                    <div className=''>
-                      <img src='/images/showcase-card-two.png' alt='' />
+              <div className="col-xl-5 col-6">
+                <div onClick={handleClick} className="showcase-card two">
+                  <div className="showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2">
+                    <div className="">
+                      <img src="/images/showcase-card-two.png" alt="" />
                     </div>
-                    <div className='ms-2'>
+                    <div className="ms-2">
                       <span>Ask a</span>
                       <h2>Mentor</h2>
                     </div>
                   </div>
-                  <div className='showcase-card-bottom text-center'>
+                  <div className="showcase-card-bottom text-center">
                     Ask a mentor
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='col-md-6 right d-md-block d-none'>
-            <div className='right-img container'>
+          <div className="col-md-6 right d-md-block d-none">
+            <div className="right-img container">
               <Swiper
                 effect={'fade'}
                 spaceBetween={30}
@@ -135,12 +135,12 @@ const Showcase = () => {
                     to={{
                       pathname: 'https://app.mentorkart.com',
                     }}
-                    target='_blank'
+                    target="_blank"
                   >
                     <img
-                      className='fluid-img'
-                      src='/images/showcase-right.jpg'
-                      alt=''
+                      className="fluid-img"
+                      src="/images/showcase-right.jpg"
+                      alt=""
                     />
                   </Link>
                 </SwiperSlide>
@@ -149,12 +149,12 @@ const Showcase = () => {
                     to={{
                       pathname: 'https://app.mentorkart.com',
                     }}
-                    target='_blank'
+                    target="_blank"
                   >
                     <img
-                      className='fluid-img'
-                      src='/images/showcase-right-1.jpg'
-                      alt=''
+                      className="fluid-img"
+                      src="/images/showcase-right-1.jpg"
+                      alt=""
                     />
                   </Link>
                 </SwiperSlide>
@@ -163,19 +163,19 @@ const Showcase = () => {
                     to={{
                       pathname: 'https://app.mentorkart.com',
                     }}
-                    target='_blank'
+                    target="_blank"
                   >
                     <img
-                      className='fluid-img'
-                      src='/images/showcase-right-2.jpg'
-                      alt=''
+                      className="fluid-img"
+                      src="/images/showcase-right-2.jpg"
+                      alt=""
                     />
                   </Link>
                 </SwiperSlide>
               </Swiper>
             </div>
           </div>
-          <div className='d-md-none d-block py-3 px-5'>
+          <div className="d-md-none d-block py-3 px-5">
             <Swiper
               effect={'fade'}
               spaceBetween={30}
@@ -193,12 +193,12 @@ const Showcase = () => {
                   to={{
                     pathname: 'https://app.mentorkart.com',
                   }}
-                  target='_blank'
+                  target="_blank"
                 >
                   <img
-                    className='img-fluid'
-                    src='/images/showcase-right.jpg'
-                    alt=''
+                    className="img-fluid"
+                    src="/images/showcase-right.jpg"
+                    alt=""
                   />
                 </Link>
               </SwiperSlide>
@@ -207,12 +207,12 @@ const Showcase = () => {
                   to={{
                     pathname: 'https://app.mentorkart.com',
                   }}
-                  target='_blank'
+                  target="_blank"
                 >
                   <img
-                    className='img-fluid'
-                    src='/images/showcase-right-1.jpg'
-                    alt=''
+                    className="img-fluid"
+                    src="/images/showcase-right-1.jpg"
+                    alt=""
                   />
                 </Link>
               </SwiperSlide>
@@ -221,12 +221,12 @@ const Showcase = () => {
                   to={{
                     pathname: 'https://app.mentorkart.com',
                   }}
-                  target='_blank'
+                  target="_blank"
                 >
                   <img
-                    className='img-fluid'
-                    src='/images/showcase-right-2.jpg'
-                    alt=''
+                    className="img-fluid"
+                    src="/images/showcase-right-2.jpg"
+                    alt=""
                   />
                 </Link>
               </SwiperSlide>
@@ -235,62 +235,62 @@ const Showcase = () => {
         </div>
       </div>
 
-      <div className='showcase-links d-xxl-block d-none'>
-        <ul className='navbar-nav d-flex flex-column justify-content-center align-items-center'>
-          <li className='nav-item'>
+      <div className="showcase-links d-xxl-block d-none">
+        <ul className="navbar-nav d-flex flex-column justify-content-center align-items-center">
+          <li className="nav-item">
             <a
-              className='nav-link social-nav-link'
-              rel='noreferrer'
-              target='_blank'
-              href='https://www.facebook.com/mentorkart/'
+              className="nav-link social-nav-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.facebook.com/mentorkart/"
             >
-              <i className='fab fa-facebook'></i>
+              <i className="fab fa-facebook"></i>
             </a>
           </li>
-          <li className='nav-item'>
+          <li className="nav-item">
             <a
-              className='nav-link social-nav-link'
-              rel='noreferrer'
-              target='_blank'
-              href='https://twitter.com/mentor_kart'
+              className="nav-link social-nav-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://twitter.com/mentor_kart"
             >
-              <i className='fab fa-twitter'></i>
+              <i className="fab fa-twitter"></i>
             </a>
           </li>
-          <li className='nav-item'>
+          <li className="nav-item">
             <a
-              className='nav-link social-nav-link'
-              rel='noreferrer'
-              target='_blank'
-              href='https://www.linkedin.com/company/mentorkart/'
+              className="nav-link social-nav-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.linkedin.com/company/mentorkart/"
             >
-              <i className='fab fa-linkedin social-icons'></i>
+              <i className="fab fa-linkedin social-icons"></i>
             </a>
           </li>
-          <li className='nav-item'>
+          <li className="nav-item">
             <a
-              className='nav-link social-nav-link'
-              rel='noreferrer'
-              target='_blank'
-              href='https://www.youtube.com/channel/UCI3bjjLPNzth2RrSyQo8acw'
+              className="nav-link social-nav-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.youtube.com/channel/UCI3bjjLPNzth2RrSyQo8acw"
             >
-              <i className='fab fa-youtube social-icons'></i>
+              <i className="fab fa-youtube social-icons"></i>
             </a>
           </li>
-          <li className='nav-item'>
+          <li className="nav-item">
             <a
-              className='nav-link social-nav-link'
-              rel='noreferrer'
-              target='_blank'
-              href=''
+              className="nav-link social-nav-link"
+              rel="noreferrer"
+              target="_blank"
+              href=""
             >
-              <i className='fab fa-instagram social-icons'></i>
+              <i className="fab fa-instagram social-icons"></i>
             </a>
           </li>
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Showcase;
+export default Showcase

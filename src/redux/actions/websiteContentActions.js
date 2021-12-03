@@ -1,21 +1,21 @@
-import axios from 'axios';
+import axios from 'axios'
 import {
   WEBSITE_CONTENT_GET_REQUEST,
   WEBSITE_CONTENT_GET_SUCCESS,
   WEBSITE_CONTENT_GET_FAIL,
-} from '../constants/websiteContentConstants';
+} from '../constants/websiteContentConstants'
 
 export const listWebsiteContent = () => async (dispatch) => {
   try {
-    dispatch({ type: WEBSITE_CONTENT_GET_REQUEST });
+    dispatch({ type: WEBSITE_CONTENT_GET_REQUEST })
     const { data } = await axios.get(
-      'https://www.test.pinsoutinnovation.com/websitecontents'
-    );
-
+      `${process.env.REACT_APP_WEBSITE_URL_PINS}/websitecontents`
+    )
+    console.log(data)
     dispatch({
       type: WEBSITE_CONTENT_GET_SUCCESS,
       payload: [data],
-    });
+    })
   } catch (error) {
     dispatch({
       type: WEBSITE_CONTENT_GET_FAIL,
@@ -23,6 +23,6 @@ export const listWebsiteContent = () => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.response,
-    });
+    })
   }
-};
+}

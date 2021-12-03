@@ -28,7 +28,7 @@ export const signIn =
 
       dispatch({ type: LOGIN_GET_REQUEST })
       const { data } = await axios.post(
-        'https://mentorkart.org/api/login',
+        `${process.env.REACT_APP_WEBSITE_URL}/login`,
         { email, password },
         config
       )
@@ -87,7 +87,7 @@ export const signUp =
 
       dispatch({ type: SIGNUP_GET_REQUEST })
       const { data } = await axios.post(
-        'https://mentorkart.org/api/register',
+        `${process.env.REACT_APP_WEBSITE_URL}/api/register`,
         {
           category,
           username,
@@ -144,14 +144,14 @@ export const otpsection =
 
       dispatch({ type: OTP_GET_REQUEST })
       const { data } = await axios.post(
-        'https://mentorkart.org/api/verify-otp',
+        `${process.env.REACT_APP_WEBSITE_URL}/api/verify-otp`,
         { otp, country_code, country_name },
         config
       )
       console.log(data)
 
       const res = await axios.post(
-        'https://mentorkart.org/api/store-leads',
+        `${process.env.REACT_APP_WEBSITE_URL}/api/store-leads`,
         {
           utm_source,
           email,
@@ -205,7 +205,7 @@ export const resend =
 
       dispatch({ type: OTPRESEND_GET_REQUEST })
       const { data } = await axios.post(
-        'https://mentorkart.org/api/resend-otp',
+        ` ${process.env.REACT_APP_WEBSITE_URL}/api/resend-otp`,
         { country_code },
         config
       )
