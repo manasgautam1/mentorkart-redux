@@ -49,7 +49,7 @@ const Mentors = () => {
       <div className='mentors-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
           <h1>Our Mentors</h1>
-          <form action='/search-mentors' className='mentors-search'>
+          {/* <form action='/search-mentors' className='mentors-search'>
             <div className='form-group'>
               <span>
                 <i className='fas fa-search me-2 ms-1'></i>
@@ -63,7 +63,7 @@ const Mentors = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-          </form>
+          </form> */}
           <div className='tags d-flex mt-3 justify-content-center'>
             <ul className='d-flex flex-wrap'>
               <li>
@@ -94,13 +94,13 @@ const Mentors = () => {
         <div className='mentors-cards'>
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 pb-5'>
             <div className='row'>
-              {mentor.map((mentor, index) => {
+              {mentor.slice(0,8).map((mentor, index) => {
                 return (
                   <div key={index} className='col-lg-4 col-md-6 col-12'>
                     <div className='mentors-card mb-4'>
                       <SingleMentorCard
                         id={mentor.id}
-                        img={mentor.profile_image}
+                        img={''}
                         name={mentor.first_name + ' ' + mentor.last_name}
                         designation={mentor.designation}
                         categories={mentor.user_categories}

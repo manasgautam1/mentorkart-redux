@@ -6,7 +6,7 @@ const MentorCardButtons = (props) => {
     <button
       onClick={() => {
         if (loggedIn === null) {
-          props.showModalBtn(true);
+          // props.showModalBtn(true);
         } else {
           window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`;
         }

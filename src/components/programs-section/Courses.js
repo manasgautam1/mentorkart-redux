@@ -57,7 +57,7 @@ const Courses = () => {
       <div className='courses-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
           <h1>Programs and courses</h1>
-          <form action='' className='courses-search'>
+          {/* <form action='' className='courses-search'>
             <div className='form-group'>
               <span>
                 <i className='fas fa-search me-2 ms-1'></i>
@@ -70,7 +70,7 @@ const Courses = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-          </form>
+          </form> */}
           <div className='tags d-flex mt-3 justify-content-center'>
             <ul className='d-flex flex-wrap'>
               <li>

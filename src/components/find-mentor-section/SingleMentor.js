@@ -30,7 +30,7 @@ const SingleMentorCard = ({
           ) : (
             <img
               style={{ objectFit: 'cover', objectPosition: 'top' }}
-              src={'https://mentorkart-admin-staging.s3.amazonaws.com/' + img}
+              src={'/images/user.jpg'}
               alt=''
             />
           )}
@@ -72,7 +72,7 @@ const SingleMentorCard = ({
                 </div>
               </div>
             </div>
-            <Link to={`/mentor-profile/${url_name}/${id}`} className='px-0'>
+            <Link to={`/all-mentors`} className='px-0'>
               <MentorCardButtons
                 classes='mentor-card-btn active'
                 text='View Profile'

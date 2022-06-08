@@ -31,7 +31,7 @@ const MentorCard = ({
           ) : (
             <img
               style={{ objectFit: 'cover', objectPosition: 'top' }}
-              src={'https://mentorkart-admin-staging.s3.amazonaws.com/' + img}
+              src={'/images/user.jpg'}
               alt=''
             />
           )}

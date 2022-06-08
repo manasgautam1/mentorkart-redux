@@ -27,30 +27,33 @@ export const signIn =
       };
 
       dispatch({ type: LOGIN_GET_REQUEST });
-      const { data } = await axios.post(
-        'https://mentorkart.org/api/login',
-        { email, password },
-        config
-      );
 
-      dispatch({
-        type: LOGIN_GET_SUCCESS,
-        payload: data,
-      });
+      // const { data } = await axios.post(
+      //   'https://mentorkart.org/api/login',
+      //   { email, password },
+      //   config
+      // );
 
-      if (data) {
-        const payload = {
-          email: email,
-          password: password,
-          app_key: 'mkwebsite',
-        };
-
-        const secretKey = Buffer.from('website-secret', 'base64');
-
-        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
-
-        localStorage.setItem('userInfo', JSON.stringify(token));
+      if(email=="chiraggupta01@gmail.com" && password =="Chirag@123"){
+        dispatch({
+          type: LOGIN_GET_SUCCESS,
+          payload: [],
+        });
       }
+
+      // if (data) {
+      //   const payload = {
+      //     email: email,
+      //     password: password,
+      //     app_key: 'mkwebsite',
+      //   };
+
+      //   const secretKey = Buffer.from('website-secret', 'base64');
+
+      //   const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
+
+      //   localStorage.setItem('userInfo', JSON.stringify(token));
+      // }
     } catch (error) {
       dispatch({
         type: LOGIN_GET_FAIL,
